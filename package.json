@@ -1,0 +1,32 @@
+{
+  "name": "tdp-cli",
+  "version": "0.0.1",
+  "description": "cli tools for tdp",
+  "exports": "./bin/index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "tdp": "ts-node src/tpd.ts",
+    "tsc": "tsc && node bin/tdp.js"
+  },
+  "bin": {
+    "tdp": "./bin/index.js"
+  },
+  "keywords": [
+    "cli",
+    "tdp"
+  ],
+  "author": "liuyc14",
+  "license": "MIT",
+  "dependencies": {
+    "@types/node": "^17.0.12",
+    "chalk": "^5.0.0",
+    "commander": "^8.3.0",
+    "download-git-repo": "^3.0.2",
+    "inquirer": "^8.2.0",
+    "log-symbols": "^5.1.0",
+    "ora": "^6.0.1",
+    "ts-node": "^10.4.0",
+    "typescript": "^4.5.5"
+  }
+}

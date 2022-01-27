@@ -1,0 +1,18 @@
+{
+    "compilerOptions": {
+        "module": "CommonJS",
+        "removeComments": true,
+        "allowJs": true,
+        "target": "ES5",
+        "noImplicitAny": true,
+        "outDir": "./bin",
+        "sourceMap": false,
+        "experimentalDecorators": true,
+        "resolveJsonModule": true,
+        "moduleResolution": "Node",
+        "types": ["node"]
+    },
+    "include": [
+        "./src/**/*.ts"
+    ]
+}

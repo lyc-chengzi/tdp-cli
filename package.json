@@ -1,9 +1,20 @@
 {
   "name": "tdp-cli",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "cli tools for tdp",
+  "homepage": "https://github.com/lyc-chengzi/tdp-cli",
+  "repository": {
+    "url": "https://github.com/lyc-chengzi/tdp-cli.git",
+    "type": "git"
+  },
   "exports": "./bin/index.js",
   "type": "module",
+  "engines": {
+    "node": "> 12.1 || >= 14.16"
+  },
+  "files": [
+    "bin"
+  ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "tdp": "ts-node src/tpd.ts",

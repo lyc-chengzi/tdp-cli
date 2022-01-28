@@ -3,6 +3,7 @@ import path from 'node:path';
 import chalk from 'chalk';
 import ora from 'ora';
 import logSymbols from "log-symbols";
+import { exec } from "node:child_process";
 
 export default function (projectName) {
     const dirRoot = process.cwd();
@@ -29,6 +30,11 @@ export default function (projectName) {
                     // 下载模板成功
                     spinner.succeed('下载模板成功');
                 }
+                exec('npm config list', function(err, stdout, stderr){
+                    console.log('err', err);
+                    console.info('stdout', stdout);
+                    console.info('stderr', stderr);
+                });
             }
         );
     }, 1000);

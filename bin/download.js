@@ -3,11 +3,10 @@ import path from 'node:path';
 import chalk from 'chalk';
 import ora from 'ora';
 import logSymbols from "log-symbols";
-import { exec } from "node:child_process";
 
-export default function (projectName) {
+export default function (projectName, cb) {
     const dirRoot = process.cwd();
-    const pathName = path.join(dirRoot, projectName);
+    const destPath = path.join(dirRoot, projectName);
     console.log(`${chalk.bgBlue('当前运行目录')}: ${process.cwd()}`);
 
     const spinner = ora({
@@ -18,8 +17,8 @@ export default function (projectName) {
         download(
             // "github:lyc-chengzi/tdp-vue2-temp#master",
             'https://github.com:lyc-chengzi/tdp-vue2-temp#main',
-            pathName,
-            { clone: true },
+            destPath,
+            { clone: true, checkout: false },
             err => {
                 if (err) {
                     spinner.fail('下载模板失败');
@@ -29,12 +28,8 @@ export default function (projectName) {
                 } else {
                     // 下载模板成功
                     spinner.succeed('下载模板成功');
+                    cb && cb(destPath);
                 }
-                exec('npm config list', function(err, stdout, stderr){
-                    console.log('err', err);
-                    console.info('stdout', stdout);
-                    console.info('stderr', stderr);
-                });
             }
         );
     }, 1000);

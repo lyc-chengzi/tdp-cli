@@ -1,6 +1,6 @@
 import { program } from "commander";
-import donwload from './download.js';
-import { exec } from "node:child_process";
+import donwload from '../lib/download.js';
+// import { exec } from "node:child_process";
 import chalk from "chalk";
 
 program

@@ -3,3 +3,4 @@ test/test_*.vue
 /dist
 /bin
 /lib
+/interface

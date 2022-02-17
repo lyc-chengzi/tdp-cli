@@ -18,11 +18,13 @@
     "data"
   ],
   "scripts": {
-    "test": "yarn build:ts&&yarn copy&&node test/generator_spec.js",
+    "test": "node test/generator_spec.js",
     "tdp": "node --trace-warnings --loader ts-node/esm src/tdp.ts",
     "build:ts": "tsc",
     "copy": "gulp copy",
-    "build": "yarn build:ts&&yarn copy"
+    "build": "gulp build",
+    "dev": "gulp watch",
+    "gulp": "gulp"
   },
   "bin": {
     "tdp": "./bin/index.js"
@@ -45,6 +47,7 @@
     "typescript": "^4.5.5"
   },
   "devDependencies": {
-    "gulp": "^4.0.2"
+    "gulp": "^4.0.2",
+    "gulp-typescript": "^6.0.0-alpha.1"
   }
 }

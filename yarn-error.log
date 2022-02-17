@@ -1,8 +1,8 @@
 Arguments: 
-  D:\Program Files\nodejs\node.exe D:\Program Files (x86)\Yarn\bin\yarn.js build:ts
+  D:\Program Files\nodejs\node.exe D:\Program Files (x86)\Yarn\bin\yarn.js gulp --tasks
 
 PATH: 
-  C:\Users\liuyc14\AppData\Local\Temp\yarn--1645084358983-0.11541839713328583;D:\liuyc14\project\tdp\tdp-cli\node_modules\.bin;C:\Users\liuyc14\AppData\Local\Yarn\Data\link\node_modules\.bin;D:\liuyc14\project\tdp\tdp-cli\node_modules\.bin;C:\Users\liuyc14\AppData\Local\Yarn\Data\link\node_modules\.bin;D:\Program Files\libexec\lib\node_modules\npm\bin\node-gyp-bin;D:\Program Files\lib\node_modules\npm\bin\node-gyp-bin;D:\Program Files\nodejs\node_modules\npm\bin\node-gyp-bin;C:\Users\liuyc14\AppData\Local\Temp\yarn--1645084357889-0.8440479813131014;D:\liuyc14\project\tdp\tdp-cli\node_modules\.bin;C:\Users\liuyc14\AppData\Local\Yarn\Data\link\node_modules\.bin;D:\liuyc14\project\tdp\tdp-cli\node_modules\.bin;C:\Users\liuyc14\AppData\Local\Yarn\Data\link\node_modules\.bin;D:\Program Files\libexec\lib\node_modules\npm\bin\node-gyp-bin;D:\Program Files\lib\node_modules\npm\bin\node-gyp-bin;D:\Program Files\nodejs\node_modules\npm\bin\node-gyp-bin;D:\Program Files\nodejs;C:\Python27\;C:\Python27\Scripts;C:\Program Files\Microsoft MPI\Bin\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\iCLS\;C:\Program Files\Intel\Intel(R) Management Engine Components\iCLS\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;D:\Program Files\Git\cmd;D:\Program Files (x86)\Yarn\bin\;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;D:\Program Files\nodejs\;C:\Users\liuyc14\AppData\Local\Microsoft\WindowsApps;C:\Users\liuyc14\AppData\Local\Yarn\bin;;D:\liuyc14\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\liuyc14\AppData\Roaming\npm;C:\Users\liuyc14\AppData\Local\nvs\
+  C:\Users\liuyc14\AppData\Local\Temp\yarn--1645085500294-0.2100325298595982;D:\liuyc14\project\tdp\tdp-cli\node_modules\.bin;C:\Users\liuyc14\AppData\Local\Yarn\Data\link\node_modules\.bin;D:\liuyc14\project\tdp\tdp-cli\node_modules\.bin;C:\Users\liuyc14\AppData\Local\Yarn\Data\link\node_modules\.bin;D:\Program Files\libexec\lib\node_modules\npm\bin\node-gyp-bin;D:\Program Files\lib\node_modules\npm\bin\node-gyp-bin;D:\Program Files\nodejs\node_modules\npm\bin\node-gyp-bin;C:\Users\liuyc14\AppData\Local\Temp\yarn--1645085499449-0.5479536829802394;D:\liuyc14\project\tdp\tdp-cli\node_modules\.bin;C:\Users\liuyc14\AppData\Local\Yarn\Data\link\node_modules\.bin;D:\liuyc14\project\tdp\tdp-cli\node_modules\.bin;C:\Users\liuyc14\AppData\Local\Yarn\Data\link\node_modules\.bin;D:\Program Files\libexec\lib\node_modules\npm\bin\node-gyp-bin;D:\Program Files\lib\node_modules\npm\bin\node-gyp-bin;D:\Program Files\nodejs\node_modules\npm\bin\node-gyp-bin;D:\Program Files\nodejs;C:\Python27\;C:\Python27\Scripts;C:\Program Files\Microsoft MPI\Bin\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\iCLS\;C:\Program Files\Intel\Intel(R) Management Engine Components\iCLS\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;D:\Program Files\Git\cmd;D:\Program Files (x86)\Yarn\bin\;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;D:\Program Files\nodejs\;C:\Users\liuyc14\AppData\Local\Microsoft\WindowsApps;C:\Users\liuyc14\AppData\Local\Yarn\bin;;D:\liuyc14\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\liuyc14\AppData\Roaming\npm;C:\Users\liuyc14\AppData\Local\nvs\
 
 Yarn version: 
   1.12.3
@@ -29,7 +29,7 @@ Trace:
 npm manifest: 
   {
     "name": "tdp-cli",
-    "version": "0.1.0",
+    "version": "0.1.2",
     "description": "cli tools for tdp",
     "homepage": "https://github.com/lyc-chengzi/tdp-cli",
     "repository": {
@@ -47,12 +47,12 @@ npm manifest:
       "data"
     ],
     "scripts": {
-      "test:generator": "yarn build&&node test/generator_spec.js",
+      "test": "yarn build:ts&&yarn copy&&node test/generator_spec.js",
       "tdp": "node --trace-warnings --loader ts-node/esm src/tdp.ts",
       "build:ts": "tsc",
-      "dev": "tsc --watch && node bin/tdp.js",
       "copy": "gulp copy",
-      "build": "yarn build:ts&&yarn copy"
+      "build": "gulp build",
+      "gulp": "yarn gulp"
     },
     "bin": {
       "tdp": "./bin/index.js"
@@ -75,7 +75,8 @@ npm manifest:
       "typescript": "^4.5.5"
     },
     "devDependencies": {
-      "gulp": "^4.0.2"
+      "gulp": "^4.0.2",
+      "gulp-typescript": "^6.0.0-alpha.1"
     }
   }
 

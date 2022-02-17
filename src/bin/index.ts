@@ -5,7 +5,7 @@ import { createRequire } from 'module';
 const require = createRequire(import.meta.url);
 const pkg = require('../package.json');
 const version = pkg.version;
-console.log(chalk.rgb(231, 180, 182).underline('😄 thanks for use tdp-cli'));
+console.log(chalk.rgb(231, 180, 182).underline('😄 thanks for use tdp-cli !'));
 program
     .version(version)
     .name('tdp')

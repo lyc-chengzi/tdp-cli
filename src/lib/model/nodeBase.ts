@@ -1,14 +1,14 @@
 export default class NodeBase {
-    json = {};
+    json: any = {};
     key = '';
-    constructor(json) {
+    constructor(json: any) {
         this.key = json.key;
         this.json = json;
     }
     formatJson() {
         
     }
-    toString(level) {
+    toString(level: number) {
         return '';
     }
 }

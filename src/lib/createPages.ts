@@ -1,22 +1,23 @@
 import chalk from "chalk";
 import logSymbols from "log-symbols";
-import fs from "node:fs";
-import path from "node:path";
+import * as fs from "node:fs";
+import * as path from "node:path";
 import ora from 'ora';
 import ModelPage from "./model/page.js";
 
 import { createRequire } from 'module';
+import { IAppInfo, IPageJson } from "../interface/index.js";
 const require = createRequire(import.meta.url);
-const data1 = require('../data/lyc_test1.json');
+const data1 = require('../../data/lyc_test1.json');
 
-let APPINFO = undefined;
+let APPINFO: IAppInfo | undefined  = undefined;
 
 /**
  * 生成页面代码
  * @param {string} appId 要生成的appId 
  * @param {string} projectPath 用户本地项目目录
  */
-export default function createPages(appId, projectPath) {
+export default function createPages(appId: string, projectPath: string) {
     getAppInfo(appId)
         .then(() => {
             writePage(projectPath, () => {
@@ -30,7 +31,7 @@ export default function createPages(appId, projectPath) {
  * @param {string} projectPath 
  * @param {function} callback 成功回调函数
  */
-function writePage(projectPath, callback) {
+function writePage(projectPath: string, callback?: Function) {
     // 生成页面文件的路径
     const pagesPath = path.join(projectPath, 'src', 'views');
 
@@ -47,7 +48,7 @@ function writePage(projectPath, callback) {
         fs.writeFile(
             path.join(pagesPath, `${page.commonPage.label}.vue`),
             _p.toString(),
-            {encoding: 'utf-8'}, (err) => {
+            {encoding: 'utf-8'}, (err: Error) => {
                 if (err) {
                     spinner.fail(`写入页面文件${chalk.bgCyan(page.id)}-${chalk.bgCyan(page.commonPage.label)}时发生错误`);
                     console.error(logSymbols.error, err);
@@ -67,7 +68,7 @@ function writePage(projectPath, callback) {
  * 写路由文件
  * @param {string} projectPath 
  */
-function writeRouter(projectPath){
+function writeRouter(projectPath: string){
     // 生成路由配置文件的路径
     const routerPath = path.join(projectPath, 'src', 'router');
 
@@ -76,7 +77,7 @@ function writeRouter(projectPath){
         spinner: 'star'
     }).start();
     
-    fs.readFile(path.join(routerPath, 'index_temp.js'), {encoding: 'utf-8'}, (err, data) => {
+    fs.readFile(path.join(routerPath, 'index_temp.js'), {encoding: 'utf-8'}, (err: Error, data: string) => {
         if(err) {
             routerSpinner.fail('写入router文件时发生错误');
             console.error(logSymbols.error, err);
@@ -95,7 +96,7 @@ function writeRouter(projectPath){
 `
             });
             const newData = newImport.replace('///<inject_routes>', pageRouters);
-            fs.writeFile(path.join(routerPath, 'index.js'), newData, {encoding: 'utf-8'}, (err2) => {
+            fs.writeFile(path.join(routerPath, 'index.js'), newData, {encoding: 'utf-8'}, (err2: Error) => {
                 if (err2) {
                     routerSpinner.fail('写入router文件时发生错误');
                     console.error(logSymbols.error, err2);
@@ -108,7 +109,7 @@ function writeRouter(projectPath){
     });
 }
 
-async function getAppInfo(appId) {
+async function getAppInfo(appId: string) {
     APPINFO = {
         appId: appId,
         appContent: data1,
@@ -126,10 +127,10 @@ async function getAppInfo(appId) {
     });
 }
 
-function getPages() {
+function getPages(): IPageJson[] {
     if (!APPINFO) {
         return [];
     } else {
-        return APPINFO.appContent.filter(c => c.hasOwnProperty('type'));
+        return APPINFO.appContent.filter((c:any) => c.hasOwnProperty('type'));
     }
 }

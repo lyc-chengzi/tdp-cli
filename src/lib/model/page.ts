@@ -1,20 +1,19 @@
+import { INode } from "../../interface/index.js";
 import { $getNodeByJson } from "../utils.js";
 
 // 页面对象
 export default class ModelPage {
     id = '';
-    json = {};
-    nodes = []; // 虚拟节点
-    methods = [];
-    dataString = [];
-    constructor(json) {
+    json: any = {};
+    nodes: INode[] = []; // 虚拟节点
+    constructor(json: any) {
         this.id = json.id;
         this.json = json;
         this.formatJson();
     }
     // 将json数据格式化为实例数据
     formatJson() {
-        this.json.smartData.list.forEach(c => {
+        this.json.smartData.list.forEach((c: any) => {
             this.nodes.push($getNodeByJson(c));
         });
     }

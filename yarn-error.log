@@ -1,0 +1,78 @@
+Arguments: 
+  D:\Program Files\nodejs\node.exe D:\Program Files (x86)\Yarn\bin\yarn.js add gulp -D
+
+PATH: 
+  C:\Python27\;C:\Python27\Scripts;C:\Program Files\Microsoft MPI\Bin\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\iCLS\;C:\Program Files\Intel\Intel(R) Management Engine Components\iCLS\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;D:\Program Files\Git\cmd;D:\Program Files (x86)\Yarn\bin\;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;D:\Program Files\nodejs\;C:\Users\liuyc14\AppData\Local\Microsoft\WindowsApps;C:\Users\liuyc14\AppData\Local\Yarn\bin;;D:\liuyc14\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\liuyc14\AppData\Roaming\npm;C:\Users\liuyc14\AppData\Local\nvs\
+
+Yarn version: 
+  1.12.3
+
+Node version: 
+  14.17.1
+
+Platform: 
+  win32 x64
+
+Trace: 
+  Error: https://registry.npmjs.org/@types%2fnode: tunneling socket could not be established, cause=socket hang up
+      at ClientRequest.onError (D:\Program Files (x86)\Yarn\lib\cli.js:140504:17)
+      at Object.onceWrapper (events.js:482:26)
+      at ClientRequest.emit (events.js:375:28)
+      at Socket.socketOnEnd (_http_client.js:499:9)
+      at Socket.emit (events.js:387:35)
+      at endReadableNT (internal/streams/readable.js:1317:12)
+      at processTicksAndRejections (internal/process/task_queues.js:82:21)
+
+npm manifest: 
+  {
+    "name": "tdp-cli",
+    "version": "0.1.0",
+    "description": "cli tools for tdp",
+    "homepage": "https://github.com/lyc-chengzi/tdp-cli",
+    "repository": {
+      "url": "https://github.com/lyc-chengzi/tdp-cli.git",
+      "type": "git"
+    },
+    "exports": "./bin/index.js",
+    "type": "module",
+    "engines": {
+      "node": "> 12.1 || >= 14.16"
+    },
+    "files": [
+      "bin",
+      "lib",
+      "data"
+    ],
+    "scripts": {
+      "test:generator": "node test/generator_spec.js",
+      "tdp": "node --trace-warnings --loader ts-node/esm src/tdp.ts",
+      "build": "tsc",
+      "dev": "tsc --watch && node bin/tdp.js"
+    },
+    "bin": {
+      "tdp": "./bin/index.js"
+    },
+    "keywords": [
+      "cli",
+      "tdp"
+    ],
+    "author": "liuyc14",
+    "license": "MIT",
+    "dependencies": {
+      "@types/node": "^17.0.12",
+      "chalk": "^5.0.0",
+      "commander": "^8.3.0",
+      "download-git-repo": "^3.0.2",
+      "inquirer": "^8.2.0",
+      "log-symbols": "^5.1.0",
+      "ora": "^6.0.1",
+      "ts-node": "^10.4.0",
+      "typescript": "^4.5.5"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

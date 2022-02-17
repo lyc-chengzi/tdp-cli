@@ -1,12 +1,19 @@
 import { $formatProps } from "../utils.js";
 import NodeBase from "./nodeBase.js";
 
-export default class Button extends NodeBase {
-    constructor(json) {
+export default class Input extends NodeBase {
+    constructor(json: any) {
         super(json);
     }
-    toString(level) {
-        return `<SchemaFormButton ref="${this.key}" ${$formatProps(this.json.col)} />`
+    toString(level: number) {
+        return `<SchemaFormInput ref="${this.key}" ${$formatProps(this.json.col)} />`
+    }
+    toData() {
+        return `
+            ${this.key}_data: {
+                text: '123',
+            },
+        `;
     }
     toMethods() {
         return `

@@ -1,11 +1,11 @@
 {
     "compilerOptions": {
-        "module": "CommonJS",
+        "module": "ESNext",
         "removeComments": true,
         "allowJs": true,
-        "target": "ES5",
+        "target": "ES6",
         "noImplicitAny": true,
-        "outDir": "./bin",
+        "outDir": "./dist",
         "sourceMap": false,
         "experimentalDecorators": true,
         "resolveJsonModule": true,

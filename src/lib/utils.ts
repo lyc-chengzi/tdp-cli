@@ -3,30 +3,37 @@ import Input from "./model/input.js";
 import Select from "./model/select.js";
 import Button from "./model/button.js";
 import Text from './model/text.js';
+import { ENodeType } from "../enum/index.js";
+import { INode } from "../interface/index.js";
 
 const nodeType = {
-    grid(json) {
+    [ENodeType.grid](json: Object) {
         return new Grid(json);
     },
-    input(json) {
+    [ENodeType.input](json: Object) {
         return new Input(json);
     },
-    select(json) {
+    [ENodeType.select](json: Object) {
         return new Select(json);
     },
-    button(json) {
+    [ENodeType.button](json: Object) {
         return new Button(json);
     },
-    text(json) {
+    [ENodeType.text](json: Object) {
         return new Text(json);
     },
+};
+
+type componentJson = {
+    key: string;
+    type: ENodeType;
 };
 
 /**
  * 获取组件的node对象
  * @param {Object} c 组件的json数据 
  */
-export function $getNodeByJson(c) {
+export function $getNodeByJson(c: componentJson): INode {
     if (/^grid\d?$/.test(c.type)) {
         const node = nodeType.grid(c);
         return {
@@ -35,8 +42,10 @@ export function $getNodeByJson(c) {
             node,
         };
     } else {
+        // @ts-ignore
         const constructor = nodeType[c.type];
         if (constructor) {
+            // @ts-ignore
             const node = nodeType[c.type](c);
             return {
                 key: c.key,
@@ -59,7 +68,7 @@ export function $printLevelSpace(level = 1) {
     return $printSpace(level * 4);
 }
 
-export function $printSpace(spaceNumber) {
+export function $printSpace(spaceNumber: number) {
     let result = '';
     for (let i = 0; i < spaceNumber; i++) {
         result += ' ';
@@ -67,7 +76,7 @@ export function $printSpace(spaceNumber) {
     return result;
 }
 // 格式化属性，变成字符串
-export function $formatProps(props) {
+export function $formatProps(props: any) {
     let result = ' ';
     if(props) {
         for(let key in props) {

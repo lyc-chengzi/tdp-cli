@@ -1,3 +1,7 @@
 node_modules
-test1
 test/test_*.vue
+./dist
+./bin
+./enum
+./interface
+./lib

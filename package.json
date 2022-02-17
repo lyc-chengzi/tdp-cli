@@ -19,8 +19,9 @@
   ],
   "scripts": {
     "test:generator": "node test/generator_spec.js",
-    "tdp": "ts-node src/tpd.ts",
-    "tsc": "tsc && node bin/tdp.js"
+    "tdp": "node --trace-warnings --loader ts-node/esm src/tdp.ts",
+    "build": "tsc",
+    "dev": "tsc --watch && node bin/tdp.js"
   },
   "bin": {
     "tdp": "./bin/index.js"

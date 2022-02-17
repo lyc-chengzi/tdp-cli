@@ -1,10 +1,10 @@
 import download from "download-git-repo";
-import path from 'node:path';
+import * as path from 'node:path';
 import chalk from 'chalk';
 import ora from 'ora';
 import logSymbols from "log-symbols";
 
-export default function (projectName, cb) {
+export default function (projectName: string, cb?: Function) {
     const dirRoot = process.cwd();
     const destPath = path.join(dirRoot, projectName);
     console.log(`${chalk.bgBlue('当前运行目录')}: ${process.cwd()}`);
@@ -19,7 +19,7 @@ export default function (projectName, cb) {
             'https://github.com:lyc-chengzi/tdp-vue2-temp#main',
             destPath,
             { clone: true, checkout: false },
-            err => {
+            (err: Error) => {
                 if (err) {
                     spinner.fail('下载模板失败');
                     // spinner.fail(chalk.red('下载模板失败'));

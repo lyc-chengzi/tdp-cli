@@ -23,7 +23,7 @@ program.parse(process.argv);
  * 下载模板成功回调函数
  * @param {*} destPath 下载目录
  */
-function downloadSuccess(destPath) {
+function downloadSuccess(destPath: string) {
     console.log(chalk.greenBright('项目创建完成'));
     createPages(APPID, destPath);
     // console.log(chalk.cyan('第一步：执行 npm login登录私有npm仓库'));

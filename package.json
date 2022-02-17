@@ -1,6 +1,6 @@
 {
   "name": "tdp-cli",
-  "version": "0.0.5",
+  "version": "0.1.0",
   "description": "cli tools for tdp",
   "homepage": "https://github.com/lyc-chengzi/tdp-cli",
   "repository": {
@@ -14,7 +14,8 @@
   },
   "files": [
     "bin",
-    "lib"
+    "lib",
+    "data"
   ],
   "scripts": {
     "test:generator": "node test/generator_spec.js",

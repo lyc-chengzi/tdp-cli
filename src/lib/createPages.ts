@@ -8,7 +8,7 @@ import ModelPage from "./model/page.js";
 import { createRequire } from 'module';
 import { IAppInfo, IPageJson } from "../interface/index.js";
 const require = createRequire(import.meta.url);
-const data1 = require('../../data/lyc_test1.json');
+const data1 = require('../data/lyc_test1.json');
 
 let APPINFO: IAppInfo | undefined  = undefined;
 

@@ -1,7 +1,5 @@
 node_modules
 test/test_*.vue
-./dist
-./bin
-./enum
-./interface
-./lib
+/dist
+/bin
+/lib

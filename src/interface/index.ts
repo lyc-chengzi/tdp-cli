@@ -1,4 +1,4 @@
-import { ENodeType } from "../enum";
+import { ENodeType } from "../lib/enum";
 
 export interface INode {
     key: string;

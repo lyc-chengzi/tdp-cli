@@ -18,10 +18,11 @@
     "data"
   ],
   "scripts": {
-    "test:generator": "node test/generator_spec.js",
+    "test": "yarn build:ts&&yarn copy&&node test/generator_spec.js",
     "tdp": "node --trace-warnings --loader ts-node/esm src/tdp.ts",
-    "build": "tsc",
-    "dev": "tsc --watch && node bin/tdp.js"
+    "build:ts": "tsc",
+    "copy": "gulp copy",
+    "build": "yarn build:ts&&yarn copy"
   },
   "bin": {
     "tdp": "./bin/index.js"
@@ -42,5 +43,8 @@
     "ora": "^6.0.1",
     "ts-node": "^10.4.0",
     "typescript": "^4.5.5"
+  },
+  "devDependencies": {
+    "gulp": "^4.0.2"
   }
 }

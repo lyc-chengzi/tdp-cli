@@ -3,7 +3,7 @@ import Input from "./model/input.js";
 import Select from "./model/select.js";
 import Button from "./model/button.js";
 import Text from './model/text.js';
-import { ENodeType } from "../enum/index.js";
+import { ENodeType } from "./enum/index.js";
 import { INode } from "../interface/index.js";
 
 const nodeType = {

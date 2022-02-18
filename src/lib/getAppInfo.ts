@@ -97,8 +97,7 @@ function fetchAppInfo(itcode: string, pwd: string, appId: string): Promise<IAppI
     }).start();
 
     return new Promise((ok, fail) => {
-        const now = new Date().valueOf();
-        if (now % 2 > 0) {
+        if (itcode.length > 2) {
             spinner.succeed($success('app信息获取完成'));
             ok(APPINFO);
         } else {

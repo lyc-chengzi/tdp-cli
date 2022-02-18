@@ -9,10 +9,13 @@ npm i tdp-cli -g
 #### 2. use ->
 ```
 cd <dir>
-tdp create <yourProject> [vueVersion]
+tdp create <projectName> [itcode] [pwd] [appid]
 
 like this:
-tdp create demo -vv 2 // create a vue2 project
+tdp create demo // choose a app to create project
 
-tdp create demo2 --vue-version 3 // create a vue3 project
+or:
+
+tdp create demo -itcode liuyc14 -pwd 66666 -appId 898
+// create project for the app(898)
 ```

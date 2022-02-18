@@ -5,10 +5,8 @@ import * as path from "node:path";
 import ora from 'ora';
 import ModelPage from "./model/page.js";
 
-import { createRequire } from 'module';
 import { IAppInfo, IPageJson } from "../interface/index.js";
-const require = createRequire(import.meta.url);
-const data1 = require('../data/lyc_test1.json');
+import { $error, $success } from "./utils.js";
 
 let APPINFO: IAppInfo | undefined  = undefined;
 
@@ -17,13 +15,11 @@ let APPINFO: IAppInfo | undefined  = undefined;
  * @param {string} appId 要生成的appId 
  * @param {string} projectPath 用户本地项目目录
  */
-export default function createPages(appId: string, projectPath: string) {
-    getAppInfo(appId)
-        .then(() => {
-            writePage(projectPath, () => {
-                writeRouter(projectPath);
-            });
-        });
+export default function createPages(appInfo: IAppInfo, projectPath: string) {
+    APPINFO = appInfo;
+    writePage(projectPath, () => {
+        writeRouter(projectPath);
+    });    
 }
 
 /**
@@ -50,10 +46,10 @@ function writePage(projectPath: string, callback?: Function) {
             _p.toString(),
             {encoding: 'utf-8'}, (err: Error) => {
                 if (err) {
-                    spinner.fail(`写入页面文件${chalk.bgCyan(page.id)}-${chalk.bgCyan(page.commonPage.label)}时发生错误`);
+                    spinner.fail($error(`写入页面文件${chalk.yellow(page.id)}-${chalk.yellow(page.commonPage.label)}时发生错误`));
                     console.error(logSymbols.error, err);
                 } else {
-                    spinner.succeed(chalk.bgCyan(page.id, '文件写入成功'));
+                    spinner.succeed($success(chalk.yellow(page.id) + '文件写入成功'));
                     successCount++;
                     if (successCount === pageCount) {
                         callback && callback();
@@ -79,7 +75,7 @@ function writeRouter(projectPath: string){
     
     fs.readFile(path.join(routerPath, 'index_temp.js'), {encoding: 'utf-8'}, (err: Error, data: string) => {
         if(err) {
-            routerSpinner.fail('写入router文件时发生错误');
+            routerSpinner.fail($error('写入router文件时发生错误'));
             console.error(logSymbols.error, err);
         } else {
             const pages = getPages();
@@ -98,32 +94,14 @@ function writeRouter(projectPath: string){
             const newData = newImport.replace('///<inject_routes>', pageRouters);
             fs.writeFile(path.join(routerPath, 'index.js'), newData, {encoding: 'utf-8'}, (err2: Error) => {
                 if (err2) {
-                    routerSpinner.fail('写入router文件时发生错误');
+                    routerSpinner.fail($error('写入router文件时发生错误'));
                     console.error(logSymbols.error, err2);
                 } else {
-                    routerSpinner.succeed(chalk.greenBright('router文件写入成功'));
+                    routerSpinner.succeed($success('router文件写入成功'));
                     fs.rm(path.join(routerPath, 'index_temp.js'), ()=>{}); // 删除模板文件
                 }
             });
         }
-    });
-}
-
-async function getAppInfo(appId: string) {
-    APPINFO = {
-        appId: appId,
-        appContent: data1,
-        appName: 'lyc_test1',
-    };
-    const spinner = ora({
-        text: chalk.yellow(`获取Application[${chalk.bgCyan(appId)}]信息`),
-        spinner: 'star'
-    }).start();
-    return new Promise((ok, fail) => {
-        setTimeout(() => {
-            spinner.succeed(chalk.greenBright('app信息获取完成'));
-            ok(APPINFO);
-        }, 500);
     });
 }
 

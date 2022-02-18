@@ -5,6 +5,7 @@ import Button from "./model/button.js";
 import Text from './model/text.js';
 import { ENodeType } from "./enum/index.js";
 import { INode } from "../interface/index.js";
+import chalk from "chalk";
 
 const nodeType = {
     [ENodeType.grid](json: Object) {
@@ -91,4 +92,12 @@ export function $formatProps(props: any) {
         return result;
     }
     else return '';
+}
+
+export function $success(text: string) {
+    return '😎  ' + chalk.greenBright(text);
+}
+
+export function $error(text: string) {
+    return '😈  ' + chalk.redBright(text);
 }

@@ -1,13 +1,21 @@
 import download from "download-git-repo";
+import * as fs from 'node:fs';
 import * as path from 'node:path';
 import chalk from 'chalk';
 import ora from 'ora';
 import logSymbols from "log-symbols";
+import { $error, $success } from "./utils.js";
 
-export default function (projectName: string, cb?: Function) {
+export default function cloneProject(projectName: string, successCallback?: (destPath: string) => void) {
     const dirRoot = process.cwd();
     const destPath = path.join(dirRoot, projectName);
     console.log(`${chalk.bgBlue('当前运行目录')}: ${process.cwd()}`);
+
+    const existsProjectFolder = fs.existsSync(destPath);
+    if (existsProjectFolder) {
+        console.warn(chalk.yellowBright(`😣项目名称已存在，请重命名或者删除原有项目！ --> ${destPath}`));
+        return;
+    }
 
     const spinner = ora({
         text: chalk.yellow('正在下载模板'),
@@ -21,14 +29,12 @@ export default function (projectName: string, cb?: Function) {
             { clone: true, checkout: false },
             (err: Error) => {
                 if (err) {
-                    spinner.fail('下载模板失败');
-                    // spinner.fail(chalk.red('下载模板失败'));
-                    // console.error(chalk.red('\n下载模板错误'));                 
+                    spinner.fail($error('下载模板失败'));             
                     console.error('\n', logSymbols.error, err);
                 } else {
                     // 下载模板成功
-                    spinner.succeed(chalk.greenBright('下载模板成功'));
-                    cb && cb(destPath);
+                    spinner.succeed($success('下载模板成功'));
+                    successCallback && successCallback(destPath);
                 }
             }
         );

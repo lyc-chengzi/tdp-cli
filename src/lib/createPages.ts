@@ -1,8 +1,7 @@
-import chalk from "chalk";
-import logSymbols from "log-symbols";
-import * as fs from "node:fs";
-import * as path from "node:path";
-import ora from 'ora';
+import fs = require("fs");
+import path = require("path");
+import chalk = require("chalk");
+import ora = require('ora');
 import ModelPage from "./model/page.js";
 
 import { IAppInfo, IPageJson } from "../interface/index.js";
@@ -48,7 +47,7 @@ function writePage(projectPath: string, callback?: Function) {
             {encoding: 'utf-8'}, (err: Error) => {
                 if (err) {
                     spinner.fail($error(`写入页面文件${chalk.yellow(page.id)}-${chalk.yellow(page.commonPage.label)}.vue时发生错误`));
-                    console.error(logSymbols.error, err);
+                    console.error(err);
                 } else {
                     // 写mixin文件
                     fs.writeFile(path.join(pagesPath, `${page.commonPage.label}_mixin.js`), _p.toMixin(), { encoding: 'utf-8' }, (err2) => {
@@ -64,13 +63,13 @@ function writePage(projectPath: string, callback?: Function) {
                                 }
                                 else {
                                     spinner.fail($error(`写入页面文件${chalk.yellow(page.id)}-${chalk.yellow(page.commonPage.label)}_js.js时发生错误`));
-                                    console.error(logSymbols.error, err);
+                                    console.error(err);
                                 }
                             });
                         }
                         else {
                             spinner.fail($error(`写入页面文件${chalk.yellow(page.id)}-${chalk.yellow(page.commonPage.label)}_mixin.js时发生错误`));
-                            console.error(logSymbols.error, err);
+                            console.error(err);
                         }
                     });
                 }
@@ -95,7 +94,7 @@ function writeRouter(projectPath: string){
     fs.readFile(path.join(routerPath, 'index_temp.js'), {encoding: 'utf-8'}, (err: Error, data: string) => {
         if(err) {
             routerSpinner.fail($error('写入router文件时发生错误'));
-            console.error(logSymbols.error, err);
+            console.error(err);
         } else {
             const pages = getPages();
             const newImport = data.replace('///<inject_import>', `/* 添加需要引入的同步组件 */`);
@@ -114,7 +113,7 @@ function writeRouter(projectPath: string){
             fs.writeFile(path.join(routerPath, 'index.js'), newData, {encoding: 'utf-8'}, (err2: Error) => {
                 if (err2) {
                     routerSpinner.fail($error('写入router文件时发生错误'));
-                    console.error(logSymbols.error, err2);
+                    console.error(err2);
                 } else {
                     routerSpinner.succeed($success('router文件写入成功'));
                     fs.rm(path.join(routerPath, 'index_temp.js'), ()=>{}); // 删除模板文件

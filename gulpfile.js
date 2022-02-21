@@ -1,5 +1,5 @@
-import gulp from 'gulp';
-import ts from 'gulp-typescript';
+const gulp = require('gulp');
+const ts = require('gulp-typescript');
 
 const tsProject = ts.createProject("tsconfig.json");
 
@@ -29,5 +29,6 @@ function watch() {
 const copy = gulp.series(copyBin, copyLib);
 
 const build = gulp.series(tsc, copy);
-export default build;
-export {build, copy, tsc, watch};
+exports.default = build;
+exports.build = build;
+exports.watch = watch;

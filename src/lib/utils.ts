@@ -1,12 +1,9 @@
 import { nodeType } from './model/index.js';
 import { ENodeType } from "./enum/index.js";
 import { INode } from "../interface/index.js";
-import chalk from "chalk";
-import { createRequire } from 'module';
-import * as fs from "node:fs";
-import * as path from "node:path";
-
-const require = createRequire(import.meta.url);
+import chalk = require("chalk");
+import fs = require("fs");
+import path = require("path");
 
 const nodeList: any = {};
 

@@ -2,11 +2,12 @@ import { program } from "commander";
 import cloneProject from "../lib/download.js";
 import getAppInfo from '../lib/getAppInfo.js';
 // import { exec } from "node:child_process";
-import * as Inquirer from "inquirer";
+// import * as Inquirer from "inquirer";
+import inquirer = require("inquirer");
 import createPages from "../lib/createPages.js";
 
 // @ts-ignore
-const inquirer: Inquirer.Inquirer = Inquirer.default;
+// const inquirer: Inquirer.Inquirer = Inquirer.default;
 
 program
     .argument("<projectName>", "created project name")
@@ -32,7 +33,7 @@ program
 program.parse(process.argv);
 
 function inputUserNameAndPwd(callback: (itcode: string, pwd: string) => void) {
-    const questions: Inquirer.QuestionCollection = [
+    const questions: inquirer.QuestionCollection = [
         {
             type: 'input',
             name: 'itcode',

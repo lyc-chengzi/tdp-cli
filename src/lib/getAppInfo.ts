@@ -1,15 +1,16 @@
-import { createRequire } from 'module';
-import ora from 'ora';
-import chalk from 'chalk';
-import * as Inquirer from "inquirer";
+// import { createRequire } from 'module';
+import ora = require('ora');
+import chalk = require('chalk');
+// import * as Inquirer from "inquirer";
+import inquirer = require('inquirer');
 import { IAppInfo } from "../interface/index.js";
 import { $error, $success } from './utils.js';
 
-const require = createRequire(import.meta.url);
+// const require = createRequire(import.meta.url);
 const data1 = require('../data/lyc_test1.json');
 
 // @ts-ignore
-const inquirer: Inquirer.Inquirer = Inquirer.default;
+// const inquirer: Inquirer.Inquirer = Inquirer.default;
 
 // 根据用户输入或者选择的appId，获取app的json
 export default function getAppInfo(

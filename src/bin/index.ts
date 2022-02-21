@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 import { program } from "commander";
-import chalk from "chalk";
-import { createRequire } from 'module';
-const require = createRequire(import.meta.url);
+import chalk = require("chalk");
+// import { createRequire } from 'module';
+// const require = createRequire(import.meta.url);
 const pkg = require('../package.json');
 const version = pkg.version;
 

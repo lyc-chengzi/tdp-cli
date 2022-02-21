@@ -1,9 +1,8 @@
-import download from "download-git-repo";
-import * as fs from 'node:fs';
-import * as path from 'node:path';
-import chalk from 'chalk';
-import ora from 'ora';
-import logSymbols from "log-symbols";
+import download = require("download-git-repo");
+import fs = require('fs');
+import path = require('path');
+import chalk = require('chalk');
+import ora = require('ora');
 import { $error, $success } from "./utils.js";
 
 export default function cloneProject(projectName: string, successCallback?: (destPath: string) => void) {
@@ -30,7 +29,7 @@ export default function cloneProject(projectName: string, successCallback?: (des
             (err: Error) => {
                 if (err) {
                     spinner.fail($error('下载模板失败'));             
-                    console.error('\n', logSymbols.error, err);
+                    console.error('\n', err);
                 } else {
                     // 下载模板成功
                     spinner.succeed($success('下载模板成功'));

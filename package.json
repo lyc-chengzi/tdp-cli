@@ -1,6 +1,6 @@
 {
   "name": "tdp-cli",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "cli tools for tdp",
   "homepage": "https://github.com/lyc-chengzi/tdp-cli",
   "repository": {
@@ -18,7 +18,7 @@
     "data"
   ],
   "scripts": {
-    "test": "node test/generator_spec.js",
+    "test": "node test/generator.spec.js",
     "tdp": "node --trace-warnings --loader ts-node/esm src/tdp.ts",
     "build:ts": "tsc",
     "copy": "gulp copy",

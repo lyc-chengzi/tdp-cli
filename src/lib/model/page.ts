@@ -24,18 +24,9 @@ export default class ModelPage {
         });
         return result;
     }
-    toString() {
-        let result = 
-`
-<template>
-    <div>
-        ${this.templateToString()}
-    </div>
-</template>
-
-<script>
-export default {
-    name: '${this.id}',
+    toMixin() {
+        let result =
+`const mixin = {
     created() {
         ${this.toCreated()}
     },
@@ -51,6 +42,39 @@ export default {
         ${this.toMethods()}
     },
 };
+export default mixin;
+`;
+        return result;
+    }
+    toJsFile() {
+        let result = 
+`import ${this.json.commonPage.label}_mixin from './${this.json.commonPage.label}_mixin';
+export default {
+    name: '${this.id}',
+    mixins: [${this.json.commonPage.label}_mixin],
+    created() {},
+    mounted() {},
+    data: () => {
+        return {
+            yourData: 666,
+        };
+    },
+    methods: {},
+};
+`;
+        return result;
+    }
+    toString() {
+        let result = 
+`<template>
+    <div>
+        ${this.templateToString()}
+    </div>
+</template>
+
+<script>
+import ${this.json.commonPage.label}_js from './${this.json.commonPage.label}_js';
+export default ${this.json.commonPage.label}_js;
 </script>
 
 `

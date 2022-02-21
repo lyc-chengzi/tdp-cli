@@ -41,19 +41,38 @@ function writePage(projectPath: string, callback?: Function) {
     for(let i = 0; i < pageCount; i++) {
         const page = pages[i];
         const _p = new ModelPage(page);
+        // 写vue文件
         fs.writeFile(
             path.join(pagesPath, `${page.commonPage.label}.vue`),
             _p.toString(),
             {encoding: 'utf-8'}, (err: Error) => {
                 if (err) {
-                    spinner.fail($error(`写入页面文件${chalk.yellow(page.id)}-${chalk.yellow(page.commonPage.label)}时发生错误`));
+                    spinner.fail($error(`写入页面文件${chalk.yellow(page.id)}-${chalk.yellow(page.commonPage.label)}.vue时发生错误`));
                     console.error(logSymbols.error, err);
                 } else {
-                    spinner.succeed($success(chalk.yellow(page.id) + '文件写入成功'));
-                    successCount++;
-                    if (successCount === pageCount) {
-                        callback && callback();
-                    }
+                    // 写mixin文件
+                    fs.writeFile(path.join(pagesPath, `${page.commonPage.label}_mixin.js`), _p.toMixin(), { encoding: 'utf-8' }, (err2) => {
+                        if(!err2) {
+                            // 写js文件
+                            fs.writeFile(path.join(pagesPath, `${page.commonPage.label}_js.js`), _p.toJsFile(), { encoding: 'utf-8' }, (err3) => {
+                                if(!err3) {
+                                    spinner.succeed($success(chalk.yellow(page.id) + '文件写入成功'));
+                                    successCount++;
+                                    if (successCount === pageCount) {
+                                        callback && callback();
+                                    }                                
+                                }
+                                else {
+                                    spinner.fail($error(`写入页面文件${chalk.yellow(page.id)}-${chalk.yellow(page.commonPage.label)}_js.js时发生错误`));
+                                    console.error(logSymbols.error, err);
+                                }
+                            });
+                        }
+                        else {
+                            spinner.fail($error(`写入页面文件${chalk.yellow(page.id)}-${chalk.yellow(page.commonPage.label)}_mixin.js时发生错误`));
+                            console.error(logSymbols.error, err);
+                        }
+                    });
                 }
             }
         );

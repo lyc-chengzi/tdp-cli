@@ -1,29 +1,14 @@
-import Grid from "./model/grid.js";
-import Input from "./model/input.js";
-import Select from "./model/select.js";
-import Button from "./model/button.js";
-import Text from './model/text.js';
+import { nodeType } from './model/index.js';
 import { ENodeType } from "./enum/index.js";
 import { INode } from "../interface/index.js";
 import chalk from "chalk";
+import { createRequire } from 'module';
+import * as fs from "node:fs";
+import * as path from "node:path";
 
-const nodeType = {
-    [ENodeType.grid](json: Object) {
-        return new Grid(json);
-    },
-    [ENodeType.input](json: Object) {
-        return new Input(json);
-    },
-    [ENodeType.select](json: Object) {
-        return new Select(json);
-    },
-    [ENodeType.button](json: Object) {
-        return new Button(json);
-    },
-    [ENodeType.text](json: Object) {
-        return new Text(json);
-    },
-};
+const require = createRequire(import.meta.url);
+
+const nodeList: any = {};
 
 type componentJson = {
     key: string;
@@ -35,6 +20,7 @@ type componentJson = {
  * @param {Object} c 组件的json数据 
  */
 export function $getNodeByJson(c: componentJson): INode {
+    // console.log('$getNodeByJson nodeList', nodeList);
     if (/^grid\d?$/.test(c.type)) {
         const node = nodeType.grid(c);
         return {
@@ -101,3 +87,47 @@ export function $success(text: string) {
 export function $error(text: string) {
     return '😈  ' + chalk.redBright(text);
 }
+
+function loadFile(path: string) {
+    console.log('loadfile path:', path);
+    return require(path);
+}
+
+export function $loadDir(dirPath: string) {
+    let patcher: any = {};
+    const basePath = process.cwd();
+    fs.readdirSync(path.join(basePath, dirPath)).forEach(fileName => {
+        console.log('fileName', fileName);
+        if(/\.js$/.test(fileName)) {
+            const name = path.basename(fileName, '.js');
+            console.log('name', name);
+            var _load = loadFile.bind(null, path.join(basePath, dirPath, fileName));
+            patcher.__defineGetter__(name, _load);
+        }
+    });
+    return patcher;
+}
+
+export async function $importFile(dirPath: string) {
+    try {
+        const modulesDir = path.join(dirPath);
+        console.log('modulesDir', modulesDir, path.resolve('.'));
+        fs.readdirSync(modulesDir).forEach(async (fileName) => {
+            // console.log('fileName', fileName);
+            if(/\.js$/.test(fileName)) {
+                const name = path.basename(fileName, '.js');
+                // console.log('name', name);
+                const nodeModel = await import('file://' + path.join(modulesDir, fileName));
+                nodeList[name] = function(json: any){
+                    return new nodeModel.default(json);
+                };
+            }
+            // console.log('nodeList', nodeList);
+        });
+        return nodeList;
+    } catch (e) {
+        console.error(chalk.redBright('加载组件解析文件时错误。', e));
+    }
+}
+
+// $importFile('./lib/model');

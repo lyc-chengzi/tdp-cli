@@ -4,3 +4,4 @@ test/test_*.vue
 /bin
 /lib
 /interface
+/.idea

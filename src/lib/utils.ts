@@ -1,11 +1,8 @@
 import { nodeType } from './model/index.js';
+import NodeBase from './model/nodeBase.js';
 import { ENodeType } from "./enum/index.js";
 import { INode } from "../interface/index.js";
 import chalk = require("chalk");
-import fs = require("fs");
-import path = require("path");
-
-const nodeList: any = {};
 
 type componentJson = {
     key: string;
@@ -17,33 +14,33 @@ type componentJson = {
  * @param {Object} c 组件的json数据 
  */
 export function $getNodeByJson(c: componentJson): INode {
-    // console.log('$getNodeByJson nodeList', nodeList);
-    if (/^grid\d?$/.test(c.type)) {
+    // console.log('$getNodeByJson nodeList', nodeType);
+    const nodeGenerator = nodeType[c.type];
+    // grid组件
+    if (/^grid\d?$/.test(c.type) && nodeType.grid) {
         const node = nodeType.grid(c);
         return {
             key: c.key,
             type: c.type,
             node,
         };
-    } else {
-        // @ts-ignore
-        const constructor = nodeType[c.type];
-        if (constructor) {
-            // @ts-ignore
-            const node = nodeType[c.type](c);
-            return {
-                key: c.key,
-                type: c.type,
-                node,
-            };
-        }
-        else {
-            return {
-                key: c.key,
-                type: c.type,
-                node: null,
-            };
-        }
+    }
+    // 其他组件
+    else if(nodeGenerator) {
+        const node = nodeType[c.type](c);
+        return {
+            key: c.key,
+            type: c.type,
+            node,
+        };
+    }
+    // 如果没有匹配类型的组件，则返回基类
+    else {
+        return {
+            key: c.key,
+            type: c.type,
+            node: new NodeBase(c),
+        };
     }
 }
 
@@ -84,47 +81,3 @@ export function $success(text: string) {
 export function $error(text: string) {
     return '😈  ' + chalk.redBright(text);
 }
-
-function loadFile(path: string) {
-    console.log('loadfile path:', path);
-    return require(path);
-}
-
-export function $loadDir(dirPath: string) {
-    let patcher: any = {};
-    const basePath = process.cwd();
-    fs.readdirSync(path.join(basePath, dirPath)).forEach(fileName => {
-        console.log('fileName', fileName);
-        if(/\.js$/.test(fileName)) {
-            const name = path.basename(fileName, '.js');
-            console.log('name', name);
-            var _load = loadFile.bind(null, path.join(basePath, dirPath, fileName));
-            patcher.__defineGetter__(name, _load);
-        }
-    });
-    return patcher;
-}
-
-export async function $importFile(dirPath: string) {
-    try {
-        const modulesDir = path.join(dirPath);
-        console.log('modulesDir', modulesDir, path.resolve('.'));
-        fs.readdirSync(modulesDir).forEach(async (fileName) => {
-            // console.log('fileName', fileName);
-            if(/\.js$/.test(fileName)) {
-                const name = path.basename(fileName, '.js');
-                // console.log('name', name);
-                const nodeModel = await import('file://' + path.join(modulesDir, fileName));
-                nodeList[name] = function(json: any){
-                    return new nodeModel.default(json);
-                };
-            }
-            // console.log('nodeList', nodeList);
-        });
-        return nodeList;
-    } catch (e) {
-        console.error(chalk.redBright('加载组件解析文件时错误。', e));
-    }
-}
-
-// $importFile('./lib/model');

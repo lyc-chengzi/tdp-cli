@@ -1,3 +1,4 @@
+import Page from './page.js';
 export default class NodeBase {
     json: any = {};
     key = '';
@@ -12,15 +13,15 @@ export default class NodeBase {
         return '';
     }
     // 向data中写入代码
-    toData() {
+    toData(pageInstance: Page) {
         return '';
     }
     // 向methods中写入代码
-    toMethods() {
+    toMethods(pageInstance: Page) {
         return '';
     }
     // 向mounted中写入代码
-    toMounted() {
+    toMounted(pageInstance: Page) {
         return '';
     }
 }

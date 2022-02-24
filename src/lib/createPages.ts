@@ -29,6 +29,8 @@ export default function createPages(appInfo: IAppInfo, projectPath: string) {
 function writePage(projectPath: string, callback?: Function) {
     // 生成页面文件的路径
     const pagesPath = path.join(projectPath, 'src', 'views');
+    const mixinPath = path.join(projectPath, 'src', 'views/mixins');
+    const scriptPath = path.join(projectPath, 'src', 'views/scripts');
 
     const spinner = ora({
         text: chalk.yellow('正在写入页面文件'),
@@ -50,10 +52,10 @@ function writePage(projectPath: string, callback?: Function) {
                     console.error(err);
                 } else {
                     // 写mixin文件
-                    fs.writeFile(path.join(pagesPath, `${page.commonPage.label}_mixin.js`), _p.toMixin(), { encoding: 'utf-8' }, (err2) => {
+                    fs.writeFile(path.join(mixinPath, `${page.commonPage.label}_mixin.js`), _p.toMixin(), { encoding: 'utf-8' }, (err2) => {
                         if(!err2) {
                             // 写js文件
-                            fs.writeFile(path.join(pagesPath, `${page.commonPage.label}_js.js`), _p.toJsFile(), { encoding: 'utf-8' }, (err3) => {
+                            fs.writeFile(path.join(scriptPath, `${page.commonPage.label}_script.js`), _p.toScriptFile(), { encoding: 'utf-8' }, (err3) => {
                                 if(!err3) {
                                     spinner.succeed($success(chalk.yellow(page.id) + '文件写入成功'));
                                     successCount++;
@@ -62,7 +64,7 @@ function writePage(projectPath: string, callback?: Function) {
                                     }                                
                                 }
                                 else {
-                                    spinner.fail($error(`写入页面文件${chalk.yellow(page.id)}-${chalk.yellow(page.commonPage.label)}_js.js时发生错误`));
+                                    spinner.fail($error(`写入页面文件${chalk.yellow(page.id)}-${chalk.yellow(page.commonPage.label)}_script.js时发生错误`));
                                     console.error(err);
                                 }
                             });

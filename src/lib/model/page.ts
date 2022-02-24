@@ -1,11 +1,12 @@
 import { INode } from "../../interface/index.js";
 import { $getNodeByJson } from "../utils.js";
+import Grid from "./grid.com.js";
 
 // 页面对象
 export default class ModelPage {
     id = '';
     json: any = {};
-    nodes: INode[] = []; // 虚拟节点
+    nodes: INode<Grid>[] = []; // 虚拟节点
     constructor(json: any) {
         this.id = json.id;
         this.json = json;
@@ -14,7 +15,7 @@ export default class ModelPage {
     // 将json数据格式化为实例数据
     formatJson() {
         this.json.smartData.list.forEach((c: any) => {
-            this.nodes.push($getNodeByJson(c));
+            this.nodes.push($getNodeByJson(c) as INode<Grid>);
         });
     }
     templateToString() {
@@ -46,9 +47,9 @@ export default mixin;
 `;
         return result;
     }
-    toJsFile() {
+    toScriptFile() {
         let result = 
-`import ${this.json.commonPage.label}_mixin from './${this.json.commonPage.label}_mixin';
+`import ${this.json.commonPage.label}_mixin from '../mixins/${this.json.commonPage.label}_mixin';
 export default {
     name: '${this.id}',
     mixins: [${this.json.commonPage.label}_mixin],
@@ -73,8 +74,8 @@ export default {
 </template>
 
 <script>
-import ${this.json.commonPage.label}_js from './${this.json.commonPage.label}_js';
-export default ${this.json.commonPage.label}_js;
+import ${this.json.commonPage.label}_script from './scripts/${this.json.commonPage.label}_script';
+export default ${this.json.commonPage.label}_script;
 </script>
 
 `

@@ -18,4 +18,9 @@ program
         executableFile: 'create.js'
     });
 
+program
+    .command('test', 'run test', {
+        executableFile: 'test.js'
+    });    
+
 program.parse(process.argv);

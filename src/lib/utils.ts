@@ -39,7 +39,7 @@ export function $getNodeByJson(c: componentJson): INode {
         return {
             key: c.key,
             type: c.type,
-            node: new NodeBase(c),
+            node: new NodeBase(c) as any,
         };
     }
 }

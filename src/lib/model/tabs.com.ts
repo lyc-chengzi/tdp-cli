@@ -3,8 +3,8 @@ import { $printLevelSpace, $getNodeByJson } from "../utils.js";
 import NodeBase from "./nodeBase.js";
 import Page from './page.js';
 
-export default class Card extends NodeBase {
-    nodes: INode<NodeBase>[] = [];
+export default class Tab extends NodeBase {
+    nodes: INode[] = [];
     constructor(json: any) {
         super(json);
         this.formatJson();
@@ -19,26 +19,26 @@ export default class Card extends NodeBase {
         // 组织grid组件结构
         result = 
  `
-${$printLevelSpace(level)}<div class="cards">
+${$printLevelSpace(level)}<v-tabs>
 ${$printLevelSpace(level + 1)}${this.loopNodes(level + 1)}
-${$printLevelSpace(level)}</div>`;
+${$printLevelSpace(level)}</v-tabs>`;
         return result;
     }
 
-    // 循环column中的子组件
+    // 循环list
     loopNodes(level: number) {
         let _result = '';
-        this.nodes.forEach(node => {
-            if(node.node) {
-                _result += 
+        this.nodes.forEach(c => {
+            _result += 
 `
-${$printLevelSpace(level)}${node.node.toString(level)}
-`;
-        
-            }
+${$printLevelSpace(level)}<v-tab>
+${$printLevelSpace(level + 1)}${c.node.toString(level + 1)}
+${$printLevelSpace(level)}</v-tab>
+`
         });
         return _result;
     };
+
     // 向page的data中添加代码
     toData(pageInstance: Page) {
         let result = '';

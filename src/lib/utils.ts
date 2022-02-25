@@ -58,7 +58,7 @@ export function $printSpace(spaceNumber: number) {
 }
 // 格式化属性，变成字符串
 export function $formatProps(props: any) {
-    let result = ' ';
+    let result = '';
     if(props) {
         for(let key in props) {
             const prop = props[key];
@@ -80,4 +80,22 @@ export function $success(text: string) {
 
 export function $error(text: string) {
     return '😈  ' + chalk.redBright(text);
+}
+
+export const componentNameMapping: Record<string, string> = {
+    input: 'SchemaFormInput',
+    text: 'SchemaFormText',
+    title: 'SchemaFormTitle',
+    select: 'SchemaFormSelect',
+    button: 'SchemaFormButton',
+    image: 'SchemaFormImage',
+};
+
+export function $getComponentNameByType(type: string) {
+    const componentName = componentNameMapping[type];
+    if (componentName) {
+        return componentName;
+    } else {
+        return 'div';
+    }
 }

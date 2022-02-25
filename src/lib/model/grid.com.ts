@@ -31,8 +31,7 @@ ${$printLevelSpace(level)}<v-container>
 ${$printLevelSpace(level + 1)}<v-row no-gutters>
 ${$printLevelSpace(level + 2)}${this.loopCol(level + 2)}
 ${$printLevelSpace(level + 1)}</v-row>
-${$printLevelSpace(level)}</v-container>
-`;
+${$printLevelSpace(level)}</v-container>`;
         return result;
     }
 

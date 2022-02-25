@@ -1,4 +1,5 @@
 const gulp = require('gulp');
+const gulpRm = require('gulp-rm');
 const ts = require('gulp-typescript');
 
 const tsProject = ts.createProject("tsconfig.json");
@@ -15,6 +16,12 @@ function tsc() {
         .js.pipe(gulp.dest("dist"));
 }
 
+function clear() {
+    return gulp
+        .src(['dist/**/*', 'bin/**/*', 'lib/**/*'])
+        .pipe(gulpRm());
+}
+
 function copyBin() {
     return gulp.src(paths.bin).pipe(gulp.dest('./bin'));
 }
@@ -28,7 +35,8 @@ function watch() {
 
 const copy = gulp.series(copyBin, copyLib);
 
-const build = gulp.series(tsc, copy);
+const build = gulp.series(clear, tsc, copy);
 exports.default = build;
 exports.build = build;
 exports.watch = watch;
+exports.clear = clear;

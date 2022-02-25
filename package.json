@@ -39,6 +39,7 @@
   "dependencies": {
     "@types/node": "^17.0.12",
     "chalk": "^4.1.2",
+    "classnames": "^2.3.1",
     "commander": "^8.3.0",
     "del": "^6.0.0",
     "download-git-repo": "^3.0.2",
@@ -50,6 +51,7 @@
   "devDependencies": {
     "@types/inquirer": "^8.2.0",
     "gulp": "^4.0.2",
+    "gulp-rm": "^2.0.0",
     "gulp-typescript": "^6.0.0-alpha.1"
   }
 }

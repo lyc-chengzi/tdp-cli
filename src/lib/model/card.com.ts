@@ -19,8 +19,7 @@ export default class Card extends NodeBase {
         // 组织grid组件结构
         result = 
  `
-${$printLevelSpace(level)}<div class="cards">
-${$printLevelSpace(level + 1)}${this.loopNodes(level + 1)}
+${$printLevelSpace(level)}<div class="cards" ref="${this.key}">${this.loopNodes(level + 1)}
 ${$printLevelSpace(level)}</div>`;
         return result;
     }
@@ -30,11 +29,7 @@ ${$printLevelSpace(level)}</div>`;
         let _result = '';
         this.nodes.forEach(node => {
             if(node.node) {
-                _result += 
-`
-${$printLevelSpace(level)}${node.node.toString(level)}
-`;
-        
+                _result +=  `${node.node.toString(level)}`;
             }
         });
         return _result;

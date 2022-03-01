@@ -1,5 +1,5 @@
 import { INode } from "../../interface/index.js";
-import { $getNodeByJson } from "../utils.js";
+import { $getNodeByJson, $getPageName } from "../utils.js";
 import Grid from "./grid.com.js";
 
 // 页面对象
@@ -7,9 +7,11 @@ export default class ModelPage {
     id = '';
     json: any = {};
     nodes: INode<Grid>[] = []; // 虚拟节点
+    pageName: string = '';
     constructor(json: any) {
         this.id = json.id;
         this.json = json;
+        this.pageName = $getPageName(this.json.commonPage.label);
         this.formatJson();
     }
     // 将json数据格式化为实例数据
@@ -49,10 +51,10 @@ export default mixin;
     }
     toScriptFile() {
         let result = 
-`import ${this.json.commonPage.label}_mixin from '../mixins/${this.json.commonPage.label}_mixin';
+`import ${this.pageName}_mixin from '../mixins/${this.pageName}_mixin';
 export default {
     name: '${this.id}',
-    mixins: [${this.json.commonPage.label}_mixin],
+    mixins: [${this.pageName}_mixin],
     created() {},
     mounted() {},
     data: () => {
@@ -74,8 +76,8 @@ export default {
 </template>
 
 <script>
-import ${this.json.commonPage.label}_script from './scripts/${this.json.commonPage.label}_script';
-export default ${this.json.commonPage.label}_script;
+import ${this.pageName}_script from './scripts/${this.pageName}_script';
+export default ${this.pageName}_script;
 </script>
 
 `

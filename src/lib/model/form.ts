@@ -3,19 +3,15 @@ import { $printLevelSpace, $getNodeByJson } from "../utils.js";
 import NodeBase from "./nodeBase.js";
 import Page from './page.js';
 
-export default class Tab extends NodeBase {
-    tabs: any[] = [];
-    nodes: INode[] = [];
+export default class Form extends NodeBase {
+    nodes: INode<NodeBase>[] = [];
     constructor(json: any) {
         super(json);
         this.formatJson();
     }
     formatJson() {
-        this.tabs = this.json.columns;
-        this.tabs.forEach(tab => {
-            (tab.list || []).forEach((nodeJson: any) => {
-                this.nodes.push($getNodeByJson(nodeJson));
-            });
+        this.nodes = this.json.columns[0].list.map((c: any) => {
+            return $getNodeByJson(c);
         });
     }
     toString(level?: number) {
@@ -23,30 +19,21 @@ export default class Tab extends NodeBase {
         // 组织grid组件结构
         result = 
  `
-${$printLevelSpace(level)}<v-tabs class="tabs" ref="${this.key}">${this.loopTabs(level + 1)}
-${$printLevelSpace(level)}</v-tabs>`;
+${$printLevelSpace(level)}<div class="Form" ref="${this.key}">${this.loopNodes(level + 1)}
+${$printLevelSpace(level)}</div>`;
         return result;
     }
 
-    loopTabs(level: number) {
-        let result = '';
-        this.tabs.forEach(tab => {
-            result += `
-${$printLevelSpace(level)}<v-tab>${this.loopNodes(tab.list, level + 1)}
-${$printLevelSpace(level)}</v-tab>`;
-        });
-        return result;
-    }
-
-    // 循环list
-    loopNodes(list: any, level: number) {
+    // 循环column中的子组件
+    loopNodes(level: number) {
         let _result = '';
-        list.forEach((nodeJson: any) => {
-            _result += `${$printLevelSpace(level)}${$getNodeByJson(nodeJson).node.toString(level)}`;
+        this.nodes.forEach(node => {
+            if(node.node) {
+                _result += `${$printLevelSpace(level)}${node.node.toString(level)}`;
+            }
         });
         return _result;
     };
-
     // 向page的data中添加代码
     toData(pageInstance: Page) {
         let result = '';

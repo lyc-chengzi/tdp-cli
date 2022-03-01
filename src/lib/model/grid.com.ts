@@ -27,9 +27,8 @@ export default class Grid extends NodeBase {
         // 组织grid组件结构
         result = 
  `
-${$printLevelSpace(level)}<v-container>
-${$printLevelSpace(level + 1)}<v-row no-gutters>
-${$printLevelSpace(level + 2)}${this.loopCol(level + 2)}
+${$printLevelSpace(level)}<v-container ref="${this.key}" class="grid">
+${$printLevelSpace(level + 1)}<v-row no-gutters>${this.loopCol(level + 2)}
 ${$printLevelSpace(level + 1)}</v-row>
 ${$printLevelSpace(level)}</v-container>`;
         return result;
@@ -41,10 +40,8 @@ ${$printLevelSpace(level)}</v-container>`;
         this.columns.forEach(c => {
             _result += 
 `
-${$printLevelSpace(level)}<v-col span="${c.span}">
-${$printLevelSpace(level + 1)}${this.loopNodes(c.nodes, level + 1)}
-${$printLevelSpace(level)}</v-col>
-`
+${$printLevelSpace(level)}<v-col span="${c.span}">${this.loopNodes(c.nodes, level + 1)}
+${$printLevelSpace(level)}</v-col>`;
         });
         return _result;
     };
@@ -54,11 +51,7 @@ ${$printLevelSpace(level)}</v-col>
         let _result = '';
         nodes.forEach(node => {
             if(node.node) {
-                _result += 
-`
-${$printLevelSpace(level)}${node.node.toString(level)}
-`;
-        
+                _result += `${node.node.toString(level)}`;
             }
         });
         return _result;

@@ -5,7 +5,7 @@ import ora = require('ora');
 import ModelPage from "./model/page.js";
 
 import { IAppInfo, IPageJson } from "../interface/index.js";
-import { $error, $success } from "./utils.js";
+import { $error, $getPageName, $success } from "./utils.js";
 
 let APPINFO: IAppInfo | undefined  = undefined;
 
@@ -44,33 +44,33 @@ function writePage(projectPath: string, callback?: Function) {
         const _p = new ModelPage(page);
         // 写vue文件
         fs.writeFile(
-            path.join(pagesPath, `${page.commonPage.label}.vue`),
+            path.join(pagesPath, `${_p.pageName}.vue`),
             _p.toString(),
             {encoding: 'utf-8'}, (err: Error) => {
                 if (err) {
-                    spinner.fail($error(`写入页面文件${chalk.yellow(page.id)}-${chalk.yellow(page.commonPage.label)}.vue时发生错误`));
+                    spinner.fail($error(`写入页面文件${chalk.yellow(page.id)}-${chalk.yellow(_p.pageName)}.vue时发生错误`));
                     console.error(err);
                 } else {
                     // 写mixin文件
-                    fs.writeFile(path.join(mixinPath, `${page.commonPage.label}_mixin.js`), _p.toMixin(), { encoding: 'utf-8' }, (err2) => {
+                    fs.writeFile(path.join(mixinPath, `${_p.pageName}_mixin.js`), _p.toMixin(), { encoding: 'utf-8' }, (err2) => {
                         if(!err2) {
                             // 写js文件
-                            fs.writeFile(path.join(scriptPath, `${page.commonPage.label}_script.js`), _p.toScriptFile(), { encoding: 'utf-8' }, (err3) => {
+                            fs.writeFile(path.join(scriptPath, `${_p.pageName}_script.js`), _p.toScriptFile(), { encoding: 'utf-8' }, (err3) => {
                                 if(!err3) {
-                                    spinner.succeed($success(chalk.yellow(page.id) + '文件写入成功'));
+                                    spinner.succeed($success(chalk.gray(`[${new Date().toLocaleString()}]`) + chalk.yellow(page.id) + '文件写入成功'));
                                     successCount++;
                                     if (successCount === pageCount) {
                                         callback && callback();
                                     }                                
                                 }
                                 else {
-                                    spinner.fail($error(`写入页面文件${chalk.yellow(page.id)}-${chalk.yellow(page.commonPage.label)}_script.js时发生错误`));
+                                    spinner.fail($error(`写入页面文件${chalk.yellow(page.id)}-${chalk.yellow(_p.pageName)}_script.js时发生错误`));
                                     console.error(err);
                                 }
                             });
                         }
                         else {
-                            spinner.fail($error(`写入页面文件${chalk.yellow(page.id)}-${chalk.yellow(page.commonPage.label)}_mixin.js时发生错误`));
+                            spinner.fail($error(`写入页面文件${chalk.yellow(page.id)}-${chalk.yellow(_p.pageName)}_mixin.js时发生错误`));
                             console.error(err);
                         }
                     });
@@ -102,12 +102,13 @@ function writeRouter(projectPath: string){
             const newImport = data.replace('///<inject_import>', `/* 添加需要引入的同步组件 */`);
             let pageRouters = '';
             pages.forEach(p => {
+                const pageName = $getPageName(p.commonPage.label);
                 pageRouters +=
 `
     {
-        path: '/views/${p.commonPage.label}',
+        path: '/views/${pageName}',
         name: '${p.id}',
-        component: () => import(/* webpackChunkName: "${p.id}" */ '../views/${p.commonPage.label}'),
+        component: () => import(/* webpackChunkName: "${p.id}" */ '../views/${pageName}'),
     },
 `
             });

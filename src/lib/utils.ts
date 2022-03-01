@@ -62,11 +62,25 @@ export function $formatProps(props: any) {
     if(props) {
         for(let key in props) {
             const prop = props[key];
-            if (prop.type === "string") {
-                result += `${key}="${prop.value}" `;
+            if (prop.type === "string" || typeof prop.value === 'string') {
+                result += `
+                '${key}': '${prop.value.replace(/\\n/g, '\\n')}',`;
             }
             else if (prop.type === "boolean") {
-                result += `:${key}="${prop.value}" `;
+                result += `
+                '${key}': ${prop.value},`;
+            }
+            else if (prop.value instanceof Array) {
+                result += `
+                '${key}': ${JSON.stringify(prop.value)},`;
+            }
+            else if (typeof prop.value === 'object') {
+                result += `
+                '${key}': ${JSON.stringify(prop.value)},`;
+            }
+            else {
+                result += `
+                '${key}': '${(prop.value || '').toString()}',`;
             }
         }
         return result;
@@ -82,20 +96,117 @@ export function $error(text: string) {
     return '😈  ' + chalk.redBright(text);
 }
 
-export const componentNameMapping: Record<string, string> = {
-    input: 'SchemaFormInput',
-    text: 'SchemaFormText',
-    title: 'SchemaFormTitle',
-    select: 'SchemaFormSelect',
-    button: 'SchemaFormButton',
-    image: 'SchemaFormImage',
-};
+export const componentNameMapping: string[] = [
+    'input',
+    'select',
+    'radio',
+    'datepicker',
+    'DatetimePicker',
+    'cascader',
+    'placeholder',
+    'checkbox',
+    'slider',
+    'timeselect',
+    'timepicker',
+    'jsoneditor',
+    'quill',
+    'codemirror',
+    'ratings',
+    'switch',
+    'colorpicker',
+    'tags',
+    'Progress',
+    'alert',
+    'button',
+    'divider',
+    'nav1',
+    'SidebarMenu',
+    'nav2',
+    'navBar',
+    'table',
+    'textarea',
+    'uploadfile',
+    'tabs',
+    'paragraph',
+    'title',
+    'text',
+    'Steppers',
+    'Tooltip',
+    'Ratings',
+    'Timelines',
+    'avatar',
+    'card',
+    'input',
+    'select',
+    'radio',
+    'datepicker',
+    'cascader',
+    'placeholder',
+    'checkbox',
+    'combobox',
+    'slider',
+    'timeselect',
+    'timepicker',
+    'jsoneditor',
+    'quill',
+    'codemirror',
+    'ratings',
+    'switch',
+    'colorpicker',
+    'tags',
+    'Progress',
+    'alert',
+    'button',
+    'divider',
+    'nav1',
+    'SidebarMenu',
+    'nav2',
+    'navBar',
+    'table',
+    'textarea',
+    'uploadfile',
+    'tabs',
+    'paragraph',
+    'title',
+    'text',
+    'Steppers',
+    'Tooltip',
+    'Ratings',
+    'Timelines',
+    'Avatars',
+    'Carousels',
+    'iframe',
+    'tree',
+    'image',
+    'pdf',
+    'modals',
+    'list',
+    'html',
+    'Itemgroups',
+    'singleWeek',
+    'scrollList',
+    'BasicDatePicker',
+    'TinymceEditor',
+    'Autocomplete',
+    'anchor',
+    'expansionPanels',
+    'changeImg'
+];
 
 export function $getComponentNameByType(type: string) {
-    const componentName = componentNameMapping[type];
+    const componentName = componentNameMapping.find(c => c === type);
     if (componentName) {
-        return componentName;
+        return `schema-form-${componentName}`;
     } else {
         return 'div';
+    }
+}
+
+export function $getPageName(name: string) {
+    if(!name) {
+        return '';
+    } else {
+        const reg = /[^\w]/g;
+        return name.replace(reg, '_');
     }
 }

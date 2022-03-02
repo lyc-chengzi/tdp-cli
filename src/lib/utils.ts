@@ -64,7 +64,7 @@ export function $formatProps(props: any) {
             const prop = props[key];
             if (prop.type === "string" || typeof prop.value === 'string') {
                 result += `
-                '${key}': '${prop.value.replace(/\\n/g, '\\n')}',`;
+                '${key}': '${prop.value.replace(/\n/g, '\\n')}',`;
             }
             else if (prop.type === "boolean") {
                 result += `
@@ -80,7 +80,7 @@ export function $formatProps(props: any) {
             }
             else {
                 result += `
-                '${key}': '${(prop.value || '').toString()}',`;
+                '${key}': '${(prop.value || '').toString().replace(/\n/g, '\\n')}',`;
             }
         }
         return result;

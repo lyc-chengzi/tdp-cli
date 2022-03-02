@@ -7,11 +7,13 @@ export default class ModelPage {
     id = '';
     json: any = {};
     nodes: INode<Grid>[] = []; // 虚拟节点
-    pageName: string = '';
+    originName: string = ''; // 原始name，用于给用户提示
+    pageName: string = ''; // 处理过的name，用于文件名
     constructor(json: any) {
         this.id = json.id;
         this.json = json;
-        this.pageName = $getPageName(this.json.commonPage.label);
+        this.originName = this.json && this.json.commonPage && this.json.commonPage.label || '';
+        this.pageName = $getPageName(this.originName);
         this.formatJson();
     }
     // 将json数据格式化为实例数据
@@ -29,7 +31,8 @@ export default class ModelPage {
     }
     toMixin() {
         let result =
-`const mixin = {
+`import axios from 'axios';
+const mixin = {
     created() {
         ${this.toCreated()}
     },
@@ -54,6 +57,7 @@ export default mixin;
 `import ${this.pageName}_mixin from '../mixins/${this.pageName}_mixin';
 export default {
     name: '${this.id}',
+    pageName: '${this.originName}',
     mixins: [${this.pageName}_mixin],
     created() {},
     mounted() {},
@@ -76,6 +80,7 @@ export default {
 </template>
 
 <script>
+// ${this.originName}
 import ${this.pageName}_script from './scripts/${this.pageName}_script';
 export default ${this.pageName}_script;
 </script>

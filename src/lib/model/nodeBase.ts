@@ -81,10 +81,19 @@ ${s1}</${this.tag}>`;
     toMethods(pageInstance: Page) {
         let result = '';
         if(this.hasApi) {
+            const apiBasic = this.json.col.apiBasic || {};
             result += `
         '${this.key}_api': function() {
             // fetch api
-            console.log('${this.key} fetch method');
+            axios({
+                method: '${apiBasic.apiMethod}',
+                url: '${apiBasic.apiuri}',
+            })
+                .then(data => {
+                    console.log('${this.key} data ---->', data);
+                }).catch(e => {
+
+                });
         },`;
         }
         return result;

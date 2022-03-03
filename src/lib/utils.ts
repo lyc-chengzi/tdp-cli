@@ -56,11 +56,21 @@ export function $printSpace(spaceNumber: number) {
     }
     return result;
 }
+
+const notPropsKey: any = {'apiBasic': '1', 'apiData': '1'};
+function isValidPropsKey(key: string) {
+    if(notPropsKey[key] || key.indexOf('$') === 0) {
+        return false;
+    } else {
+        return true;
+    }
+}
 // 格式化属性，变成字符串
 export function $formatProps(props: any) {
     let result = '';
     if(props) {
         for(let key in props) {
+            if (!isValidPropsKey(key)) continue;
             const prop = props[key];
             if (prop.type === "string" || typeof prop.value === 'string') {
                 result += `

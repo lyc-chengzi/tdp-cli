@@ -19,7 +19,8 @@
     "data"
   ],
   "scripts": {
-    "test": "node test/generator.spec.js",
+    "test": "yarn jest --roots test/",
+    "test:util": "node test/utils.spec.js",
     "tdp": "node --trace-warnings --loader ts-node/esm src/tdp.ts",
     "build:ts": "tsc",
     "copy": "gulp copy",
@@ -52,6 +53,7 @@
     "@types/inquirer": "^8.2.0",
     "gulp": "^4.0.2",
     "gulp-rm": "^2.0.0",
-    "gulp-typescript": "^6.0.0-alpha.1"
+    "gulp-typescript": "^6.0.0-alpha.1",
+    "jest": "^27.5.1"
   }
 }

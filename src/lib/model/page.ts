@@ -9,11 +9,11 @@ export default class ModelPage {
     originName: string = ''; // 原始name，用于给用户提示
     pageName: string = ''; // 处理过的name，用于文件名
     hasSmartData = false;
-    smartNodes: INode<Grid>[] = []; // 虚拟节点
+    smartNodes: INode<Grid>[] = []; // content虚拟节点
     hasHeaderData = false;
-    headerNodes: INode[] = []; // 虚拟节点
+    headerNodes: INode[] = []; // header虚拟节点
     hasAsideData = false;
-    asideNodes: INode[] = []; // 虚拟节点
+    asideNodes: INode[] = []; // aside虚拟节点
     constructor(json: any) {
         this.id = json.id;
         this.json = json;
@@ -24,6 +24,7 @@ export default class ModelPage {
         this.originName = this.json && this.json.commonPage && this.json.commonPage.label || '';
         this.pageName = $getPageName(this.originName);
 
+        // 判断是否有header
         if (this.json.headerData && this.json.headerData.list && this.json.headerData.list.length) {
             this.hasHeaderData = true;
             this.json.headerData.list.forEach((c: any) => {
@@ -31,6 +32,7 @@ export default class ModelPage {
             });
         }
 
+        // 判断是否有左侧
         if (this.json.asideData && this.json.asideData.list && this.json.asideData.list.length) {
             this.hasAsideData = true;
             this.json.asideData.list.forEach((c: any) => {
@@ -38,6 +40,7 @@ export default class ModelPage {
             });
         }
 
+        // 判断是否有内容
         if (this.json.smartData && this.json.smartData.list && this.json.smartData.list.length) {
             this.hasSmartData = true;
             this.json.smartData.list.forEach((c: any) => {
@@ -45,6 +48,7 @@ export default class ModelPage {
             });
         }        
     }
+    // 向template写内容
     templateToString() {
         const renderAsideData = () => {
             let result = '';
@@ -103,7 +107,8 @@ export default class ModelPage {
     // 写page对应的mixin文件
     toMixin() {
         let result =
-`import axios from 'axios';
+`// ${this.originName}
+import axios from 'axios';
 import { mapGetters } from 'vuex';
 const mixin = {
     created() {
@@ -169,10 +174,11 @@ export default {
         return result;
     }
 
-    // 写page的template
+    // 写page对应的vue文件
     toString() {
         let result = 
-`<template>
+`<!-- ${this.originName} -->
+<template>
     <div class="${this.id}">
         ${this.templateToString()}
     </div>

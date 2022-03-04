@@ -84,7 +84,20 @@ const testProps = {
     ],
 };
 
-test("test $formatProps:", () => {
+test("测试 $formatProps 1 -> ", () => {
     const propsString = utils.$formatProps(testProps);
-    expect(propsString).toMatch(/[^apiBasic]/)
+    const equal = propsString.indexOf('apiBasic') < 0
+    expect(equal).toBe(true);
+});
+
+test("测试 $formatProps 2 -> ", () => {
+    const propsString = utils.$formatProps(testProps);
+    const equal = propsString.indexOf('apiData') < 0
+    expect(equal).toBe(true);
+});
+
+test("测试 $formatProps 3 -> ", () => {
+    const propsString = utils.$formatProps(testProps);
+    const equal = propsString.indexOf('$click') < 0
+    expect(equal).toBe(true);
 });

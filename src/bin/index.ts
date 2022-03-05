@@ -21,6 +21,10 @@ program
 program
     .command('test', 'run test', {
         executableFile: 'test.js'
-    });    
+    });
+program
+    .command('run', 'run create with .uid file', {
+        executableFile: 'run.js'
+    });
 
 program.parse(process.argv);

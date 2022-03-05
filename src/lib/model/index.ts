@@ -23,7 +23,7 @@ const nodeType: any = {};
 
 export function $loadDir(dirPath: string) {
     const basePath = __dirname;
-    console.log('dir basePath', basePath);
+    // console.log('dir basePath', basePath);
     fs.readdirSync(path.join(basePath, dirPath)).forEach(fileName => {
         if(/\.com.js$/.test(fileName)) {
             const name = path.basename(fileName, '.com.js');

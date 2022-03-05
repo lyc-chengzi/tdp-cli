@@ -18,6 +18,9 @@ or:
 
 tdp create demo -itcode liuyc14 -pwd 66666 -appId 898
 // create project for the app(898)
+
+or:
+tdp run  // the dir must has a *.uid file
 ```
 
 ### For developer

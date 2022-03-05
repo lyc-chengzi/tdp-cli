@@ -1,6 +1,6 @@
 {
   "name": "tdp-cli",
-  "version": "0.2.4",
+  "version": "0.3.0",
   "description": "cli tools for tdp",
   "homepage": "https://github.com/lyc-chengzi/tdp-cli",
   "repository": {
@@ -42,6 +42,7 @@
     "chalk": "^4.1.2",
     "classnames": "^2.3.1",
     "commander": "^8.3.0",
+    "crypto-js": "^4.1.1",
     "del": "^6.0.0",
     "download-git-repo": "^3.0.2",
     "inquirer": "^8.2.0",

@@ -29,7 +29,7 @@ export default class NodeBase {
         const s2 = $printLevelSpace(level + 1);
         // 拼写ref、class、组合属性
         let result = `
-${s1}<${this.tag}
+${s1}<schema-form-item
 ${s2}ref="${this.key}"
 ${s2}class="${classNames(this.json.type)}"
 ${s2}v-bind="${this.key}_attrs"`;
@@ -49,7 +49,8 @@ ${s2}:onEvents="${this.key}_events"`;
         // 拼写组件结束标签
         result += `
 ${s1}>
-${s1}</${this.tag}>`;
+${s2}<${this.tag}></${this.tag}>
+${s1}</schema-form-item>`;
 
         return result;
     }

@@ -3,6 +3,7 @@ import NodeBase from './model/nodeBase.js';
 import { ENodeType } from "./enum/index.js";
 import { INode } from "../interface/index.js";
 import chalk = require("chalk");
+import CryptoJS = require('crypto-js');
 
 type componentJson = {
     key: string;
@@ -220,3 +221,23 @@ export function $getPageName(name: string) {
         return name.replace(reg, '_');
     }
 }
+
+// 解密json方法
+export const $decryptData = function(data: string) {
+    const prefix = 'TDP.UID.V10';
+    const paddingLength = 24;
+    let result = '';
+    try {
+        if (data.startsWith(prefix)) {
+            let padding = data.substring(prefix.length, prefix.length + paddingLength);
+            let descrypted =  CryptoJS.TripleDES.decrypt(data.substring(prefix.length + paddingLength), padding + prefix);
+            result = descrypted.toString(CryptoJS.enc.Utf8);
+        } else {
+            result = data;
+        }
+    } catch (error) {
+        console.error($error('解密uid文件时错误'));
+        console.error(error);
+    }
+    return result;
+};

@@ -7,6 +7,7 @@ const eventNames = ['$click'];
 export default class NodeBase {
     json: any = {}; // 组件的原始json配置
     key = ''; // 组件key
+    hasProps = false; // 是否有用户设置的属性
     hasApi = false; // 组件是否配置了接口
     hasEvents = false; // 组件是否配置了事件
     tag = 'div';
@@ -16,7 +17,10 @@ export default class NodeBase {
         this._formatJson();
     }
     _formatJson() {
-        this.tag = $getComponentNameByType(this.json.type) || 'div';
+        this.tag = $getComponentNameByType(this.json.type, this.json.group) || 'div';
+        if (this.json.col && Object.keys(this.json.col).length) {
+            this.hasProps = true;
+        }
         if (this.json.col && this.json.col.apiBasic && JSON.stringify(this.json.col.apiBasic) !== '{}') {
             this.hasApi = true;
         }
@@ -27,12 +31,16 @@ export default class NodeBase {
     toString(level: number) {
         const s1 = $printLevelSpace(level);
         const s2 = $printLevelSpace(level + 1);
+        const itemTag = this.json.group === 'smart-chart' ? 've-chart-item' : 'schema-form-item';
         // 拼写ref、class、组合属性
         let result = `
-${s1}<schema-form-item
+${s1}<${itemTag}
 ${s2}ref="${this.key}"
-${s2}class="${classNames(this.json.type)}"
-${s2}v-bind="${this.key}_attrs"`;
+${s2}class="${classNames(this.json.type)}"`;
+        if (this.hasProps) {
+            result += `
+${s2}:col="${this.key}_data"`;
+        }
 
         // 如果有接口请求，拼写接口请求
         if (this.hasApi) {
@@ -50,17 +58,22 @@ ${s2}:onEvents="${this.key}_events"`;
         result += `
 ${s1}>
 ${s2}<${this.tag}></${this.tag}>
-${s1}</schema-form-item>`;
+${s1}</${itemTag}>`;
 
         return result;
     }
     // 向data中写入代码
     toData(pageInstance: Page): string {
         let result = '';
-        result += `
-            '${this.key}_attrs': {
-                ${$formatProps(this.json.col)}
+        if (this.hasProps) {
+            result += `
+            ${this.key}_data: {
+                type: '${this.json.type}',
+                attrs: {
+                    type: '${this.json.type}',${$formatProps(this.json.col)}
+                }
             },`;
+        }        
         if (this.hasEvents) {
             result += `
             '${this.key}_events': {

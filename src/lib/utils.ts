@@ -75,23 +75,23 @@ export function $formatProps(props: any) {
             const prop = props[key];
             if (prop.type === "string" || typeof prop.value === 'string') {
                 result += `
-                '${key}': '${prop.value.replace(/\n/g, '\\n')}',`;
+                    '${key}': '${prop.value.replace(/\n/g, '\\n')}',`;
             }
             else if (prop.type === "boolean") {
                 result += `
-                '${key}': ${prop.value},`;
+                    '${key}': ${prop.value},`;
             }
             else if (prop.value instanceof Array) {
                 result += `
-                '${key}': ${JSON.stringify(prop.value)},`;
+                    '${key}': ${JSON.stringify(prop.value)},`;
             }
             else if (typeof prop.value === 'object') {
                 result += `
-                '${key}': ${JSON.stringify(prop.value)},`;
+                    '${key}': ${JSON.stringify(prop.value)},`;
             }
             else {
                 result += `
-                '${key}': '${(prop.value || '').toString().replace(/\n/g, '\\n')}',`;
+                    '${key}': '${(prop.value || '').toString().replace(/\n/g, '\\n')}',`;
             }
         }
         return result;
@@ -204,13 +204,75 @@ export const componentNameMapping: string[] = [
     'changeImg'
 ];
 
-export function $getComponentNameByType(type: string) {
-    const componentName = componentNameMapping.find(c => c === type);
-    if (componentName) {
-        return `schema-form-${componentName}`;
-    } else {
-        return 'div';
+const chartComponents = [
+    'editTable',
+    'bar',
+    'barLine',
+    'line',
+    'pie',
+    'liquidfill',
+    'donut',
+    'radar',
+    'scatter',
+    'gauge',
+    'geo',
+    'polar',
+    'bar3D',
+    'barto3D',
+    'table',
+    'pie',
+    'liquidfill',
+    'treemap',
+    'donut',
+    'radar',
+    'scatter',
+    'gauge',
+    'geo',
+    'polar',
+    'pictorialBar',
+    'baseTable',
+
+    'selectRowTable',
+    'filterTable',
+    'sortTable',
+    'scatter3D',
+    'treeTable',
+    'stackLine',
+    'negativeBar',
+    'lineDouble',
+    'barRace',
+    'transitionTree',
+    'barRaceCountry',
+    'lineRace',
+    'barCountry',
+    'earth',
+    'parallel',
+    'dynamicGauge',
+    'cartesian',
+    'world',
+    'flow',
+    'worldMap',
+    'stackBar',
+    'donutPie',
+];
+
+export function $getComponentNameByType(type: string, group: string) {
+    let result = 'div';
+    if (group === 'smart-chart') {
+        const componentName = chartComponents.find(c => c === type);
+        if (/table/i.test(componentName)) {
+            result = `vxe-${type}`;
+        } else {
+            result = `ve-${type}-chart`;
+        }
     }
+    else {
+        const componentName = componentNameMapping.find(c => c === type);
+        if (componentName) {
+            result = `schema-form-${componentName}`;
+        }
+    }
+    return result;
 }
 
 export function $getPageName(name: string) {

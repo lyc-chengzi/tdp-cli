@@ -54,12 +54,12 @@ export default class ModelPage {
             let result = '';
             if (this.hasAsideData) {
                 result += `
-                <div class="Baside aside">`;
-                this.asideNodes.forEach(c => {
-                    result += c.node.toString(5);
-                });
-                result += `
-                </div>`;
+            <div class="Baside aside">`;
+            this.asideNodes.forEach(c => {
+                result += c.node.toString(4);
+            });
+            result += `
+            </div>`;
             }
             return result;
         };
@@ -78,24 +78,19 @@ export default class ModelPage {
         // 判断是否展示头部
         if (this.hasHeaderData) {
             result += `
-        <div
-            class="Bheader header"
-            ref="header"
-            :style="{
-                background: currentContainer.header.background,
-                ...deviceWidth,
-            }"
-        >
-        </div>`;
+            <div
+                class="Bheader header"
+                ref="header"
+                :style="{
+                    background: currentContainer.header.background,
+                    ...deviceWidth,
+                }"
+            >
+            </div>`;
         }
 
         result += `
-        <div
-            class="content"
-            :style="{
-                height: 'calc(100% - 64px)',
-            }"
-        >
+        <div class="content">
             ${renderAsideData()}
             <div class="Bmain main" id="ui_editor_main">
                 ${renderSmartData()}
@@ -121,8 +116,7 @@ const mixin = {
         ...mapGetters('commonController', ['appId']),
     },
     data: () => {
-        return {
-            ${this.toData()}
+        return {${this.toData()}
         };
     },
     methods: {
@@ -165,7 +159,7 @@ export default {
         };
     },
     methods: {
-        yourMethord() {
+        yourMethod() {
             this.yourData = 2;
         },
     },
@@ -179,11 +173,13 @@ export default {
         let result = 
 `<!-- ${this.originName} -->
 <template>
-    <div class="${this.id}">
+    <div class="${this.id} tdp-page">
         ${this.templateToString()}
     </div>
 </template>
-
+<style lang="less">
+@import url('../styles/page.less');
+</style>
 <script>
 // ${this.originName}
 import ${this.pageName}_script from './scripts/${this.pageName}_script';

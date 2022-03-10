@@ -101,8 +101,18 @@ function writeRouter(projectPath: string){
             const pages = getPages();
             const newImport = data.replace('///<inject_import>', `/* 添加需要引入的同步组件 */`);
             let pageRouters = '';
-            pages.forEach(p => {
+            pages.forEach((p, index) => {
                 const pageName = $getPageName(p.commonPage.label);
+                if(index === 0) {
+                    pageRouters +=
+`
+    {
+        path: '/',
+        name: '${p.id}_home',
+        component: () => import(/* webpackChunkName: "${p.id}_home" */ '../views/${pageName}'),
+    },
+`;
+                }
                 pageRouters +=
 `
     {
@@ -110,7 +120,7 @@ function writeRouter(projectPath: string){
         name: '${p.id}',
         component: () => import(/* webpackChunkName: "${p.id}" */ '../views/${pageName}'),
     },
-`
+`;
             });
             const newData = newImport.replace('///<inject_routes>', pageRouters);
             fs.writeFile(path.join(routerPath, 'index.js'), newData, {encoding: 'utf-8'}, (err2: Error) => {

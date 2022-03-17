@@ -1,4 +1,5 @@
 import fs = require("fs");
+import fsPromise = require('fs/promises');
 import path = require("path");
 import chalk = require("chalk");
 import ora = require('ora');
@@ -14,11 +15,13 @@ let APPINFO: IAppInfo | undefined  = undefined;
  * @param {string} appId 要生成的appId 
  * @param {string} projectPath 用户本地项目目录
  */
-export default function createPages(appInfo: IAppInfo, projectPath: string) {
+export default async function createPages(appInfo: IAppInfo, projectPath: string) {
     APPINFO = appInfo;
+    await writeI18nAsync(projectPath);
+    await configI18nAsync(projectPath);
     writePage(projectPath, () => {
         writeRouter(projectPath);
-    });    
+    });
 }
 
 /**
@@ -57,7 +60,7 @@ function writePage(projectPath: string, callback?: Function) {
                             // 写js文件
                             fs.writeFile(path.join(scriptPath, `${_p.pageName}_script.js`), _p.toScriptFile(), { encoding: 'utf-8' }, (err3) => {
                                 if(!err3) {
-                                    spinner.succeed($success(chalk.gray(`[${new Date().toLocaleString()}]`) + chalk.yellow(page.id) + '文件写入成功'));
+                                    spinner.succeed($success(chalk.gray(`[${new Date().toLocaleString()}]`) + chalk.yellow(_p.pageName) + '文件写入成功'));
                                     successCount++;
                                     if (successCount === pageCount) {
                                         callback && callback();
@@ -78,6 +81,73 @@ function writePage(projectPath: string, callback?: Function) {
             }
         );
     }
+}
+
+/**
+ * 写多语言配置文件
+ * @param {string} projectPath 
+ * @param {function} callback 成功回调函数
+ */
+async function writeI18nAsync(projectPath: string) {
+    return new Promise((resolve, reject) => {
+        const locale = getAppLocaleResource();
+        const localeCount = locale.length;
+        // 生成文件的路径
+        const i18nPath = path.join(projectPath, 'i18n');
+        console.log(chalk.yellow('正在写入i18n文件...'));
+
+        let promiseList = [];
+        for(let i = 0; i < localeCount; i++) {
+            const l = locale[i];             
+            // 写language.json配置文件
+            const promise = fsPromise.writeFile(
+                    path.join(i18nPath, `${l.name}.json`),
+                    JSON.stringify({app: l.app}),
+                    {encoding: 'utf-8'}
+                ).then(() =>{
+                    return 'ok';
+                }).catch(() => {
+                    console.log($error(`写入i18n文件${chalk.yellow(l.name)}.json时发生错误`));
+                    return 'fail';
+                });
+            promiseList.push(promise);
+        }
+
+        Promise.all(promiseList).then(datas => {
+            if (datas.every(data => data === 'ok')) {
+                console.log($success('i18n文件写入成功'));
+                resolve('ok');
+            } else {
+                reject('fail');
+            }            
+        });
+    });
+}
+
+// 设置i18n默认语言，和语言配置路径
+async function configI18nAsync(projectPath: string) {
+    console.log(chalk.yellow('正在配置i18n文件...'));
+    const locales = getAppLocaleResource();
+    const configFilePath = path.join(projectPath, 'src/plugins/i18n.js');
+    let fileData = await fsPromise.readFile(
+        configFilePath,
+        {encoding: 'utf-8'}
+    );
+    let localeStr = '';
+    locales.forEach(locale => {
+        localeStr += `
+    '${locale.name}': require('../../i18n/${locale.name}.json')`;
+    });
+    fileData = fileData.replace('///<inject_locales>', localeStr);
+
+    const appSettings = getAppSettings();
+    if (appSettings) {
+        fileData = fileData.replace('///<inject_defaultLang>', appSettings.appSettings.appDefaultLanguage.code);
+    }
+
+    await fsPromise.writeFile(configFilePath, fileData, {encoding: 'utf-8'});
+
+    console.log($success('配置i18n文件完成'));
 }
 
 /**
@@ -136,10 +206,34 @@ function writeRouter(projectPath: string){
     });
 }
 
+// 获取所有页面配置
 function getPages(): IPageJson[] {
     if (!APPINFO) {
         return [];
     } else {
-        return APPINFO.appContent.filter((c:any) => c.hasOwnProperty('type'));
+        return APPINFO.appContent.filter((c:any) => c.id && c.id.indexOf('Page') === 0);
+    }
+}
+
+// 获取应用多语言资源配置
+function getAppLocaleResource(): any[] {
+    if (!APPINFO) {
+        return [];
+    } else {
+        const resourceConfig = APPINFO.appContent.find((c:any) => !!c.appLocaleResource);
+        if(resourceConfig) {
+            return resourceConfig.appLocaleResource || [];
+        } else {
+            return [];
+        }
+    }
+}
+
+// 获取应用配置
+function getAppSettings() {
+    if (!APPINFO) {
+        return undefined;
+    } else {
+        return APPINFO.appContent.find((c:any) => !!c.appSettings);
     }
 }

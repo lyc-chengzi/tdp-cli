@@ -36,58 +36,44 @@ export default class NodeBase {
         let result = `
 ${s1}<${itemTag}
 ${s2}ref="${this.key}"
-${s2}class="${classNames(this.json.type)}"`;
-        if (this.hasProps) {
-            result += `
-${s2}:col="${this.key}_data"`;
-        }
-
+${s2}class="${classNames(this.json.type)}"
+${s2}:col="${this.key}_data"
+${s2}:edit="false"
+${s2}:model="{}"
+${s2}:options="undefined"`;
         // 如果有接口请求，拼写接口请求
         if (this.hasApi) {
             result += `
-${s2}:apiData="${this.key}_apiData"`;
-        }
-
-        // 如果有事件，拼写事件
-        if (this.hasEvents) {
-            result += `
-${s2}:onEvents="${this.key}_events"`;
+${s2}:apiBasic="${this.key}_apiBasic"
+${s2}:apiData="[]"`;
         }
 
         // 拼写组件结束标签
         result += `
 ${s1}>
-${s2}<${this.tag}></${this.tag}>
 ${s1}</${itemTag}>`;
+// ${s2}<${this.tag}></${this.tag}>
 
         return result;
     }
     // 向data中写入代码
     toData(pageInstance: Page): string {
         let result = '';
-        if (this.hasProps) {
-            result += `
+        result += `
             ${this.key}_data: {
                 type: '${this.json.type}',
+                apiItemize: undefined,
                 attrs: {
                     type: '${this.json.type}',${$formatProps(this.json.col)}
-                }
+                },
+                formItem: {},
+                on: {},
+                prop: '${this.key}',
+                ref: '${this.key}',
             },`;
-        }        
-        if (this.hasEvents) {
-            result += `
-            '${this.key}_events': {
-                click: [
-                    {
-                        "checkAction": "router",
-                        "routerPage": "Page-xWZ91638951062318"
-                    }
-                ],
-            },`;
-        }
         if (this.hasApi) {
             result += `
-            '${this.key}_apiData': {},`;
+            ${this.key}_apiBasic: ${JSON.stringify(this.json.col.apiBasic)},`;
         }
         return result;
     }
@@ -97,7 +83,7 @@ ${s1}</${itemTag}>`;
         if(this.hasApi) {
             const apiBasic = this.json.col.apiBasic || {};
             result += `
-        '${this.key}_api': function() {
+        ${this.key}_api: function() {
             // fetch api
             axios({
                 method: '${apiBasic.apiMethod}',
@@ -117,7 +103,7 @@ ${s1}</${itemTag}>`;
         let result = '';
         if(this.hasApi) {
             result += `
-        this['${this.key}_api']();`;
+        this.${this.key}_api();`;
         }
         return result;
     }

@@ -9,8 +9,8 @@ import chalk  = require('chalk');
 import { $decryptData } from "../lib/utils.js";
 
 program
-    .action(async () => {
-        const projectName = 'test-generator';
+    .argument("<projectName>", "input a project name")
+    .action(async (projectName: string) => {
         await del([path.join(process.cwd(), projectName)]);
         const runPath = process.cwd();
         const fileNames = await fs.readdir(runPath);

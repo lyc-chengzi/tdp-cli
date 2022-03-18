@@ -115,7 +115,7 @@ async function writeI18nAsync(projectPath: string) {
 
         Promise.all(promiseList).then(datas => {
             if (datas.every(data => data === 'ok')) {
-                console.log($success('i18n文件写入成功'));
+                console.log($success('写入i18n文件成功'));
                 resolve('ok');
             } else {
                 reject('fail');

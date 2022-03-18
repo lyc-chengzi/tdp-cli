@@ -103,7 +103,7 @@ export default class ModelPage {
     toMixin() {
         let result =
 `// ${this.originName}
-import axios from 'axios';
+// import axios from 'axios';
 import { mapGetters } from 'vuex';
 const mixin = {
     created() {

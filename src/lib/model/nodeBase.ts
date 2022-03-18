@@ -73,7 +73,7 @@ ${s1}</${itemTag}>`;
             },`;
         if (this.hasApi) {
             result += `
-            ${this.key}_apiBasic: ${JSON.stringify(this.json.col.apiBasic)},`;
+            ${this.key}_apiBasic: ${JSON.stringify(this.json.col.apiBasic, null, 4)},`;
         }
         return result;
     }
@@ -96,7 +96,8 @@ ${s1}</${itemTag}>`;
                 });
         },`;
         }
-        return result;
+        // return result;
+        return '';
     }
     // 向mounted中写入代码
     toMounted(pageInstance: Page) {
@@ -105,6 +106,7 @@ ${s1}</${itemTag}>`;
             result += `
         this.${this.key}_api();`;
         }
-        return result;
+        // return result;
+        return '';
     }
 }

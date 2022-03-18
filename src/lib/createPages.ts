@@ -102,7 +102,7 @@ async function writeI18nAsync(projectPath: string) {
             // 写language.json配置文件
             const promise = fsPromise.writeFile(
                     path.join(i18nPath, `${l.name}.json`),
-                    JSON.stringify({app: l.app}),
+                    JSON.stringify({app: l.app}, null, 4),
                     {encoding: 'utf-8'}
                 ).then(() =>{
                     return 'ok';

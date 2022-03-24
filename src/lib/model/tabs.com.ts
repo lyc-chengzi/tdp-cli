@@ -23,7 +23,7 @@ export default class Tab extends NodeBase {
         // 组织grid组件结构
         result = 
  `
-${$printLevelSpace(level)}<v-tabs class="tabs" ref="${this.key}">${this.loopTabs(level + 1)}
+${$printLevelSpace(level)}<v-tabs class="tdp-generator-tabs">${this.loopTabs(level + 1)}
 ${$printLevelSpace(level)}</v-tabs>`;
         return result;
     }

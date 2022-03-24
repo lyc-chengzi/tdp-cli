@@ -99,10 +99,18 @@ async function writeI18nAsync(projectPath: string) {
         let promiseList = [];
         for(let i = 0; i < localeCount; i++) {
             const l = locale[i];
+            let fileContent: any = {};
+            let jsonFilePath = path.join(projectPath, 'i18n', `${l.name}.json`);
+            const hasJsonFile = fs.existsSync(jsonFilePath);
+            if (hasJsonFile) {
+                const jsonFileString = fs.readFileSync(jsonFilePath, {encoding: 'utf-8'});
+                fileContent = JSON.parse(jsonFileString);
+            }
+            fileContent.app = l.app;
             // 写language.json配置文件
             const promise = fsPromise.writeFile(
                     path.join(i18nPath, `${l.name}.json`),
-                    JSON.stringify({app: l.app}, null, 4),
+                    JSON.stringify(fileContent, null, 4),
                     {encoding: 'utf-8'}
                 ).then(() =>{
                     return 'ok';
@@ -119,7 +127,7 @@ async function writeI18nAsync(projectPath: string) {
                 resolve('ok');
             } else {
                 reject('fail');
-            }            
+            }
         });
     });
 }
@@ -136,7 +144,7 @@ async function configI18nAsync(projectPath: string) {
     let localeStr = '';
     locales.forEach(locale => {
         localeStr += `
-    '${locale.name}': require('../../i18n/${locale.name}.json')`;
+    '${locale.name}': require('../../i18n/${locale.name}.json'),`;
     });
     fileData = fileData.replace('///<inject_locales>', localeStr);
 

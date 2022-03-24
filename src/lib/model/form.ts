@@ -19,7 +19,7 @@ export default class Form extends NodeBase {
         // 组织grid组件结构
         result = 
  `
-${$printLevelSpace(level)}<div class="Form" ref="${this.key}">${this.loopNodes(level + 1)}
+${$printLevelSpace(level)}<div class="tdp-generator-Form">${this.loopNodes(level + 1)}
 ${$printLevelSpace(level)}</div>`;
         return result;
     }

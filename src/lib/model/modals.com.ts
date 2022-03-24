@@ -19,7 +19,7 @@ export default class Card extends NodeBase {
         // 组织grid组件结构
         result = 
  `
-${$printLevelSpace(level)}<div class="modals" ref="${this.key}">${this.loopNodes(level + 1)}
+${$printLevelSpace(level)}<div class="tdp-generator-modals">${this.loopNodes(level + 1)}
 ${$printLevelSpace(level)}</div>`;
         return result;
     }

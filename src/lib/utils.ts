@@ -66,6 +66,16 @@ function isValidPropsKey(key: string) {
         return true;
     }
 }
+// 拿到属性中的事件属性
+export function $formatEvents(props: any) {
+    let result: any = {};
+    for(let key in props){
+        if (key.indexOf('$') === 0) {
+            result[key.replace('$', '')] = props[key];
+        }
+    }
+    return result;
+}
 // 格式化属性，变成字符串
 export function $formatProps(props: any) {
     let result = '';

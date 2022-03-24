@@ -2,21 +2,13 @@
     {
         "appLocaleResource": [
             {
-                "name": "en",
-                "app": {
-                    "Page-KTUBuV1640569084847544": {
-                        "button_qJRJj81642044754451758": {
-                            "button-words": "button"
-                        }
-                    }
-                }
-            },
-            {
                 "name": "zh",
                 "app": {
-                    "Page-KTUBuV1640569084847544": {
-                        "button_qJRJj81642044754451758": {
-                            "button-words": "按钮"
+                    "Page-U5QM7N16481121406450824": {
+                        "editTable_jyk1RP16481122591570958": {
+                            "label": "",
+                            "1648113157235_0": "Name",
+                            "1648113157238_1": "ID"
                         }
                     }
                 }
@@ -24,7 +16,7 @@
         ]
     },
     {
-        "id": "Page-KTUBuV1640569084847544",
+        "id": "Page-U5QM7N16481121406450824",
         "smartData": {
             "list": [
                 {
@@ -40,99 +32,608 @@
                             "span": 12,
                             "list": [
                                 {
-                                    "type": "image",
-                                    "group": "smart-extend",
-                                    "label": "common.image",
-                                    "position": "aside",
-                                    "key": "image_gFUJhG16480152242670196",
-                                    "model": "image_gFUJhG16480152242670196",
-                                    "icon": "uploadimage",
+                                    "type": "editTable",
+                                    "group": "smart-chart",
+                                    "label": "left.tableComponment.editTable",
+                                    "key": "editTable_jyk1RP16481122591570958",
+                                    "model": "editTable_jyk1RP16481122591570958",
+                                    "icon": "baseTable",
+                                    "src": "",
                                     "col": {
-                                        "comp-align": {
-                                            "label": "right.attribute.contentalign",
-                                            "type": "iconSelect",
-                                            "value": "center",
+                                        "label": {
+                                            "label": "right.attribute.labelName",
+                                            "type": "string",
+                                            "value": "",
                                             "default": "",
-                                            "group": "compalign",
-                                            "options": [
-                                                {
-                                                    "label": "right.attribute.leftAlign",
-                                                    "value": "flex-start",
-                                                    "icon": "left2"
-                                                },
-                                                {
-                                                    "label": "right.attribute.centerAlign",
-                                                    "value": "center",
-                                                    "icon": "Center2"
-                                                },
-                                                {
-                                                    "label": "right.attribute.rightAlign",
-                                                    "value": "flex-end",
-                                                    "icon": "right2"
-                                                }
-                                            ]
+                                            "group": "basic",
+                                            "translatable": true,
+                                            "associate": "with-title",
+                                            "associateVal": [
+                                                true
+                                            ],
+                                            "translatableKey": "app.Page-U5QM7N16481121406450824.editTable_jyk1RP16481122591570958.label"
                                         },
-                                        "image-comp": {
-                                            "label": "right.attribute.imageList",
-                                            "type": "imageList",
+                                        "with-title": {
+                                            "label": "common.title",
+                                            "type": "boolean",
+                                            "value": false,
+                                            "default": true,
+                                            "group": "basic"
+                                        },
+                                        "tableHeaderList": {
+                                            "default": "",
+                                            "group": "table-header-column",
+                                            "label": "",
+                                            "type": "tableHeaderStyle",
                                             "value": [
                                                 {
-                                                    "category": "image",
-                                                    "fileId": "",
-                                                    "fileName": "2.png",
-                                                    "filePath": "/dev/ui-designer/FRBiBWyv1t65SeFT.png",
-                                                    "id": "822"
-                                                }
-                                            ],
-                                            "group": "carouselsList",
-                                            "options": "1"
-                                        },
-                                        "image-width": {
-                                            "label": "common.width",
-                                            "type": "customUnit",
-                                            "value": "400",
-                                            "group": "basic",
-                                            "suffix": "px",
-                                            "options": [
-                                                {
-                                                    "value": "px"
+                                                    "field": [
+                                                        "id"
+                                                    ],
+                                                    "title": "ID",
+                                                    "showOverflow": true,
+                                                    "sortable": false,
+                                                    "id": 3,
+                                                    "editRender": {
+                                                        "name": "input",
+                                                        "attrs": {
+                                                            "placeholder": ""
+                                                        },
+                                                        "enabled": false
+                                                    },
+                                                    "translatableKey": "app.Page-U5QM7N16481121406450824.editTable_jyk1RP16481122591570958.1648113157238_1",
+                                                    "showColumn": false
                                                 },
                                                 {
-                                                    "value": "%"
-                                                },
-                                                {
-                                                    "value": "rem"
+                                                    "field": [
+                                                        "name"
+                                                    ],
+                                                    "title": "Name",
+                                                    "showOverflow": true,
+                                                    "id": 1,
+                                                    "sortable": false,
+                                                    "editRender": {
+                                                        "name": "input",
+                                                        "attrs": {
+                                                            "placeholder": ""
+                                                        },
+                                                        "enabled": false
+                                                    },
+                                                    "translatableKey": "app.Page-U5QM7N16481121406450824.editTable_jyk1RP16481122591570958.1648113157235_0"
                                                 }
                                             ],
-                                            "associate": "image-width-auto",
+                                            "associate": "show-header",
+                                            "translatable": true,
                                             "associateVal": [
-                                                "1"
+                                                true
                                             ]
                                         },
-                                        "image-height-auto": {
-                                            "label": "common.heightSet",
-                                            "type": "select",
-                                            "value": "2",
-                                            "group": "basic",
-                                            "options": [
+                                        "apiBasic": {
+                                            "apiTitle": "getChildren",
+                                            "apiuri": "/gw-sy/project1/exttest/exttest/getchildren",
+                                            "apiMethod": "GET",
+                                            "isI18n": false,
+                                            "apireqBodyParameter": [],
+                                            "resBodykey": {
+                                                "checkKeyX": [],
+                                                "checkKeyY": [],
+                                                "checkKeyZ": []
+                                            },
+                                            "apiCont": {
+                                                "dataKey": {
+                                                    "x": [
+                                                        {
+                                                            "name": "data",
+                                                            "number": "0-0",
+                                                            "key": "data",
+                                                            "value": "data",
+                                                            "label": "data",
+                                                            "required": false,
+                                                            "type": "array",
+                                                            "sub": {
+                                                                "itemType": "object"
+                                                            },
+                                                            "children": [
+                                                                {
+                                                                    "name": "id",
+                                                                    "number": "0-0-0",
+                                                                    "key": "id",
+                                                                    "value": "id",
+                                                                    "label": "id",
+                                                                    "required": false,
+                                                                    "type": "number",
+                                                                    "sub": {},
+                                                                    "modelValue": "",
+                                                                    "originType": "2",
+                                                                    "requireKey": 2
+                                                                },
+                                                                {
+                                                                    "name": "name",
+                                                                    "number": "0-0-1",
+                                                                    "key": "name",
+                                                                    "value": "name",
+                                                                    "label": "name",
+                                                                    "required": false,
+                                                                    "type": "string",
+                                                                    "sub": {},
+                                                                    "modelValue": "",
+                                                                    "originType": "2",
+                                                                    "requireKey": 2
+                                                                },
+                                                                {
+                                                                    "name": "children",
+                                                                    "number": "0-0-2",
+                                                                    "key": "children",
+                                                                    "value": "children",
+                                                                    "label": "children",
+                                                                    "required": false,
+                                                                    "type": "array",
+                                                                    "sub": {
+                                                                        "itemType": "object"
+                                                                    },
+                                                                    "children": [
+                                                                        {
+                                                                            "name": "id",
+                                                                            "number": "0-0-2-0",
+                                                                            "key": "id",
+                                                                            "value": "id",
+                                                                            "label": "id",
+                                                                            "required": true,
+                                                                            "type": "number",
+                                                                            "sub": {},
+                                                                            "modelValue": "",
+                                                                            "originType": "2",
+                                                                            "requireKey": 2
+                                                                        },
+                                                                        {
+                                                                            "name": "name",
+                                                                            "number": "0-0-2-1",
+                                                                            "key": "name",
+                                                                            "value": "name",
+                                                                            "label": "name",
+                                                                            "required": true,
+                                                                            "type": "string",
+                                                                            "sub": {},
+                                                                            "modelValue": "",
+                                                                            "originType": "2",
+                                                                            "requireKey": 2
+                                                                        },
+                                                                        {
+                                                                            "name": "children",
+                                                                            "number": "0-0-2-2",
+                                                                            "key": "children",
+                                                                            "value": "children",
+                                                                            "label": "children",
+                                                                            "required": false,
+                                                                            "type": "array",
+                                                                            "sub": {
+                                                                                "itemType": "object"
+                                                                            },
+                                                                            "children": [
+                                                                                {
+                                                                                    "name": "id",
+                                                                                    "number": "0-0-2-2-0",
+                                                                                    "key": "id",
+                                                                                    "value": "id",
+                                                                                    "label": "id",
+                                                                                    "required": true,
+                                                                                    "type": "number",
+                                                                                    "sub": {},
+                                                                                    "modelValue": "",
+                                                                                    "originType": "2",
+                                                                                    "requireKey": 2
+                                                                                },
+                                                                                {
+                                                                                    "name": "name",
+                                                                                    "number": "0-0-2-2-1",
+                                                                                    "key": "name",
+                                                                                    "value": "name",
+                                                                                    "label": "name",
+                                                                                    "required": true,
+                                                                                    "type": "string",
+                                                                                    "sub": {},
+                                                                                    "modelValue": "",
+                                                                                    "originType": "2",
+                                                                                    "requireKey": 2
+                                                                                }
+                                                                            ],
+                                                                            "modelValue": "",
+                                                                            "originType": "2",
+                                                                            "requireKey": 2
+                                                                        }
+                                                                    ],
+                                                                    "modelValue": "",
+                                                                    "originType": "2",
+                                                                    "requireKey": 2
+                                                                }
+                                                            ],
+                                                            "modelValue": ""
+                                                        }
+                                                    ],
+                                                    "y": [
+                                                        {
+                                                            "name": "data",
+                                                            "number": "0-0",
+                                                            "key": "data",
+                                                            "value": "data",
+                                                            "label": "data",
+                                                            "required": false,
+                                                            "type": "array",
+                                                            "sub": {
+                                                                "itemType": "object"
+                                                            },
+                                                            "children": [
+                                                                {
+                                                                    "name": "id",
+                                                                    "number": "0-0-0",
+                                                                    "key": "id",
+                                                                    "value": "id",
+                                                                    "label": "id",
+                                                                    "required": false,
+                                                                    "type": "number",
+                                                                    "sub": {},
+                                                                    "modelValue": "",
+                                                                    "originType": "2",
+                                                                    "requireKey": 2
+                                                                },
+                                                                {
+                                                                    "name": "name",
+                                                                    "number": "0-0-1",
+                                                                    "key": "name",
+                                                                    "value": "name",
+                                                                    "label": "name",
+                                                                    "required": false,
+                                                                    "type": "string",
+                                                                    "sub": {},
+                                                                    "modelValue": "",
+                                                                    "originType": "2",
+                                                                    "requireKey": 2
+                                                                },
+                                                                {
+                                                                    "name": "children",
+                                                                    "number": "0-0-2",
+                                                                    "key": "children",
+                                                                    "value": "children",
+                                                                    "label": "children",
+                                                                    "required": false,
+                                                                    "type": "array",
+                                                                    "sub": {
+                                                                        "itemType": "object"
+                                                                    },
+                                                                    "children": [
+                                                                        {
+                                                                            "name": "id",
+                                                                            "number": "0-0-2-0",
+                                                                            "key": "id",
+                                                                            "value": "id",
+                                                                            "label": "id",
+                                                                            "required": true,
+                                                                            "type": "number",
+                                                                            "sub": {},
+                                                                            "modelValue": "",
+                                                                            "originType": "2",
+                                                                            "requireKey": 2
+                                                                        },
+                                                                        {
+                                                                            "name": "name",
+                                                                            "number": "0-0-2-1",
+                                                                            "key": "name",
+                                                                            "value": "name",
+                                                                            "label": "name",
+                                                                            "required": true,
+                                                                            "type": "string",
+                                                                            "sub": {},
+                                                                            "modelValue": "",
+                                                                            "originType": "2",
+                                                                            "requireKey": 2
+                                                                        },
+                                                                        {
+                                                                            "name": "children",
+                                                                            "number": "0-0-2-2",
+                                                                            "key": "children",
+                                                                            "value": "children",
+                                                                            "label": "children",
+                                                                            "required": false,
+                                                                            "type": "array",
+                                                                            "sub": {
+                                                                                "itemType": "object"
+                                                                            },
+                                                                            "children": [
+                                                                                {
+                                                                                    "name": "id",
+                                                                                    "number": "0-0-2-2-0",
+                                                                                    "key": "id",
+                                                                                    "value": "id",
+                                                                                    "label": "id",
+                                                                                    "required": true,
+                                                                                    "type": "number",
+                                                                                    "sub": {},
+                                                                                    "modelValue": "",
+                                                                                    "originType": "2",
+                                                                                    "requireKey": 2
+                                                                                },
+                                                                                {
+                                                                                    "name": "name",
+                                                                                    "number": "0-0-2-2-1",
+                                                                                    "key": "name",
+                                                                                    "value": "name",
+                                                                                    "label": "name",
+                                                                                    "required": true,
+                                                                                    "type": "string",
+                                                                                    "sub": {},
+                                                                                    "modelValue": "",
+                                                                                    "originType": "2",
+                                                                                    "requireKey": 2
+                                                                                }
+                                                                            ],
+                                                                            "modelValue": "",
+                                                                            "originType": "2",
+                                                                            "requireKey": 2
+                                                                        }
+                                                                    ],
+                                                                    "modelValue": "",
+                                                                    "originType": "2",
+                                                                    "requireKey": 2
+                                                                }
+                                                            ],
+                                                            "modelValue": ""
+                                                        }
+                                                    ],
+                                                    "z": [
+                                                        {
+                                                            "name": "data",
+                                                            "number": "0-0",
+                                                            "key": "data",
+                                                            "value": "data",
+                                                            "label": "data",
+                                                            "required": false,
+                                                            "type": "array",
+                                                            "sub": {
+                                                                "itemType": "object"
+                                                            },
+                                                            "children": [
+                                                                {
+                                                                    "name": "id",
+                                                                    "number": "0-0-0",
+                                                                    "key": "id",
+                                                                    "value": "id",
+                                                                    "label": "id",
+                                                                    "required": false,
+                                                                    "type": "number",
+                                                                    "sub": {},
+                                                                    "modelValue": "",
+                                                                    "originType": "2",
+                                                                    "requireKey": 2
+                                                                },
+                                                                {
+                                                                    "name": "name",
+                                                                    "number": "0-0-1",
+                                                                    "key": "name",
+                                                                    "value": "name",
+                                                                    "label": "name",
+                                                                    "required": false,
+                                                                    "type": "string",
+                                                                    "sub": {},
+                                                                    "modelValue": "",
+                                                                    "originType": "2",
+                                                                    "requireKey": 2
+                                                                },
+                                                                {
+                                                                    "name": "children",
+                                                                    "number": "0-0-2",
+                                                                    "key": "children",
+                                                                    "value": "children",
+                                                                    "label": "children",
+                                                                    "required": false,
+                                                                    "type": "array",
+                                                                    "sub": {
+                                                                        "itemType": "object"
+                                                                    },
+                                                                    "children": [
+                                                                        {
+                                                                            "name": "id",
+                                                                            "number": "0-0-2-0",
+                                                                            "key": "id",
+                                                                            "value": "id",
+                                                                            "label": "id",
+                                                                            "required": true,
+                                                                            "type": "number",
+                                                                            "sub": {},
+                                                                            "modelValue": "",
+                                                                            "originType": "2",
+                                                                            "requireKey": 2
+                                                                        },
+                                                                        {
+                                                                            "name": "name",
+                                                                            "number": "0-0-2-1",
+                                                                            "key": "name",
+                                                                            "value": "name",
+                                                                            "label": "name",
+                                                                            "required": true,
+                                                                            "type": "string",
+                                                                            "sub": {},
+                                                                            "modelValue": "",
+                                                                            "originType": "2",
+                                                                            "requireKey": 2
+                                                                        },
+                                                                        {
+                                                                            "name": "children",
+                                                                            "number": "0-0-2-2",
+                                                                            "key": "children",
+                                                                            "value": "children",
+                                                                            "label": "children",
+                                                                            "required": false,
+                                                                            "type": "array",
+                                                                            "sub": {
+                                                                                "itemType": "object"
+                                                                            },
+                                                                            "children": [
+                                                                                {
+                                                                                    "name": "id",
+                                                                                    "number": "0-0-2-2-0",
+                                                                                    "key": "id",
+                                                                                    "value": "id",
+                                                                                    "label": "id",
+                                                                                    "required": true,
+                                                                                    "type": "number",
+                                                                                    "sub": {},
+                                                                                    "modelValue": "",
+                                                                                    "originType": "2",
+                                                                                    "requireKey": 2
+                                                                                },
+                                                                                {
+                                                                                    "name": "name",
+                                                                                    "number": "0-0-2-2-1",
+                                                                                    "key": "name",
+                                                                                    "value": "name",
+                                                                                    "label": "name",
+                                                                                    "required": true,
+                                                                                    "type": "string",
+                                                                                    "sub": {},
+                                                                                    "modelValue": "",
+                                                                                    "originType": "2",
+                                                                                    "requireKey": 2
+                                                                                }
+                                                                            ],
+                                                                            "modelValue": "",
+                                                                            "originType": "2",
+                                                                            "requireKey": 2
+                                                                        }
+                                                                    ],
+                                                                    "modelValue": "",
+                                                                    "originType": "2",
+                                                                    "requireKey": 2
+                                                                }
+                                                            ],
+                                                            "modelValue": ""
+                                                        }
+                                                    ]
+                                                },
+                                                "checkDataKey": {
+                                                    "checkKeyX": [],
+                                                    "checkKeyY": [],
+                                                    "checkKeyZ": []
+                                                },
+                                                "require": [],
+                                                "reqBodyParameter": [],
+                                                "reqQuery": [],
+                                                "reqParams": [],
+                                                "reqHeaders": [],
+                                                "reqBodyForm": [],
+                                                "loopDataBasic": [
+                                                    {
+                                                        "key": [
+                                                            "data",
+                                                            "name"
+                                                        ],
+                                                        "value": "",
+                                                        "name": 1
+                                                    },
+                                                    {
+                                                        "key": [
+                                                            "data",
+                                                            "id"
+                                                        ],
+                                                        "value": "",
+                                                        "name": 3
+                                                    }
+                                                ],
+                                                "globalVariableBasic": [
+                                                    {
+                                                        "key": "",
+                                                        "value": "",
+                                                        "name": ""
+                                                    }
+                                                ],
+                                                "successCode": "",
+                                                "faildCode": ""
+                                            },
+                                            "apiId": 2111,
+                                            "apiDesc": null,
+                                            "index": 0,
+                                            "providerType": "ext",
+                                            "contentType": "",
+                                            "apiWay": 1,
+                                            "apiTime": 0,
+                                            "providerVersion": "v1"
+                                        },
+                                        "apiData": {
+                                            "columns": [
                                                 {
-                                                    "label": "right.attribute.custom",
-                                                    "value": "1"
+                                                    "field": [
+                                                        "id"
+                                                    ],
+                                                    "title": "ID",
+                                                    "showOverflow": true,
+                                                    "sortable": false,
+                                                    "id": 3,
+                                                    "editRender": {
+                                                        "name": "input",
+                                                        "attrs": {
+                                                            "placeholder": ""
+                                                        },
+                                                        "enabled": false
+                                                    },
+                                                    "translatableKey": "app.Page-U5QM7N16481121406450824.editTable_jyk1RP16481122591570958.1648113157238_1",
+                                                    "showColumn": false
                                                 },
                                                 {
-                                                    "label": "right.attribute.auto",
-                                                    "value": "2"
+                                                    "field": [
+                                                        "name"
+                                                    ],
+                                                    "title": "Name",
+                                                    "showOverflow": true,
+                                                    "id": 1,
+                                                    "sortable": false,
+                                                    "editRender": {
+                                                        "name": "input",
+                                                        "attrs": {
+                                                            "placeholder": ""
+                                                        },
+                                                        "enabled": false
+                                                    },
+                                                    "translatableKey": "app.Page-U5QM7N16481121406450824.editTable_jyk1RP16481122591570958.1648113157235_0"
+                                                }
+                                            ],
+                                            "data": [
+                                                {
+                                                    "id": 1,
+                                                    "name": "系统日志",
+                                                    "children": [
+                                                        {
+                                                            "id": 11,
+                                                            "name": "修改账号"
+                                                        },
+                                                        {
+                                                            "id": 12,
+                                                            "name": "个人中心",
+                                                            "children": [
+                                                                {
+                                                                    "id": 121,
+                                                                    "name": "修改密码"
+                                                                },
+                                                                {
+                                                                    "id": 122,
+                                                                    "name": "修改头像"
+                                                                },
+                                                                {
+                                                                    "id": 123,
+                                                                    "name": "修改默认系统"
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
                                                 }
                                             ]
                                         }
                                     },
-                                    "ref": "image_gFUJhG16480152242670196"
+                                    "ref": "editTable_jyk1RP16481122591570958"
                                 }
                             ]
                         }
                     ],
-                    "key": "grid_TXxZlO1642044694523240",
-                    "model": "grid_TXxZlO1642044694523240",
+                    "key": "grid_bEcTwr16481122358850257",
+                    "model": "grid_bEcTwr16481122358850257",
                     "col": {
                         "span": {
                             "label": "right.attribute.columnNumber",
@@ -151,95 +652,494 @@
                             "group": "basic"
                         }
                     },
-                    "ref": "grid_TXxZlO1642044694523240"
+                    "ref": "grid_bEcTwr16481122358850257"
                 },
                 {
-                    "type": "grid2",
+                    "type": "grid",
                     "indraggable": true,
                     "group": "smart-layout",
-                    "label": "left.layout.two",
+                    "label": "left.layout.one",
                     "options": {
                         "gutter": 0
                     },
                     "columns": [
                         {
-                            "span": 6,
-                            "list": []
-                        },
-                        {
-                            "span": 6,
+                            "span": 12,
                             "list": [
                                 {
-                                    "type": "button",
-                                    "group": "smart-comp",
-                                    "label": "left.basic.button",
-                                    "position": "aside",
-                                    "key": "button_qJRJj81642044754451758",
-                                    "model": "button_qJRJj81642044754451758",
-                                    "icon": "button",
+                                    "type": "line",
+                                    "group": "smart-chart",
+                                    "label": "left.imageComponent.line",
+                                    "key": "line_zkWGSN16481132061780385",
+                                    "model": "line_zkWGSN16481132061780385",
+                                    "icon": "line",
                                     "col": {
-                                        "$click": [
-                                            {
-                                                "checkAction": "widget",
-                                                "componentsArr": [
-                                                    "drawer_yhaeFU1642044685690435"
-                                                ],
-                                                "methodsChecked": 1
-                                            }
-                                        ],
-                                        "button-words": {
-                                            "label": "right.attribute.buttonWord",
-                                            "type": "string",
-                                            "value": "按钮",
-                                            "default": "确认",
-                                            "group": "basic",
+                                        "tableHeaderList": {
+                                            "default": "",
+                                            "group": "table-header-column",
+                                            "label": "",
+                                            "type": "tableHeaderStyle",
+                                            "value": [
+                                                {
+                                                    "field": "name",
+                                                    "title": "Name",
+                                                    "showOverflow": true,
+                                                    "id": 1,
+                                                    "sortable": false,
+                                                    "editRender": {
+                                                        "name": "input",
+                                                        "attrs": {
+                                                            "placeholder": ""
+                                                        },
+                                                        "enabled": false
+                                                    }
+                                                },
+                                                {
+                                                    "field": "gender",
+                                                    "title": "Gender",
+                                                    "showOverflow": true,
+                                                    "sortable": false,
+                                                    "id": 2,
+                                                    "editRender": {
+                                                        "name": "input",
+                                                        "attrs": {
+                                                            "placeholder": ""
+                                                        },
+                                                        "enabled": false
+                                                    }
+                                                },
+                                                {
+                                                    "field": "address",
+                                                    "title": "Address",
+                                                    "showOverflow": true,
+                                                    "sortable": false,
+                                                    "id": 3,
+                                                    "editRender": {
+                                                        "name": "input",
+                                                        "attrs": {
+                                                            "placeholder": ""
+                                                        },
+                                                        "enabled": false
+                                                    }
+                                                }
+                                            ],
+                                            "associate": "show-header",
                                             "translatable": true,
-                                            "associate": "button-with-words",
                                             "associateVal": [
                                                 true
+                                            ]
+                                        },
+                                        "apiBasic": {
+                                            "apiTitle": "echarts",
+                                            "apiuri": "/gw-sy/project1/exttest/exttest/echarts",
+                                            "apiMethod": "GET",
+                                            "isI18n": false,
+                                            "apireqBodyParameter": [],
+                                            "resBodykey": {
+                                                "checkKeyX": [
+                                                    "versions",
+                                                    null
+                                                ],
+                                                "checkKeyY": [
+                                                    [
+                                                        "tags",
+                                                        "rc"
+                                                    ],
+                                                    [
+                                                        "tags",
+                                                        "alpha"
+                                                    ],
+                                                    [
+                                                        "tags",
+                                                        "beta"
+                                                    ]
+                                                ],
+                                                "checkKeyZ": []
+                                            },
+                                            "apiCont": {
+                                                "dataKey": {
+                                                    "x": [
+                                                        {
+                                                            "name": "tags",
+                                                            "number": "0-0",
+                                                            "key": "tags",
+                                                            "value": "tags",
+                                                            "label": "tags",
+                                                            "required": false,
+                                                            "type": "object",
+                                                            "children": [
+                                                                {
+                                                                    "name": "latest",
+                                                                    "number": "0-0-0",
+                                                                    "key": "latest",
+                                                                    "value": "latest",
+                                                                    "label": "latest",
+                                                                    "required": false,
+                                                                    "type": "string",
+                                                                    "sub": {},
+                                                                    "modelValue": "",
+                                                                    "originType": "2",
+                                                                    "requireKey": 2
+                                                                },
+                                                                {
+                                                                    "name": "rc",
+                                                                    "number": "0-0-1",
+                                                                    "key": "rc",
+                                                                    "value": "rc",
+                                                                    "label": "rc",
+                                                                    "required": false,
+                                                                    "type": "string",
+                                                                    "sub": {},
+                                                                    "modelValue": "",
+                                                                    "originType": "2",
+                                                                    "requireKey": 2
+                                                                },
+                                                                {
+                                                                    "name": "alpha",
+                                                                    "number": "0-0-2",
+                                                                    "key": "alpha",
+                                                                    "value": "alpha",
+                                                                    "label": "alpha",
+                                                                    "required": false,
+                                                                    "type": "string",
+                                                                    "sub": {},
+                                                                    "modelValue": "",
+                                                                    "originType": "2",
+                                                                    "requireKey": 2
+                                                                },
+                                                                {
+                                                                    "name": "beta",
+                                                                    "number": "0-0-3",
+                                                                    "key": "beta",
+                                                                    "value": "beta",
+                                                                    "label": "beta",
+                                                                    "required": false,
+                                                                    "type": "string",
+                                                                    "sub": {},
+                                                                    "modelValue": "",
+                                                                    "originType": "2",
+                                                                    "requireKey": 2
+                                                                }
+                                                            ],
+                                                            "modelValue": ""
+                                                        },
+                                                        {
+                                                            "name": "versions",
+                                                            "number": "0-1",
+                                                            "key": "versions",
+                                                            "value": "versions",
+                                                            "label": "versions",
+                                                            "required": false,
+                                                            "type": "array",
+                                                            "sub": {
+                                                                "itemType": "string"
+                                                            },
+                                                            "children": [
+                                                                {
+                                                                    "key": "array-2",
+                                                                    "modelValue": "",
+                                                                    "originType": "2",
+                                                                    "requireKey": 2
+                                                                }
+                                                            ],
+                                                            "modelValue": ""
+                                                        }
+                                                    ],
+                                                    "y": [
+                                                        {
+                                                            "name": "tags",
+                                                            "number": "0-0",
+                                                            "key": "tags",
+                                                            "value": "tags",
+                                                            "label": "tags",
+                                                            "required": false,
+                                                            "type": "object",
+                                                            "children": [
+                                                                {
+                                                                    "name": "latest",
+                                                                    "number": "0-0-0",
+                                                                    "key": "latest",
+                                                                    "value": "latest",
+                                                                    "label": "latest",
+                                                                    "required": false,
+                                                                    "type": "string",
+                                                                    "sub": {},
+                                                                    "modelValue": "",
+                                                                    "originType": "2",
+                                                                    "requireKey": 2
+                                                                },
+                                                                {
+                                                                    "name": "rc",
+                                                                    "number": "0-0-1",
+                                                                    "key": "rc",
+                                                                    "value": "rc",
+                                                                    "label": "rc",
+                                                                    "required": false,
+                                                                    "type": "string",
+                                                                    "sub": {},
+                                                                    "modelValue": "",
+                                                                    "originType": "2",
+                                                                    "requireKey": 2
+                                                                },
+                                                                {
+                                                                    "name": "alpha",
+                                                                    "number": "0-0-2",
+                                                                    "key": "alpha",
+                                                                    "value": "alpha",
+                                                                    "label": "alpha",
+                                                                    "required": false,
+                                                                    "type": "string",
+                                                                    "sub": {},
+                                                                    "modelValue": "",
+                                                                    "originType": "2",
+                                                                    "requireKey": 2
+                                                                },
+                                                                {
+                                                                    "name": "beta",
+                                                                    "number": "0-0-3",
+                                                                    "key": "beta",
+                                                                    "value": "beta",
+                                                                    "label": "beta",
+                                                                    "required": false,
+                                                                    "type": "string",
+                                                                    "sub": {},
+                                                                    "modelValue": "",
+                                                                    "originType": "2",
+                                                                    "requireKey": 2
+                                                                }
+                                                            ],
+                                                            "modelValue": ""
+                                                        },
+                                                        {
+                                                            "name": "versions",
+                                                            "number": "0-1",
+                                                            "key": "versions",
+                                                            "value": "versions",
+                                                            "label": "versions",
+                                                            "required": false,
+                                                            "type": "array",
+                                                            "sub": {
+                                                                "itemType": "string"
+                                                            },
+                                                            "children": [
+                                                                {
+                                                                    "key": "array-2",
+                                                                    "modelValue": "",
+                                                                    "originType": "2",
+                                                                    "requireKey": 2
+                                                                }
+                                                            ],
+                                                            "modelValue": ""
+                                                        }
+                                                    ],
+                                                    "z": [
+                                                        {
+                                                            "name": "tags",
+                                                            "number": "0-0",
+                                                            "key": "tags",
+                                                            "value": "tags",
+                                                            "label": "tags",
+                                                            "required": false,
+                                                            "type": "object",
+                                                            "children": [
+                                                                {
+                                                                    "name": "latest",
+                                                                    "number": "0-0-0",
+                                                                    "key": "latest",
+                                                                    "value": "latest",
+                                                                    "label": "latest",
+                                                                    "required": false,
+                                                                    "type": "string",
+                                                                    "sub": {},
+                                                                    "modelValue": "",
+                                                                    "originType": "2",
+                                                                    "requireKey": 2
+                                                                },
+                                                                {
+                                                                    "name": "rc",
+                                                                    "number": "0-0-1",
+                                                                    "key": "rc",
+                                                                    "value": "rc",
+                                                                    "label": "rc",
+                                                                    "required": false,
+                                                                    "type": "string",
+                                                                    "sub": {},
+                                                                    "modelValue": "",
+                                                                    "originType": "2",
+                                                                    "requireKey": 2
+                                                                },
+                                                                {
+                                                                    "name": "alpha",
+                                                                    "number": "0-0-2",
+                                                                    "key": "alpha",
+                                                                    "value": "alpha",
+                                                                    "label": "alpha",
+                                                                    "required": false,
+                                                                    "type": "string",
+                                                                    "sub": {},
+                                                                    "modelValue": "",
+                                                                    "originType": "2",
+                                                                    "requireKey": 2
+                                                                },
+                                                                {
+                                                                    "name": "beta",
+                                                                    "number": "0-0-3",
+                                                                    "key": "beta",
+                                                                    "value": "beta",
+                                                                    "label": "beta",
+                                                                    "required": false,
+                                                                    "type": "string",
+                                                                    "sub": {},
+                                                                    "modelValue": "",
+                                                                    "originType": "2",
+                                                                    "requireKey": 2
+                                                                }
+                                                            ],
+                                                            "modelValue": ""
+                                                        },
+                                                        {
+                                                            "name": "versions",
+                                                            "number": "0-1",
+                                                            "key": "versions",
+                                                            "value": "versions",
+                                                            "label": "versions",
+                                                            "required": false,
+                                                            "type": "array",
+                                                            "sub": {
+                                                                "itemType": "string"
+                                                            },
+                                                            "children": [
+                                                                {
+                                                                    "key": "array-2",
+                                                                    "modelValue": "",
+                                                                    "originType": "2",
+                                                                    "requireKey": 2
+                                                                }
+                                                            ],
+                                                            "modelValue": ""
+                                                        }
+                                                    ]
+                                                },
+                                                "checkDataKey": {
+                                                    "checkKeyX": [
+                                                        "versions",
+                                                        null
+                                                    ],
+                                                    "checkKeyY": [
+                                                        [
+                                                            "tags",
+                                                            "rc"
+                                                        ],
+                                                        [
+                                                            "tags",
+                                                            "alpha"
+                                                        ],
+                                                        [
+                                                            "tags",
+                                                            "beta"
+                                                        ]
+                                                    ],
+                                                    "checkKeyZ": []
+                                                },
+                                                "require": [],
+                                                "reqBodyParameter": [],
+                                                "reqQuery": [],
+                                                "reqParams": [],
+                                                "reqHeaders": [
+                                                    {
+                                                        "key": "Content-Type",
+                                                        "name": "Content-Type",
+                                                        "type": "string",
+                                                        "modelValue": "",
+                                                        "originType": "2"
+                                                    }
+                                                ],
+                                                "reqBodyForm": [],
+                                                "loopDataBasic": [
+                                                    {
+                                                        "key": "",
+                                                        "value": "",
+                                                        "name": ""
+                                                    }
+                                                ],
+                                                "globalVariableBasic": [
+                                                    {
+                                                        "key": "",
+                                                        "value": "",
+                                                        "name": ""
+                                                    }
+                                                ],
+                                                "successCode": "",
+                                                "faildCode": ""
+                                            },
+                                            "apiId": 1213,
+                                            "apiDesc": null,
+                                            "index": 0,
+                                            "providerType": "ext",
+                                            "contentType": "json",
+                                            "apiWay": 1,
+                                            "apiTime": 0,
+                                            "providerVersion": "v1"
+                                        },
+                                        "apiData": {
+                                            "measures": [
+                                                {
+                                                    "name": "rc",
+                                                    "data": [
+                                                        "5.3.1-rc.1"
+                                                    ]
+                                                },
+                                                {
+                                                    "name": "alpha",
+                                                    "data": [
+                                                        "5.0.0-alpha.2"
+                                                    ]
+                                                },
+                                                {
+                                                    "name": "beta",
+                                                    "data": [
+                                                        "5.0.0-beta.2"
+                                                    ]
+                                                }
                                             ],
-                                            "translatableKey": "app.Page-KTUBuV1640569084847544.button_qJRJj81642044754451758.button-words"
+                                            "dimensions": {
+                                                "name": null,
+                                                "data": []
+                                            }
                                         }
                                     },
-                                    "ref": "button_qJRJj81642044754451758"
+                                    "ref": "line_zkWGSN16481132061780385"
                                 }
                             ]
                         }
                     ],
-                    "key": "grid2_7Xf7Tb1641890186164256",
-                    "model": "grid2_7Xf7Tb1641890186164256",
+                    "key": "grid_mFzrzH16481122392940312",
+                    "model": "grid_mFzrzH16481122392940312",
                     "col": {
                         "span": {
                             "label": "right.attribute.columnNumber",
-                            "value": 6,
+                            "value": 12,
                             "type": "grid",
-                            "default": 6,
+                            "default": 12,
                             "options": [
                                 {
                                     "label": "right.attribute.currentColumn",
-                                    "value": 6,
-                                    "valueWeb": 6,
-                                    "valuePad": 6,
-                                    "valuePhone": 12
-                                },
-                                {
-                                    "label": "right.attribute.currentColumn",
-                                    "value": 6,
-                                    "valueWeb": 6,
-                                    "valuePad": 6,
+                                    "value": 12,
+                                    "valueWeb": 12,
+                                    "valuePad": 12,
                                     "valuePhone": 12
                                 }
                             ],
                             "group": "basic"
                         }
                     },
-                    "ref": "grid2_7Xf7Tb1641890186164256"
+                    "ref": "grid_mFzrzH16481122392940312"
                 }
             ]
         },
         "commonPage": {
-            "id": "Page-KTUBuV1640569084847544",
-            "label": "Default Page",
+            "id": "Page-U5QM7N16481121406450824",
+            "label": "Page1",
             "ifCopy": "2",
             "ifFromPage": "2",
             "pageId": "",
@@ -247,24 +1147,24 @@
         },
         "refData": [
             {
-                "value": "grid2_7Xf7Tb1641890186164256",
-                "type": "grid2",
-                "label": "left.layout.two"
-            },
-            {
-                "value": "grid_TXxZlO1642044694523240",
+                "value": "grid_bEcTwr16481122358850257",
                 "type": "grid",
                 "label": "left.layout.one"
             },
             {
-                "value": "button_qJRJj81642044754451758",
-                "type": "button",
-                "label": "left.basic.button"
+                "value": "grid_mFzrzH16481122392940312",
+                "type": "grid",
+                "label": "left.layout.one"
             },
             {
-                "value": "image_gFUJhG16480152242670196",
-                "type": "image",
-                "label": "common.image"
+                "value": "editTable_jyk1RP16481122591570958",
+                "type": "editTable",
+                "label": "left.tableComponment.editTable"
+            },
+            {
+                "value": "line_zkWGSN16481132061780385",
+                "type": "line",
+                "label": "left.imageComponent.line"
             }
         ],
         "type": "1",
@@ -326,9 +1226,9 @@
         "commonComponentList": []
     },
     {
-        "appId": "6781cac7de5c32b8",
-        "appName": "App1",
-        "appVersion": "1.0.2.235",
+        "appId": "6fcb1366449b0ab9",
+        "appName": "lycApp",
+        "appVersion": "1.0.0.8",
         "version": "1.0.0",
         "imagesList": [],
         "components": [
@@ -1834,6 +2734,7 @@
                     "modalHeightAuto",
                     "modalHeight",
                     "modalHideTitle",
+                    "modalHideTitleIcon",
                     "modalContent",
                     "modalLeft",
                     "modalRight",
@@ -2906,204 +3807,204 @@
                             "name": "随机分布数据",
                             "data": [
                                 [
-                                    "155.00",
-                                    "17.00"
+                                    "91.00",
+                                    "72.00"
                                 ],
                                 [
-                                    "177.00",
-                                    "84.00"
-                                ],
-                                [
-                                    "104.00",
-                                    "67.00"
-                                ],
-                                [
-                                    "130.00",
-                                    "89.00"
-                                ],
-                                [
-                                    "38.00",
-                                    "17.00"
-                                ],
-                                [
-                                    "138.00",
-                                    "69.00"
-                                ],
-                                [
-                                    "59.00",
-                                    "80.00"
-                                ],
-                                [
-                                    "128.00",
-                                    "82.00"
-                                ],
-                                [
-                                    "34.00",
-                                    "58.00"
-                                ],
-                                [
-                                    "127.00",
-                                    "79.00"
-                                ],
-                                [
-                                    "187.00",
-                                    "48.00"
-                                ],
-                                [
-                                    "43.00",
-                                    "85.00"
-                                ],
-                                [
-                                    "142.00",
-                                    "33.00"
-                                ],
-                                [
-                                    "200.00",
-                                    "46.00"
-                                ],
-                                [
-                                    "101.00",
-                                    "33.00"
-                                ],
-                                [
-                                    "152.00",
-                                    "40.00"
-                                ],
-                                [
-                                    "65.00",
-                                    "65.00"
-                                ],
-                                [
-                                    "132.00",
-                                    "64.00"
-                                ],
-                                [
-                                    "75.00",
-                                    "85.00"
-                                ],
-                                [
-                                    "141.00",
-                                    "75.00"
-                                ],
-                                [
-                                    "124.00",
-                                    "74.00"
-                                ],
-                                [
-                                    "86.00",
-                                    "71.00"
-                                ],
-                                [
-                                    "80.00",
-                                    "59.00"
-                                ],
-                                [
-                                    "94.00",
-                                    "68.00"
-                                ],
-                                [
-                                    "128.00",
-                                    "28.00"
-                                ],
-                                [
-                                    "161.00",
-                                    "24.00"
-                                ],
-                                [
-                                    "28.00",
-                                    "34.00"
-                                ],
-                                [
-                                    "154.00",
-                                    "41.00"
-                                ],
-                                [
-                                    "151.00",
-                                    "80.00"
-                                ],
-                                [
-                                    "98.00",
-                                    "94.00"
-                                ],
-                                [
-                                    "137.00",
-                                    "98.00"
-                                ],
-                                [
-                                    "70.00",
-                                    "57.00"
-                                ],
-                                [
-                                    "153.00",
-                                    "59.00"
-                                ],
-                                [
-                                    "151.00",
-                                    "16.00"
-                                ],
-                                [
-                                    "199.00",
-                                    "65.00"
-                                ],
-                                [
-                                    "58.00",
-                                    "35.00"
-                                ],
-                                [
-                                    "71.00",
-                                    "50.00"
-                                ],
-                                [
-                                    "30.00",
-                                    "61.00"
-                                ],
-                                [
-                                    "169.00",
-                                    "62.00"
-                                ],
-                                [
-                                    "39.00",
-                                    "46.00"
-                                ],
-                                [
-                                    "148.00",
-                                    "51.00"
-                                ],
-                                [
-                                    "180.00",
-                                    "92.00"
-                                ],
-                                [
-                                    "174.00",
-                                    "48.00"
-                                ],
-                                [
-                                    "68.00",
-                                    "42.00"
-                                ],
-                                [
-                                    "85.00",
-                                    "40.00"
-                                ],
-                                [
-                                    "99.00",
-                                    "64.00"
-                                ],
-                                [
-                                    "51.00",
+                                    "93.00",
                                     "78.00"
                                 ],
                                 [
-                                    "120.00",
-                                    "83.00"
+                                    "34.00",
+                                    "78.00"
                                 ],
                                 [
-                                    "81.00",
-                                    "25.00"
+                                    "143.00",
+                                    "12.00"
+                                ],
+                                [
+                                    "108.00",
+                                    "48.00"
+                                ],
+                                [
+                                    "30.00",
+                                    "47.00"
+                                ],
+                                [
+                                    "152.00",
+                                    "82.00"
+                                ],
+                                [
+                                    "171.00",
+                                    "88.00"
+                                ],
+                                [
+                                    "38.00",
+                                    "53.00"
+                                ],
+                                [
+                                    "57.00",
+                                    "44.00"
+                                ],
+                                [
+                                    "66.00",
+                                    "73.00"
+                                ],
+                                [
+                                    "145.00",
+                                    "63.00"
+                                ],
+                                [
+                                    "181.00",
+                                    "56.00"
+                                ],
+                                [
+                                    "141.00",
+                                    "16.00"
+                                ],
+                                [
+                                    "107.00",
+                                    "10.00"
+                                ],
+                                [
+                                    "43.00",
+                                    "12.00"
+                                ],
+                                [
+                                    "53.00",
+                                    "72.00"
                                 ],
                                 [
                                     "94.00",
-                                    "76.00"
+                                    "41.00"
+                                ],
+                                [
+                                    "177.00",
+                                    "81.00"
+                                ],
+                                [
+                                    "132.00",
+                                    "78.00"
+                                ],
+                                [
+                                    "124.00",
+                                    "98.00"
+                                ],
+                                [
+                                    "71.00",
+                                    "32.00"
+                                ],
+                                [
+                                    "112.00",
+                                    "19.00"
+                                ],
+                                [
+                                    "179.00",
+                                    "100.00"
+                                ],
+                                [
+                                    "143.00",
+                                    "84.00"
+                                ],
+                                [
+                                    "181.00",
+                                    "51.00"
+                                ],
+                                [
+                                    "196.00",
+                                    "83.00"
+                                ],
+                                [
+                                    "61.00",
+                                    "31.00"
+                                ],
+                                [
+                                    "36.00",
+                                    "13.00"
+                                ],
+                                [
+                                    "146.00",
+                                    "55.00"
+                                ],
+                                [
+                                    "59.00",
+                                    "70.00"
+                                ],
+                                [
+                                    "44.00",
+                                    "23.00"
+                                ],
+                                [
+                                    "79.00",
+                                    "28.00"
+                                ],
+                                [
+                                    "177.00",
+                                    "64.00"
+                                ],
+                                [
+                                    "110.00",
+                                    "46.00"
+                                ],
+                                [
+                                    "130.00",
+                                    "98.00"
+                                ],
+                                [
+                                    "134.00",
+                                    "71.00"
+                                ],
+                                [
+                                    "194.00",
+                                    "28.00"
+                                ],
+                                [
+                                    "47.00",
+                                    "52.00"
+                                ],
+                                [
+                                    "98.00",
+                                    "96.00"
+                                ],
+                                [
+                                    "145.00",
+                                    "60.00"
+                                ],
+                                [
+                                    "57.00",
+                                    "69.00"
+                                ],
+                                [
+                                    "21.00",
+                                    "51.00"
+                                ],
+                                [
+                                    "104.00",
+                                    "46.00"
+                                ],
+                                [
+                                    "36.00",
+                                    "70.00"
+                                ],
+                                [
+                                    "159.00",
+                                    "84.00"
+                                ],
+                                [
+                                    "43.00",
+                                    "44.00"
+                                ],
+                                [
+                                    "79.00",
+                                    "79.00"
+                                ],
+                                [
+                                    "31.00",
+                                    "51.00"
+                                ],
+                                [
+                                    "91.00",
+                                    "56.00"
                                 ]
                             ]
                         }
@@ -3198,139 +4099,139 @@
                             "data": [
                                 {
                                     "name": "北京",
-                                    "value": 96
+                                    "value": 229
                                 },
                                 {
                                     "name": "天津",
-                                    "value": 484
+                                    "value": 758
                                 },
                                 {
                                     "name": "上海",
-                                    "value": 123
+                                    "value": 364
                                 },
                                 {
                                     "name": "重庆",
-                                    "value": 266
+                                    "value": 571
                                 },
                                 {
                                     "name": "河北",
-                                    "value": 50
+                                    "value": 354
                                 },
                                 {
                                     "name": "河南",
-                                    "value": 181
+                                    "value": 183
                                 },
                                 {
                                     "name": "云南",
-                                    "value": 565
+                                    "value": 956
                                 },
                                 {
                                     "name": "辽宁",
-                                    "value": 283
+                                    "value": 723
                                 },
                                 {
                                     "name": "黑龙江",
-                                    "value": 867
+                                    "value": 804
                                 },
                                 {
                                     "name": "湖南",
-                                    "value": 186
+                                    "value": 870
                                 },
                                 {
                                     "name": "安徽",
-                                    "value": 573
+                                    "value": 915
                                 },
                                 {
                                     "name": "山东",
-                                    "value": 453
+                                    "value": 842
                                 },
                                 {
                                     "name": "新疆",
-                                    "value": 106
+                                    "value": 201
                                 },
                                 {
                                     "name": "江苏",
-                                    "value": 554
+                                    "value": 288
                                 },
                                 {
                                     "name": "浙江",
-                                    "value": 376
+                                    "value": 962
                                 },
                                 {
                                     "name": "江西",
-                                    "value": 553
+                                    "value": 838
                                 },
                                 {
                                     "name": "湖北",
-                                    "value": 148
+                                    "value": 634
                                 },
                                 {
                                     "name": "广西",
-                                    "value": 393
+                                    "value": 304
                                 },
                                 {
                                     "name": "甘肃",
-                                    "value": 11
+                                    "value": 449
                                 },
                                 {
                                     "name": "山西",
-                                    "value": 903
+                                    "value": 723
                                 },
                                 {
                                     "name": "内蒙古",
-                                    "value": 952
+                                    "value": 859
                                 },
                                 {
                                     "name": "陕西",
-                                    "value": 128
+                                    "value": 202
                                 },
                                 {
                                     "name": "吉林",
-                                    "value": 370
+                                    "value": 271
                                 },
                                 {
                                     "name": "福建",
-                                    "value": 395
+                                    "value": 465
                                 },
                                 {
                                     "name": "贵州",
-                                    "value": 159
+                                    "value": 258
                                 },
                                 {
                                     "name": "广东",
-                                    "value": 566
+                                    "value": 545
                                 },
                                 {
                                     "name": "青海",
-                                    "value": 551
+                                    "value": 927
                                 },
                                 {
                                     "name": "西藏",
-                                    "value": 238
+                                    "value": 245
                                 },
                                 {
                                     "name": "四川",
-                                    "value": 862
+                                    "value": 644
                                 },
                                 {
                                     "name": "宁夏",
-                                    "value": 76
+                                    "value": 794
                                 },
                                 {
                                     "name": "海南",
-                                    "value": 716
+                                    "value": 170
                                 },
                                 {
                                     "name": "台湾",
-                                    "value": 284
+                                    "value": 872
                                 },
                                 {
                                     "name": "香港",
-                                    "value": 211
+                                    "value": 645
                                 },
                                 {
                                     "name": "澳门",
-                                    "value": 248
+                                    "value": 59
                                 }
                             ]
                         },
@@ -3339,79 +4240,79 @@
                             "data": [
                                 {
                                     "name": "北京",
-                                    "value": 633
+                                    "value": 252
                                 },
                                 {
                                     "name": "天津",
-                                    "value": 414
+                                    "value": 904
                                 },
                                 {
                                     "name": "上海",
-                                    "value": 925
+                                    "value": 125
                                 },
                                 {
                                     "name": "重庆",
-                                    "value": 515
+                                    "value": 612
                                 },
                                 {
                                     "name": "河北",
-                                    "value": 47
+                                    "value": 791
                                 },
                                 {
                                     "name": "安徽",
-                                    "value": 394
+                                    "value": 287
                                 },
                                 {
                                     "name": "新疆",
-                                    "value": 220
+                                    "value": 75
                                 },
                                 {
                                     "name": "浙江",
-                                    "value": 217
+                                    "value": 468
                                 },
                                 {
                                     "name": "江西",
-                                    "value": 286
+                                    "value": 947
                                 },
                                 {
                                     "name": "山西",
-                                    "value": 851
+                                    "value": 123
                                 },
                                 {
                                     "name": "内蒙古",
-                                    "value": 586
+                                    "value": 925
                                 },
                                 {
                                     "name": "吉林",
-                                    "value": 997
+                                    "value": 471
                                 },
                                 {
                                     "name": "福建",
-                                    "value": 372
+                                    "value": 588
                                 },
                                 {
                                     "name": "广东",
-                                    "value": 343
+                                    "value": 26
                                 },
                                 {
                                     "name": "西藏",
-                                    "value": 599
+                                    "value": 65
                                 },
                                 {
                                     "name": "四川",
-                                    "value": 311
+                                    "value": 723
                                 },
                                 {
                                     "name": "宁夏",
-                                    "value": 106
+                                    "value": 329
                                 },
                                 {
                                     "name": "香港",
-                                    "value": 294
+                                    "value": 961
                                 },
                                 {
                                     "name": "澳门",
-                                    "value": 672
+                                    "value": 63
                                 }
                             ]
                         }
@@ -26226,8 +27127,9 @@
                         {
                             "field": "name",
                             "title": "Name",
-                            "headerClassName": "",
+                            "showOverflow": true,
                             "id": 1,
+                            "sortable": false,
                             "editRender": {
                                 "name": "input",
                                 "attrs": {
@@ -26239,7 +27141,8 @@
                         {
                             "field": "gender",
                             "title": "Gender",
-                            "showHeaderOverflow": true,
+                            "showOverflow": true,
+                            "sortable": false,
                             "id": 2,
                             "editRender": {
                                 "name": "input",
@@ -26253,6 +27156,7 @@
                             "field": "address",
                             "title": "Address",
                             "showOverflow": true,
+                            "sortable": false,
                             "id": 3,
                             "editRender": {
                                 "name": "input",
@@ -26271,7 +27175,8 @@
                             "role": "Develop",
                             "gender": "Female",
                             "age": 0,
-                            "address": "Shenzhen"
+                            "address": "Shenzhen",
+                            "_X_ROW_KEY": "row_2"
                         },
                         {
                             "id": 10002,
@@ -26286,13 +27191,15 @@
                                     "id": 24300,
                                     "name": "张婷婷",
                                     "gender": "Female",
-                                    "address": "Guangzhou"
+                                    "address": "Guangzhou",
+                                    "_X_ROW_KEY": "row_4"
                                 },
                                 {
                                     "id": 20045,
                                     "name": "张芳",
                                     "gender": "Female",
-                                    "address": "Guangzhou"
+                                    "address": "Guangzhou",
+                                    "_X_ROW_KEY": "row_5"
                                 },
                                 {
                                     "id": 10053,
@@ -26304,23 +27211,28 @@
                                             "id": 24330,
                                             "name": "王阳",
                                             "gender": "Male",
-                                            "address": "Shenzhen"
+                                            "address": "Shenzhen",
+                                            "_X_ROW_KEY": "row_7"
                                         },
                                         {
                                             "id": 21011,
                                             "name": "文佳佳",
                                             "gender": "Female",
-                                            "address": "Shenzhen"
+                                            "address": "Shenzhen",
+                                            "_X_ROW_KEY": "row_8"
                                         },
                                         {
                                             "id": 22200,
                                             "name": "萧蔷",
                                             "gender": "Female",
-                                            "address": "Shenzhen"
+                                            "address": "Shenzhen",
+                                            "_X_ROW_KEY": "row_9"
                                         }
-                                    ]
+                                    ],
+                                    "_X_ROW_KEY": "row_6"
                                 }
-                            ]
+                            ],
+                            "_X_ROW_KEY": "row_3"
                         },
                         {
                             "id": 10003,
@@ -26329,7 +27241,8 @@
                             "role": "PM",
                             "gender": "Male",
                             "age": 100,
-                            "address": "Shanghai"
+                            "address": "Shanghai",
+                            "_X_ROW_KEY": "row_10"
                         },
                         {
                             "id": 10004,
@@ -26338,7 +27251,8 @@
                             "role": "Designer",
                             "gender": "Female",
                             "age": 70,
-                            "address": "Shenzhen"
+                            "address": "Shenzhen",
+                            "_X_ROW_KEY": "row_11"
                         },
                         {
                             "id": 10005,
@@ -26347,7 +27261,8 @@
                             "role": "Develop",
                             "gender": "Female",
                             "age": 10,
-                            "address": "Shanghai"
+                            "address": "Shanghai",
+                            "_X_ROW_KEY": "row_12"
                         },
                         {
                             "id": 10006,
@@ -26356,7 +27271,8 @@
                             "role": "Designer",
                             "gender": "Female",
                             "age": 90,
-                            "address": "Shenzhen"
+                            "address": "Shenzhen",
+                            "_X_ROW_KEY": "row_13"
                         },
                         {
                             "id": 10007,
@@ -26365,7 +27281,8 @@
                             "role": "Test",
                             "gender": "Male",
                             "age": 5,
-                            "address": "Shenzhen"
+                            "address": "Shenzhen",
+                            "_X_ROW_KEY": "row_14"
                         },
                         {
                             "id": 10008,
@@ -26374,7 +27291,8 @@
                             "role": "Develop",
                             "gender": "Male",
                             "age": 80,
-                            "address": "Shenzhen"
+                            "address": "Shenzhen",
+                            "_X_ROW_KEY": "row_15"
                         },
                         {
                             "id": 10008,
@@ -26383,7 +27301,8 @@
                             "role": "Develop",
                             "gender": "Male",
                             "age": 80,
-                            "address": "Shenzhen"
+                            "address": "Shenzhen",
+                            "_X_ROW_KEY": "row_16"
                         },
                         {
                             "id": 10009,
@@ -26392,7 +27311,8 @@
                             "role": "Develop",
                             "gender": "Male",
                             "age": 80,
-                            "address": "Shenzhen"
+                            "address": "Shenzhen",
+                            "_X_ROW_KEY": "row_17"
                         },
                         {
                             "id": 10018,
@@ -27916,10 +28836,8 @@
                     "labelSize",
                     "labelWeight",
                     "labelColor",
-                    "font-size",
                     "fontWeight",
                     "bgcolor",
-                    "fontcolor",
                     "opacity",
                     "minValue",
                     "maxValue"
@@ -27951,10 +28869,8 @@
                     "labelSize",
                     "labelWeight",
                     "labelColor",
-                    "font-size",
                     "fontWeight",
                     "bgcolor",
-                    "fontcolor",
                     "opacity",
                     "readonly",
                     "disabled",
@@ -27986,10 +28902,8 @@
                     "labelSize",
                     "labelWeight",
                     "labelColor",
-                    "font-size",
                     "fontWeight",
                     "bgcolor",
-                    "fontcolor",
                     "opacity"
                 ],
                 "apiItemize": ""
@@ -28028,76 +28942,6 @@
                     "opacity"
                 ],
                 "apiItemize": "singleValue"
-            },
-            {
-                "type": "tableCount",
-                "value": "",
-                "events": [
-                    "change"
-                ],
-                "attrs": [
-                    "alias",
-                    "comp-align",
-                    "margin-padding",
-                    "border-radius",
-                    "border-style",
-                    "border-width",
-                    "border-color",
-                    "with-title",
-                    "label",
-                    "position",
-                    "textAlign",
-                    "alignItems",
-                    "suffixRight",
-                    "labelwidth",
-                    "labelSize",
-                    "labelWeight",
-                    "labelColor",
-                    "font-size",
-                    "fontWeight",
-                    "bgcolor",
-                    "fontcolor",
-                    "font-family",
-                    "line-height",
-                    "opacity",
-                    "readonly",
-                    "disabled",
-                    "minValue",
-                    "maxValue"
-                ],
-                "apiItemize": "tableCount"
-            },
-            {
-                "type": "tabsCount",
-                "value": "",
-                "events": [
-                    "change"
-                ],
-                "attrs": [
-                    "alias",
-                    "comp-align",
-                    "margin-padding",
-                    "border-radius",
-                    "border-style",
-                    "border-width",
-                    "border-color",
-                    "with-title",
-                    "label",
-                    "position",
-                    "textAlign",
-                    "alignItems",
-                    "suffixRight",
-                    "labelwidth",
-                    "labelSize",
-                    "labelWeight",
-                    "labelColor",
-                    "font-size",
-                    "fontWeight",
-                    "bgcolor",
-                    "fontcolor",
-                    "opacity"
-                ],
-                "apiItemize": "initial"
             }
         ],
         "uiVersion": "1-0-0",
@@ -28121,11 +28965,7 @@
                 "native": "中文"
             },
             "appSettingCode": "authenticationSettings",
-            "appAuthBasic": {
-                "type": "1",
-                "way": "1",
-                "isPower": "1"
-            }
+            "appAuthBasic": ""
         }
     }
 ]

@@ -27,7 +27,7 @@ export default class Grid extends NodeBase {
         // 组织grid组件结构
         result = 
  `
-${$printLevelSpace(level)}<v-container ref="${this.key}" class="grid">
+${$printLevelSpace(level)}<v-container ref="${this.key}" class="tdp-generator-grid">
 ${$printLevelSpace(level + 1)}<v-row no-gutters>${this.loopCol(level + 2)}
 ${$printLevelSpace(level + 1)}</v-row>
 ${$printLevelSpace(level)}</v-container>`;

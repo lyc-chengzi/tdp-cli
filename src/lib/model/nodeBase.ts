@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import { $getComponentNameByType, $printLevelSpace, $formatProps } from '../utils.js';
+import { $getComponentNameByType, $printLevelSpace, $formatProps, $formatEvents } from '../utils.js';
 import Page from './page.js';
 
 const eventNames = ['$click'];
@@ -36,15 +36,25 @@ export default class NodeBase {
         let result = `
 ${s1}<${itemTag}
 ${s2}ref="${this.key}"
-${s2}class="${classNames(this.json.type)}"
+${s2}class="tdp-generator-${classNames(this.json.type)}"
 ${s2}:col="${this.key}_data"
 ${s2}:edit="false"
-${s2}:model="{}"
-${s2}:options="undefined"`;
+${s2}:model="{}"`;
+        if(Object.prototype.hasOwnProperty.call(this.json.col, 'select-options')){
+            result += `
+${s2}:options="${this.key}_data.attrs['select-options']"`;
+        } else {
+            result += `
+${s2}:options="[]"`;
+        }
         // 如果有接口请求，拼写接口请求
         if (this.hasApi) {
             result += `
 ${s2}:apiBasic="${this.key}_apiBasic"
+${s2}:apiData="[]"`;
+        } else {
+            result += `
+${s2}:apiBasic="{}"
 ${s2}:apiData="[]"`;
         }
 
@@ -67,7 +77,7 @@ ${s1}</${itemTag}>`;
                     type: '${this.json.type}',${$formatProps(this.json.col)}
                 },
                 formItem: {label: '${this.json.label}'},
-                on: {},
+                on: ${JSON.stringify($formatEvents(this.json.col), null, 4)},
                 prop: '${this.key}',
                 ref: '${this.key}',
             },`;

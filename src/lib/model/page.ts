@@ -78,15 +78,11 @@ export default class ModelPage {
         // 判断是否展示头部
         if (this.hasHeaderData) {
             result += `
-            <div
-                class="Bheader header"
-                ref="header"
-                :style="{
-                    background: currentContainer.header.background,
-                    ...deviceWidth,
-                }"
-            >
-            </div>`;
+        <div
+            class="Bheader header"
+            ref="header"
+        >
+        </div>`;
         }
 
         result += `
@@ -205,6 +201,16 @@ export default ${this.pageName}_script;
     // 写page的method
     toMethods() {
         let result = '';
+        this.headerNodes.forEach(c => {
+            if (c.node && c.node.toMethods) {
+                result += c.node.toMethods(this);
+            }
+        });
+        this.asideNodes.forEach(c => {
+            if (c.node && c.node.toMethods) {
+                result += c.node.toMethods(this);
+            }
+        });
         this.smartNodes.forEach(c => {
             if (c.node && c.node.toMethods) {
                 result += c.node.toMethods(this);

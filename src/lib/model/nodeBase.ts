@@ -62,11 +62,11 @@ ${s1}</${itemTag}>`;
         result += `
             ${this.key}_data: {
                 type: '${this.json.type}',
-                apiItemize: undefined,
+                apiItemize: '${this.json.apiItemize}',
                 attrs: {
                     type: '${this.json.type}',${$formatProps(this.json.col)}
                 },
-                formItem: {},
+                formItem: {label: '${this.json.label}'},
                 on: {},
                 prop: '${this.key}',
                 ref: '${this.key}',

@@ -98,7 +98,7 @@ async function writeI18nAsync(projectPath: string) {
 
         let promiseList = [];
         for(let i = 0; i < localeCount; i++) {
-            const l = locale[i];             
+            const l = locale[i];
             // 写language.json配置文件
             const promise = fsPromise.writeFile(
                     path.join(i18nPath, `${l.name}.json`),

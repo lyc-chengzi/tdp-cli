@@ -1,6 +1,6 @@
 const fs = require('fs');
 const ModelPage = require('../lib/model/page.js');
-const data1 = require('../data/lyc_test1.json');
+const data1 = require('../data/lyc_test.json');
 
 function test(){
     const page = data1[1];

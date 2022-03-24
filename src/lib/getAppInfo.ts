@@ -7,7 +7,7 @@ import { IAppInfo } from "../interface/index.js";
 import { $error, $success } from './utils.js';
 
 // const require = createRequire(import.meta.url);
-const data1 = require('../data/lyc_test1.json');
+const data1 = require('../data/lyc_test.json');
 
 // @ts-ignore
 // const inquirer: Inquirer.Inquirer = Inquirer.default;

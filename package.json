@@ -1,6 +1,6 @@
 {
   "name": "tdp-cli",
-  "version": "0.3.4",
+  "version": "0.3.5",
   "description": "cli tools for tdp",
   "homepage": "https://github.com/lyc-chengzi/tdp-cli",
   "repository": {
@@ -16,7 +16,7 @@
   "files": [
     "bin",
     "lib",
-    "data"
+    "data/lyc_test.json"
   ],
   "scripts": {
     "test": "yarn jest --roots test/",

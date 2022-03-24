@@ -2,7 +2,6 @@ import { program } from "commander";
 import cloneProject from "../lib/download.js";
 import createPages from "../lib/createPages.js";
 const path = require('path');
-const data = require('../data/lyc_test1.json');
 const del = require('del');
 import fs = require('fs/promises');
 import chalk  = require('chalk');

@@ -74,8 +74,13 @@ export function $formatProps(props: any) {
             if (!isValidPropsKey(key)) continue;
             const prop = props[key];
             if (prop.type === "string" || typeof prop.value === 'string') {
-                result += `
+                if (prop.translatableKey) {
+                    result += `
+                    '${key}': '${prop.translatableKey}',`;
+                }else {
+                    result += `
                     '${key}': '${prop.value.replace(/\n/g, '\\n')}',`;
+                }
             }
             else if (prop.type === "boolean") {
                 result += `

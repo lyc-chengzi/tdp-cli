@@ -67,10 +67,11 @@ ${s1}</${itemTag}>`;
     // 向data中写入代码
     toData(pageInstance: Page): string {
         let result = '';
+        const apiItemize = this.json.apiItemize ? `'${this.json.apiItemize}'` : undefined; 
         result += `
             ${this.key}_data: {
                 type: '${this.json.type}',
-                apiItemize: '${this.json.apiItemize}',
+                apiItemize: ${apiItemize},
                 attrs: {
                     type: '${this.json.type}',${$formatProps(this.json.col)}
                 },

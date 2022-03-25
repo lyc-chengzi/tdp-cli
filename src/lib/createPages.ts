@@ -19,6 +19,7 @@ export default async function createPages(appInfo: IAppInfo, projectPath: string
     APPINFO = appInfo;
     await writeI18nAsync(projectPath);
     await configI18nAsync(projectPath);
+    await wirteStartupJson(projectPath);
     writePage(projectPath, () => {
         writeRouter(projectPath);
     });
@@ -194,7 +195,7 @@ function writeRouter(projectPath: string){
                 pageRouters +=
 `
     {
-        path: '/views/${pageName}',
+        path: '/views/${p.id}', // ${pageName}
         name: '${p.id}',
         component: () => import(/* webpackChunkName: "${p.id}" */ '../views/${pageName}'),
     },
@@ -212,6 +213,20 @@ function writeRouter(projectPath: string){
             });
         }
     });
+}
+
+// 写启动app json文件
+async function wirteStartupJson(projectPath: string) {
+    const json = getPages().map(page => {
+        return {
+            id: page.id,
+            smartData: page.smartData,
+            commonPage: page.commonPage,
+            type: page.type,
+        };
+    });
+    await fsPromise.writeFile(path.join(projectPath, 'src/startup.json'), JSON.stringify(json), {encoding: 'utf-8'});
+    console.log($success('写入startup.json成功！'));
 }
 
 // 获取所有页面配置

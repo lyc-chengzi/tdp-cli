@@ -50,12 +50,10 @@ ${s2}:options="[]"`;
         // 如果有接口请求，拼写接口请求
         if (this.hasApi) {
             result += `
-${s2}:apiBasic="${this.key}_apiBasic"
-${s2}:apiData="[]"`;
+${s2}:apiBasic="${this.key}_apiBasic"`;
         } else {
             result += `
-${s2}:apiBasic="{}"
-${s2}:apiData="[]"`;
+${s2}:apiBasic="{}"`;
         }
 
         // 拼写组件结束标签

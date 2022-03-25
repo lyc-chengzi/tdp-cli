@@ -2,6 +2,38 @@
     {
         "appLocaleResource": [
             {
+                "name": "en",
+                "app": {
+                    "Page-Igz6eu16481756305570751": {
+                        "input_LA2kU316481756888810029": {
+                            "label": "name"
+                        },
+                        "radio_9d7lcP16481757635110766": {
+                            "label": "gender",
+                            "1648175800297_0": "man",
+                            "1648175819783_1": "woman"
+                        },
+                        "select_iGKd2m16481758351020374": {
+                            "label": "profession"
+                        },
+                        "button_tu454M16481758934680521": {
+                            "button-words": "submit"
+                        },
+                        "textarea_QL8X5Z16481759436380525": {
+                            "label": "address"
+                        },
+                        "button_iRhyID16481796261520535": {
+                            "button-words": "back"
+                        }
+                    },
+                    "Page-U5QM7N16481121406450824": {
+                        "button_bQXlIk16481795810720909": {
+                            "button-words": "toPage2"
+                        }
+                    }
+                }
+            },
+            {
                 "name": "zh",
                 "app": {
                     "Page-U5QM7N16481121406450824": {
@@ -9,6 +41,39 @@
                             "label": "",
                             "1648113157235_0": "Name",
                             "1648113157238_1": "ID"
+                        },
+                        "button_bQXlIk16481795810720909": {
+                            "button-words": "填写申请表"
+                        }
+                    },
+                    "Page-Igz6eu16481756305570751": {
+                        "title_DsT5e316481756522900143": {
+                            "content": "申请表"
+                        },
+                        "input_LA2kU316481756888810029": {
+                            "label": "姓名"
+                        },
+                        "radio_9d7lcP16481757635110766": {
+                            "label": "性别",
+                            "1648175800297_0": "男",
+                            "1648175819783_1": "女"
+                        },
+                        "select_iGKd2m16481758351020374": {
+                            "label": "职业",
+                            "1648175879219_0": "前端",
+                            "1648175879221_1": "后端"
+                        },
+                        "button_tu454M16481758934680521": {
+                            "button-words": "提交"
+                        },
+                        "Ratings_LlnwLl16481759288790235": {
+                            "label": "评价"
+                        },
+                        "textarea_QL8X5Z16481759436380525": {
+                            "label": "家庭住址"
+                        },
+                        "button_iRhyID16481796261520535": {
+                            "button-words": "返回"
                         }
                     }
                 }
@@ -31,6 +96,62 @@
                         {
                             "span": 12,
                             "list": [
+                                {
+                                    "type": "button",
+                                    "group": "smart-comp",
+                                    "label": "left.basic.button",
+                                    "position": "aside",
+                                    "key": "button_bQXlIk16481795810720909",
+                                    "model": "button_bQXlIk16481795810720909",
+                                    "icon": "button",
+                                    "col": {
+                                        "comp-align": {
+                                            "label": "right.attribute.contentalign",
+                                            "type": "iconSelect",
+                                            "value": "center",
+                                            "default": "",
+                                            "group": "compalign",
+                                            "options": [
+                                                {
+                                                    "label": "right.attribute.leftAlign",
+                                                    "value": "flex-start",
+                                                    "icon": "left2"
+                                                },
+                                                {
+                                                    "label": "right.attribute.centerAlign",
+                                                    "value": "center",
+                                                    "icon": "Center2"
+                                                },
+                                                {
+                                                    "label": "right.attribute.rightAlign",
+                                                    "value": "flex-end",
+                                                    "icon": "right2"
+                                                }
+                                            ]
+                                        },
+                                        "button-words": {
+                                            "label": "right.attribute.buttonWord",
+                                            "type": "string",
+                                            "value": "填写申请表",
+                                            "default": "确认",
+                                            "group": "basic",
+                                            "translatable": true,
+                                            "associate": "button-with-words",
+                                            "associateVal": [
+                                                true
+                                            ],
+                                            "translatableKey": "app.Page-U5QM7N16481121406450824.button_bQXlIk16481795810720909.button-words"
+                                        },
+                                        "$click": [
+                                            {
+                                                "checkAction": "router",
+                                                "routerPage": "Page-Igz6eu16481756305570751",
+                                                "note": ""
+                                            }
+                                        ]
+                                    },
+                                    "ref": "button_bQXlIk16481795810720909"
+                                },
                                 {
                                     "type": "editTable",
                                     "group": "smart-chart",
@@ -1165,6 +1286,683 @@
                 "value": "line_zkWGSN16481132061780385",
                 "type": "line",
                 "label": "left.imageComponent.line"
+            },
+            {
+                "value": "button_bQXlIk16481795810720909",
+                "type": "button",
+                "label": "left.basic.button"
+            }
+        ],
+        "type": "1",
+        "layoutData": [
+            {
+                "type": 1,
+                "container": {
+                    "main": {}
+                }
+            },
+            {
+                "type": 2,
+                "container": {
+                    "header": {
+                        "height": 60,
+                        "background": "#8F9EAB"
+                    },
+                    "main": {}
+                }
+            },
+            {
+                "type": 3,
+                "container": {
+                    "aside": {
+                        "width": 100,
+                        "background": "#A3B4C5"
+                    },
+                    "main": {}
+                }
+            },
+            {
+                "type": 4,
+                "container": {
+                    "header": {
+                        "height": 60,
+                        "background": "#8F9EAB"
+                    },
+                    "aside": {
+                        "width": 100,
+                        "background": "#A3B4C5"
+                    },
+                    "main": {}
+                }
+            }
+        ],
+        "headerData": {
+            "list": []
+        },
+        "asideData": {
+            "list": []
+        },
+        "scriptData": {
+            "scriptFiles": [],
+            "scriptContents": []
+        },
+        "interactiveData": {}
+    },
+    {
+        "id": "Page-Igz6eu16481756305570751",
+        "smartData": {
+            "list": [
+                {
+                    "type": "grid",
+                    "indraggable": true,
+                    "group": "smart-layout",
+                    "label": "left.layout.one",
+                    "options": {
+                        "gutter": 0
+                    },
+                    "columns": [
+                        {
+                            "span": 12,
+                            "list": [
+                                {
+                                    "type": "title",
+                                    "group": "smart-comp",
+                                    "label": "common.title",
+                                    "key": "title_DsT5e316481756522900143",
+                                    "model": "title_DsT5e316481756522900143",
+                                    "icon": "title",
+                                    "col": {
+                                        "content": {
+                                            "label": "right.attribute.content",
+                                            "type": "paragraph",
+                                            "value": "申请表",
+                                            "default": "",
+                                            "group": "basic",
+                                            "translatable": true,
+                                            "translatableKey": "app.Page-Igz6eu16481756305570751.title_DsT5e316481756522900143.content"
+                                        },
+                                        "comp-align": {
+                                            "label": "right.attribute.contentalign",
+                                            "type": "iconSelect",
+                                            "value": "center",
+                                            "default": "",
+                                            "group": "compalign",
+                                            "options": [
+                                                {
+                                                    "label": "right.attribute.leftAlign",
+                                                    "value": "flex-start",
+                                                    "icon": "left2"
+                                                },
+                                                {
+                                                    "label": "right.attribute.centerAlign",
+                                                    "value": "center",
+                                                    "icon": "Center2"
+                                                },
+                                                {
+                                                    "label": "right.attribute.rightAlign",
+                                                    "value": "flex-end",
+                                                    "icon": "right2"
+                                                }
+                                            ]
+                                        }
+                                    },
+                                    "ref": "title_DsT5e316481756522900143"
+                                }
+                            ]
+                        }
+                    ],
+                    "key": "grid_gg912o16481756375510942",
+                    "model": "grid_gg912o16481756375510942",
+                    "col": {
+                        "span": {
+                            "label": "right.attribute.columnNumber",
+                            "value": 12,
+                            "type": "grid",
+                            "default": 12,
+                            "options": [
+                                {
+                                    "label": "right.attribute.currentColumn",
+                                    "value": 12,
+                                    "valueWeb": 12,
+                                    "valuePad": 12,
+                                    "valuePhone": 12
+                                }
+                            ],
+                            "group": "basic"
+                        }
+                    },
+                    "ref": "grid_gg912o16481756375510942"
+                },
+                {
+                    "type": "grid2",
+                    "indraggable": true,
+                    "group": "smart-layout",
+                    "label": "left.layout.two",
+                    "options": {
+                        "gutter": 0
+                    },
+                    "columns": [
+                        {
+                            "span": 6,
+                            "list": [
+                                {
+                                    "type": "input",
+                                    "group": "smart-comp",
+                                    "label": "left.basic.single",
+                                    "key": "input_LA2kU316481756888810029",
+                                    "model": "input_LA2kU316481756888810029",
+                                    "icon": "input",
+                                    "col": {
+                                        "label": {
+                                            "label": "right.attribute.labelName",
+                                            "type": "string",
+                                            "value": "姓名",
+                                            "default": "",
+                                            "group": "basic",
+                                            "translatable": true,
+                                            "associate": "with-title",
+                                            "associateVal": [
+                                                true
+                                            ],
+                                            "translatableKey": "app.Page-Igz6eu16481756305570751.input_LA2kU316481756888810029.label"
+                                        }
+                                    },
+                                    "ref": "input_LA2kU316481756888810029"
+                                }
+                            ]
+                        },
+                        {
+                            "span": 6,
+                            "list": [
+                                {
+                                    "type": "radio",
+                                    "group": "smart-comp",
+                                    "label": "left.basic.radio",
+                                    "key": "radio_9d7lcP16481757635110766",
+                                    "model": "radio_9d7lcP16481757635110766",
+                                    "options": [
+                                        {
+                                            "value": "1",
+                                            "label": "Option 1"
+                                        },
+                                        {
+                                            "value": "2",
+                                            "label": "Option 2"
+                                        }
+                                    ],
+                                    "icon": "radio",
+                                    "col": {
+                                        "label": {
+                                            "label": "right.attribute.labelName",
+                                            "type": "string",
+                                            "value": "性别",
+                                            "default": "",
+                                            "group": "basic",
+                                            "translatable": true,
+                                            "associate": "with-title",
+                                            "associateVal": [
+                                                true
+                                            ],
+                                            "translatableKey": "app.Page-Igz6eu16481756305570751.radio_9d7lcP16481757635110766.label"
+                                        },
+                                        "select-options": {
+                                            "label": "选项配置",
+                                            "type": "select-option",
+                                            "value": [
+                                                {
+                                                    "value": "1",
+                                                    "label": "男",
+                                                    "translatableKey": "app.Page-Igz6eu16481756305570751.radio_9d7lcP16481757635110766.1648175800297_0"
+                                                },
+                                                {
+                                                    "value": "2",
+                                                    "label": "女",
+                                                    "translatableKey": "app.Page-Igz6eu16481756305570751.radio_9d7lcP16481757635110766.1648175819783_1"
+                                                }
+                                            ],
+                                            "default": [],
+                                            "group": "basic",
+                                            "translatable": true
+                                        }
+                                    },
+                                    "ref": "radio_9d7lcP16481757635110766"
+                                }
+                            ]
+                        }
+                    ],
+                    "key": "grid2_2RvNSA16481756390860598",
+                    "model": "grid2_2RvNSA16481756390860598",
+                    "col": {
+                        "span": {
+                            "label": "right.attribute.columnNumber",
+                            "value": 6,
+                            "type": "grid",
+                            "default": 6,
+                            "options": [
+                                {
+                                    "label": "right.attribute.currentColumn",
+                                    "value": 6,
+                                    "valueWeb": 6,
+                                    "valuePad": 6,
+                                    "valuePhone": 6
+                                },
+                                {
+                                    "label": "right.attribute.currentColumn",
+                                    "value": 6,
+                                    "valueWeb": 6,
+                                    "valuePad": 6,
+                                    "valuePhone": 6
+                                }
+                            ],
+                            "group": "basic"
+                        }
+                    },
+                    "ref": "grid2_2RvNSA16481756390860598"
+                },
+                {
+                    "type": "grid2",
+                    "indraggable": true,
+                    "group": "smart-layout",
+                    "label": "left.layout.two",
+                    "options": {
+                        "gutter": 0
+                    },
+                    "columns": [
+                        {
+                            "span": 6,
+                            "list": [
+                                {
+                                    "type": "select",
+                                    "group": "smart-comp",
+                                    "label": "left.basic.select",
+                                    "key": "select_iGKd2m16481758351020374",
+                                    "model": "select_iGKd2m16481758351020374",
+                                    "options": [
+                                        {
+                                            "value": "1",
+                                            "label": "Option 1"
+                                        },
+                                        {
+                                            "value": "2",
+                                            "label": "Option 2"
+                                        }
+                                    ],
+                                    "icon": "select",
+                                    "col": {
+                                        "label": {
+                                            "label": "right.attribute.labelName",
+                                            "type": "string",
+                                            "value": "职业",
+                                            "default": "",
+                                            "group": "basic",
+                                            "translatable": true,
+                                            "associate": "with-title",
+                                            "associateVal": [
+                                                true
+                                            ],
+                                            "translatableKey": "app.Page-Igz6eu16481756305570751.select_iGKd2m16481758351020374.label"
+                                        },
+                                        "select-options": {
+                                            "label": "选项配置",
+                                            "type": "select-option",
+                                            "value": [
+                                                {
+                                                    "value": "1",
+                                                    "label": "前端",
+                                                    "translatableKey": "app.Page-Igz6eu16481756305570751.select_iGKd2m16481758351020374.1648175879219_0"
+                                                },
+                                                {
+                                                    "value": "2",
+                                                    "label": "后端",
+                                                    "translatableKey": "app.Page-Igz6eu16481756305570751.select_iGKd2m16481758351020374.1648175879221_1"
+                                                }
+                                            ],
+                                            "default": [],
+                                            "group": "basic",
+                                            "translatable": true
+                                        }
+                                    },
+                                    "ref": "select_iGKd2m16481758351020374"
+                                }
+                            ]
+                        },
+                        {
+                            "span": 6,
+                            "list": [
+                                {
+                                    "type": "Ratings",
+                                    "group": "smart-extend",
+                                    "label": "left.extend.rate",
+                                    "key": "Ratings_LlnwLl16481759288790235",
+                                    "model": "Ratings_LlnwLl16481759288790235",
+                                    "icon": "Ratings",
+                                    "col": {
+                                        "label": {
+                                            "label": "right.attribute.labelName",
+                                            "type": "string",
+                                            "value": "评价",
+                                            "default": "",
+                                            "group": "basic",
+                                            "translatable": true,
+                                            "associate": "with-title",
+                                            "associateVal": [
+                                                true
+                                            ],
+                                            "translatableKey": "app.Page-Igz6eu16481756305570751.Ratings_LlnwLl16481759288790235.label"
+                                        }
+                                    },
+                                    "ref": "Ratings_LlnwLl16481759288790235"
+                                }
+                            ]
+                        }
+                    ],
+                    "key": "grid2_i8Dpyf16481756414250177",
+                    "model": "grid2_i8Dpyf16481756414250177",
+                    "col": {
+                        "span": {
+                            "label": "right.attribute.columnNumber",
+                            "value": 6,
+                            "type": "grid",
+                            "default": 6,
+                            "options": [
+                                {
+                                    "label": "right.attribute.currentColumn",
+                                    "value": 6,
+                                    "valueWeb": 6,
+                                    "valuePad": 6,
+                                    "valuePhone": 12
+                                },
+                                {
+                                    "label": "right.attribute.currentColumn",
+                                    "value": 6,
+                                    "valueWeb": 6,
+                                    "valuePad": 6,
+                                    "valuePhone": 12
+                                }
+                            ],
+                            "group": "basic"
+                        }
+                    },
+                    "ref": "grid2_i8Dpyf16481756414250177"
+                },
+                {
+                    "type": "grid",
+                    "indraggable": true,
+                    "group": "smart-layout",
+                    "label": "left.layout.one",
+                    "options": {
+                        "gutter": 0
+                    },
+                    "columns": [
+                        {
+                            "span": 12,
+                            "list": [
+                                {
+                                    "type": "textarea",
+                                    "group": "smart-comp",
+                                    "label": "left.basic.double",
+                                    "key": "textarea_QL8X5Z16481759436380525",
+                                    "model": "textarea_QL8X5Z16481759436380525",
+                                    "icon": "textarea",
+                                    "col": {
+                                        "label": {
+                                            "label": "right.attribute.labelName",
+                                            "type": "string",
+                                            "value": "家庭住址",
+                                            "default": "",
+                                            "group": "basic",
+                                            "translatable": true,
+                                            "associate": "with-title",
+                                            "associateVal": [
+                                                true
+                                            ],
+                                            "translatableKey": "app.Page-Igz6eu16481756305570751.textarea_QL8X5Z16481759436380525.label"
+                                        }
+                                    },
+                                    "ref": "textarea_QL8X5Z16481759436380525"
+                                }
+                            ]
+                        }
+                    ],
+                    "key": "grid_mIaA9U16481756435040928",
+                    "model": "grid_mIaA9U16481756435040928",
+                    "col": {
+                        "span": {
+                            "label": "right.attribute.columnNumber",
+                            "value": 12,
+                            "type": "grid",
+                            "default": 12,
+                            "options": [
+                                {
+                                    "label": "right.attribute.currentColumn",
+                                    "value": 12,
+                                    "valueWeb": 12,
+                                    "valuePad": 12,
+                                    "valuePhone": 12
+                                }
+                            ],
+                            "group": "basic"
+                        }
+                    },
+                    "ref": "grid_mIaA9U16481756435040928"
+                },
+                {
+                    "type": "grid",
+                    "indraggable": true,
+                    "group": "smart-layout",
+                    "label": "left.layout.one",
+                    "options": {
+                        "gutter": 0
+                    },
+                    "columns": [
+                        {
+                            "span": 12,
+                            "list": [
+                                {
+                                    "type": "button",
+                                    "group": "smart-comp",
+                                    "label": "left.basic.button",
+                                    "position": "aside",
+                                    "key": "button_tu454M16481758934680521",
+                                    "model": "button_tu454M16481758934680521",
+                                    "icon": "button",
+                                    "col": {
+                                        "comp-align": {
+                                            "label": "right.attribute.contentalign",
+                                            "type": "iconSelect",
+                                            "value": "center",
+                                            "default": "",
+                                            "group": "compalign",
+                                            "options": [
+                                                {
+                                                    "label": "right.attribute.leftAlign",
+                                                    "value": "flex-start",
+                                                    "icon": "left2"
+                                                },
+                                                {
+                                                    "label": "right.attribute.centerAlign",
+                                                    "value": "center",
+                                                    "icon": "Center2"
+                                                },
+                                                {
+                                                    "label": "right.attribute.rightAlign",
+                                                    "value": "flex-end",
+                                                    "icon": "right2"
+                                                }
+                                            ]
+                                        },
+                                        "button-words": {
+                                            "label": "right.attribute.buttonWord",
+                                            "type": "string",
+                                            "value": "提交",
+                                            "default": "确认",
+                                            "group": "basic",
+                                            "translatable": true,
+                                            "associate": "button-with-words",
+                                            "associateVal": [
+                                                true
+                                            ],
+                                            "translatableKey": "app.Page-Igz6eu16481756305570751.button_tu454M16481758934680521.button-words"
+                                        }
+                                    },
+                                    "ref": "button_tu454M16481758934680521"
+                                },
+                                {
+                                    "type": "button",
+                                    "group": "smart-comp",
+                                    "label": "left.basic.button",
+                                    "position": "aside",
+                                    "key": "button_iRhyID16481796261520535",
+                                    "model": "button_iRhyID16481796261520535",
+                                    "icon": "button",
+                                    "col": {
+                                        "comp-align": {
+                                            "label": "right.attribute.contentalign",
+                                            "type": "iconSelect",
+                                            "value": "center",
+                                            "default": "",
+                                            "group": "compalign",
+                                            "options": [
+                                                {
+                                                    "label": "right.attribute.leftAlign",
+                                                    "value": "flex-start",
+                                                    "icon": "left2"
+                                                },
+                                                {
+                                                    "label": "right.attribute.centerAlign",
+                                                    "value": "center",
+                                                    "icon": "Center2"
+                                                },
+                                                {
+                                                    "label": "right.attribute.rightAlign",
+                                                    "value": "flex-end",
+                                                    "icon": "right2"
+                                                }
+                                            ]
+                                        },
+                                        "button-words": {
+                                            "label": "right.attribute.buttonWord",
+                                            "type": "string",
+                                            "value": "返回",
+                                            "default": "确认",
+                                            "group": "basic",
+                                            "translatable": true,
+                                            "associate": "button-with-words",
+                                            "associateVal": [
+                                                true
+                                            ],
+                                            "translatableKey": "app.Page-Igz6eu16481756305570751.button_iRhyID16481796261520535.button-words"
+                                        },
+                                        "$click": [
+                                            {
+                                                "checkAction": "router",
+                                                "routerPage": "Page-U5QM7N16481121406450824",
+                                                "note": ""
+                                            }
+                                        ]
+                                    },
+                                    "ref": "button_iRhyID16481796261520535"
+                                }
+                            ]
+                        }
+                    ],
+                    "key": "grid_DVbTYR16481756456970661",
+                    "model": "grid_DVbTYR16481756456970661",
+                    "col": {
+                        "span": {
+                            "label": "right.attribute.columnNumber",
+                            "value": 12,
+                            "type": "grid",
+                            "default": 12,
+                            "options": [
+                                {
+                                    "label": "right.attribute.currentColumn",
+                                    "value": 12,
+                                    "valueWeb": 12,
+                                    "valuePad": 12,
+                                    "valuePhone": 12
+                                }
+                            ],
+                            "group": "basic"
+                        }
+                    },
+                    "ref": "grid_DVbTYR16481756456970661"
+                }
+            ]
+        },
+        "commonPage": {
+            "id": "Page-Igz6eu16481756305570751",
+            "label": "Page2",
+            "ifFromPage": "2",
+            "ifCopy": "2",
+            "pageId": "",
+            "type": "1"
+        },
+        "refData": [
+            {
+                "value": "grid_gg912o16481756375510942",
+                "type": "grid",
+                "label": "left.layout.one"
+            },
+            {
+                "value": "grid2_2RvNSA16481756390860598",
+                "type": "grid2",
+                "label": "left.layout.two"
+            },
+            {
+                "value": "grid2_i8Dpyf16481756414250177",
+                "type": "grid2",
+                "label": "left.layout.two"
+            },
+            {
+                "value": "grid_mIaA9U16481756435040928",
+                "type": "grid",
+                "label": "left.layout.one"
+            },
+            {
+                "value": "grid_DVbTYR16481756456970661",
+                "type": "grid",
+                "label": "left.layout.one"
+            },
+            {
+                "value": "title_DsT5e316481756522900143",
+                "type": "title",
+                "label": "common.title"
+            },
+            {
+                "value": "input_LA2kU316481756888810029",
+                "type": "input",
+                "label": "left.basic.single"
+            },
+            {
+                "value": "radio_9d7lcP16481757635110766",
+                "type": "radio",
+                "label": "left.basic.radio"
+            },
+            {
+                "value": "select_iGKd2m16481758351020374",
+                "type": "select",
+                "label": "left.basic.select"
+            },
+            {
+                "value": "button_tu454M16481758934680521",
+                "type": "button",
+                "label": "left.basic.button"
+            },
+            {
+                "value": "Ratings_LlnwLl16481759288790235",
+                "type": "Ratings",
+                "label": "left.extend.rate"
+            },
+            {
+                "value": "textarea_QL8X5Z16481759436380525",
+                "type": "textarea",
+                "label": "left.basic.double"
+            },
+            {
+                "value": "button_iRhyID16481796261520535",
+                "type": "button",
+                "label": "left.basic.button"
             }
         ],
         "type": "1",
@@ -1228,7 +2026,7 @@
     {
         "appId": "6fcb1366449b0ab9",
         "appName": "lycApp",
-        "appVersion": "1.0.0.8",
+        "appVersion": "1.0.0.80",
         "version": "1.0.0",
         "imagesList": [],
         "components": [
@@ -3807,204 +4605,204 @@
                             "name": "随机分布数据",
                             "data": [
                                 [
-                                    "91.00",
-                                    "72.00"
+                                    "123.00",
+                                    "68.00"
                                 ],
                                 [
-                                    "93.00",
-                                    "78.00"
+                                    "151.00",
+                                    "85.00"
                                 ],
                                 [
-                                    "34.00",
-                                    "78.00"
-                                ],
-                                [
-                                    "143.00",
-                                    "12.00"
-                                ],
-                                [
-                                    "108.00",
-                                    "48.00"
-                                ],
-                                [
-                                    "30.00",
-                                    "47.00"
-                                ],
-                                [
-                                    "152.00",
-                                    "82.00"
-                                ],
-                                [
-                                    "171.00",
-                                    "88.00"
-                                ],
-                                [
-                                    "38.00",
-                                    "53.00"
-                                ],
-                                [
-                                    "57.00",
-                                    "44.00"
-                                ],
-                                [
-                                    "66.00",
-                                    "73.00"
-                                ],
-                                [
-                                    "145.00",
-                                    "63.00"
-                                ],
-                                [
-                                    "181.00",
-                                    "56.00"
-                                ],
-                                [
-                                    "141.00",
-                                    "16.00"
-                                ],
-                                [
-                                    "107.00",
-                                    "10.00"
-                                ],
-                                [
-                                    "43.00",
-                                    "12.00"
-                                ],
-                                [
-                                    "53.00",
-                                    "72.00"
-                                ],
-                                [
-                                    "94.00",
-                                    "41.00"
-                                ],
-                                [
-                                    "177.00",
-                                    "81.00"
-                                ],
-                                [
-                                    "132.00",
-                                    "78.00"
-                                ],
-                                [
-                                    "124.00",
-                                    "98.00"
-                                ],
-                                [
-                                    "71.00",
-                                    "32.00"
-                                ],
-                                [
-                                    "112.00",
-                                    "19.00"
-                                ],
-                                [
-                                    "179.00",
-                                    "100.00"
-                                ],
-                                [
-                                    "143.00",
-                                    "84.00"
-                                ],
-                                [
-                                    "181.00",
-                                    "51.00"
-                                ],
-                                [
-                                    "196.00",
-                                    "83.00"
-                                ],
-                                [
-                                    "61.00",
-                                    "31.00"
+                                    "174.00",
+                                    "36.00"
                                 ],
                                 [
                                     "36.00",
-                                    "13.00"
+                                    "54.00"
                                 ],
                                 [
-                                    "146.00",
-                                    "55.00"
+                                    "49.00",
+                                    "67.00"
                                 ],
                                 [
-                                    "59.00",
-                                    "70.00"
+                                    "153.00",
+                                    "56.00"
                                 ],
                                 [
-                                    "44.00",
-                                    "23.00"
+                                    "90.00",
+                                    "61.00"
                                 ],
                                 [
-                                    "79.00",
-                                    "28.00"
+                                    "41.00",
+                                    "56.00"
                                 ],
                                 [
-                                    "177.00",
-                                    "64.00"
+                                    "159.00",
+                                    "44.00"
+                                ],
+                                [
+                                    "52.00",
+                                    "65.00"
+                                ],
+                                [
+                                    "86.00",
+                                    "57.00"
+                                ],
+                                [
+                                    "178.00",
+                                    "97.00"
                                 ],
                                 [
                                     "110.00",
-                                    "46.00"
+                                    "19.00"
                                 ],
                                 [
-                                    "130.00",
-                                    "98.00"
+                                    "115.00",
+                                    "18.00"
                                 ],
                                 [
-                                    "134.00",
-                                    "71.00"
+                                    "24.00",
+                                    "16.00"
                                 ],
                                 [
-                                    "194.00",
-                                    "28.00"
+                                    "155.00",
+                                    "85.00"
                                 ],
                                 [
-                                    "47.00",
-                                    "52.00"
+                                    "114.00",
+                                    "13.00"
                                 ],
                                 [
                                     "98.00",
                                     "96.00"
                                 ],
                                 [
-                                    "145.00",
-                                    "60.00"
+                                    "134.00",
+                                    "99.00"
                                 ],
                                 [
-                                    "57.00",
-                                    "69.00"
+                                    "142.00",
+                                    "96.00"
                                 ],
                                 [
-                                    "21.00",
-                                    "51.00"
+                                    "164.00",
+                                    "88.00"
                                 ],
                                 [
-                                    "104.00",
-                                    "46.00"
+                                    "90.00",
+                                    "33.00"
                                 ],
                                 [
-                                    "36.00",
-                                    "70.00"
+                                    "152.00",
+                                    "22.00"
                                 ],
                                 [
-                                    "159.00",
-                                    "84.00"
+                                    "60.00",
+                                    "23.00"
                                 ],
                                 [
-                                    "43.00",
-                                    "44.00"
+                                    "140.00",
+                                    "48.00"
                                 ],
                                 [
                                     "79.00",
+                                    "23.00"
+                                ],
+                                [
+                                    "115.00",
+                                    "47.00"
+                                ],
+                                [
+                                    "186.00",
                                     "79.00"
                                 ],
                                 [
-                                    "31.00",
-                                    "51.00"
+                                    "184.00",
+                                    "65.00"
                                 ],
                                 [
-                                    "91.00",
+                                    "20.00",
+                                    "94.00"
+                                ],
+                                [
+                                    "56.00",
+                                    "45.00"
+                                ],
+                                [
+                                    "75.00",
+                                    "84.00"
+                                ],
+                                [
+                                    "49.00",
+                                    "98.00"
+                                ],
+                                [
+                                    "107.00",
+                                    "94.00"
+                                ],
+                                [
+                                    "160.00",
+                                    "21.00"
+                                ],
+                                [
+                                    "88.00",
+                                    "52.00"
+                                ],
+                                [
+                                    "38.00",
+                                    "95.00"
+                                ],
+                                [
+                                    "124.00",
+                                    "80.00"
+                                ],
+                                [
+                                    "94.00",
+                                    "70.00"
+                                ],
+                                [
+                                    "152.00",
+                                    "85.00"
+                                ],
+                                [
+                                    "187.00",
+                                    "85.00"
+                                ],
+                                [
+                                    "38.00",
+                                    "62.00"
+                                ],
+                                [
+                                    "153.00",
+                                    "82.00"
+                                ],
+                                [
+                                    "45.00",
+                                    "84.00"
+                                ],
+                                [
+                                    "149.00",
+                                    "31.00"
+                                ],
+                                [
+                                    "45.00",
+                                    "53.00"
+                                ],
+                                [
+                                    "109.00",
+                                    "26.00"
+                                ],
+                                [
+                                    "78.00",
+                                    "34.00"
+                                ],
+                                [
+                                    "143.00",
                                     "56.00"
+                                ],
+                                [
+                                    "180.00",
+                                    "41.00"
                                 ]
                             ]
                         }
@@ -4099,139 +4897,139 @@
                             "data": [
                                 {
                                     "name": "北京",
-                                    "value": 229
+                                    "value": 757
                                 },
                                 {
                                     "name": "天津",
-                                    "value": 758
+                                    "value": 520
                                 },
                                 {
                                     "name": "上海",
-                                    "value": 364
+                                    "value": 525
                                 },
                                 {
                                     "name": "重庆",
-                                    "value": 571
+                                    "value": 835
                                 },
                                 {
                                     "name": "河北",
-                                    "value": 354
+                                    "value": 728
                                 },
                                 {
                                     "name": "河南",
-                                    "value": 183
+                                    "value": 671
                                 },
                                 {
                                     "name": "云南",
-                                    "value": 956
+                                    "value": 137
                                 },
                                 {
                                     "name": "辽宁",
-                                    "value": 723
+                                    "value": 514
                                 },
                                 {
                                     "name": "黑龙江",
-                                    "value": 804
+                                    "value": 975
                                 },
                                 {
                                     "name": "湖南",
-                                    "value": 870
+                                    "value": 961
                                 },
                                 {
                                     "name": "安徽",
-                                    "value": 915
+                                    "value": 33
                                 },
                                 {
                                     "name": "山东",
-                                    "value": 842
+                                    "value": 160
                                 },
                                 {
                                     "name": "新疆",
-                                    "value": 201
+                                    "value": 681
                                 },
                                 {
                                     "name": "江苏",
-                                    "value": 288
+                                    "value": 414
                                 },
                                 {
                                     "name": "浙江",
-                                    "value": 962
+                                    "value": 437
                                 },
                                 {
                                     "name": "江西",
-                                    "value": 838
+                                    "value": 109
                                 },
                                 {
                                     "name": "湖北",
-                                    "value": 634
+                                    "value": 462
                                 },
                                 {
                                     "name": "广西",
-                                    "value": 304
+                                    "value": 789
                                 },
                                 {
                                     "name": "甘肃",
-                                    "value": 449
+                                    "value": 828
                                 },
                                 {
                                     "name": "山西",
-                                    "value": 723
+                                    "value": 319
                                 },
                                 {
                                     "name": "内蒙古",
-                                    "value": 859
+                                    "value": 929
                                 },
                                 {
                                     "name": "陕西",
-                                    "value": 202
+                                    "value": 684
                                 },
                                 {
                                     "name": "吉林",
-                                    "value": 271
+                                    "value": 411
                                 },
                                 {
                                     "name": "福建",
-                                    "value": 465
+                                    "value": 88
                                 },
                                 {
                                     "name": "贵州",
-                                    "value": 258
+                                    "value": 841
                                 },
                                 {
                                     "name": "广东",
-                                    "value": 545
+                                    "value": 293
                                 },
                                 {
                                     "name": "青海",
-                                    "value": 927
+                                    "value": 921
                                 },
                                 {
                                     "name": "西藏",
-                                    "value": 245
+                                    "value": 706
                                 },
                                 {
                                     "name": "四川",
-                                    "value": 644
+                                    "value": 795
                                 },
                                 {
                                     "name": "宁夏",
-                                    "value": 794
+                                    "value": 282
                                 },
                                 {
                                     "name": "海南",
-                                    "value": 170
+                                    "value": 166
                                 },
                                 {
                                     "name": "台湾",
-                                    "value": 872
+                                    "value": 802
                                 },
                                 {
                                     "name": "香港",
-                                    "value": 645
+                                    "value": 551
                                 },
                                 {
                                     "name": "澳门",
-                                    "value": 59
+                                    "value": 743
                                 }
                             ]
                         },
@@ -4240,79 +5038,79 @@
                             "data": [
                                 {
                                     "name": "北京",
-                                    "value": 252
+                                    "value": 774
                                 },
                                 {
                                     "name": "天津",
-                                    "value": 904
+                                    "value": 742
                                 },
                                 {
                                     "name": "上海",
-                                    "value": 125
+                                    "value": 904
                                 },
                                 {
                                     "name": "重庆",
-                                    "value": 612
+                                    "value": 330
                                 },
                                 {
                                     "name": "河北",
-                                    "value": 791
+                                    "value": 404
                                 },
                                 {
                                     "name": "安徽",
-                                    "value": 287
+                                    "value": 941
                                 },
                                 {
                                     "name": "新疆",
-                                    "value": 75
+                                    "value": 921
                                 },
                                 {
                                     "name": "浙江",
-                                    "value": 468
+                                    "value": 56
                                 },
                                 {
                                     "name": "江西",
-                                    "value": 947
+                                    "value": 31
                                 },
                                 {
                                     "name": "山西",
-                                    "value": 123
+                                    "value": 282
                                 },
                                 {
                                     "name": "内蒙古",
-                                    "value": 925
+                                    "value": 350
                                 },
                                 {
                                     "name": "吉林",
-                                    "value": 471
+                                    "value": 614
                                 },
                                 {
                                     "name": "福建",
-                                    "value": 588
+                                    "value": 820
                                 },
                                 {
                                     "name": "广东",
-                                    "value": 26
+                                    "value": 547
                                 },
                                 {
                                     "name": "西藏",
-                                    "value": 65
+                                    "value": 812
                                 },
                                 {
                                     "name": "四川",
-                                    "value": 723
+                                    "value": 627
                                 },
                                 {
                                     "name": "宁夏",
-                                    "value": 329
+                                    "value": 204
                                 },
                                 {
                                     "name": "香港",
-                                    "value": 961
+                                    "value": 732
                                 },
                                 {
                                     "name": "澳门",
-                                    "value": 63
+                                    "value": 391
                                 }
                             ]
                         }
@@ -27127,9 +27925,8 @@
                         {
                             "field": "name",
                             "title": "Name",
-                            "showOverflow": true,
+                            "headerClassName": "",
                             "id": 1,
-                            "sortable": false,
                             "editRender": {
                                 "name": "input",
                                 "attrs": {
@@ -27141,8 +27938,7 @@
                         {
                             "field": "gender",
                             "title": "Gender",
-                            "showOverflow": true,
-                            "sortable": false,
+                            "showHeaderOverflow": true,
                             "id": 2,
                             "editRender": {
                                 "name": "input",
@@ -27156,7 +27952,6 @@
                             "field": "address",
                             "title": "Address",
                             "showOverflow": true,
-                            "sortable": false,
                             "id": 3,
                             "editRender": {
                                 "name": "input",
@@ -27175,8 +27970,7 @@
                             "role": "Develop",
                             "gender": "Female",
                             "age": 0,
-                            "address": "Shenzhen",
-                            "_X_ROW_KEY": "row_2"
+                            "address": "Shenzhen"
                         },
                         {
                             "id": 10002,
@@ -27191,15 +27985,13 @@
                                     "id": 24300,
                                     "name": "张婷婷",
                                     "gender": "Female",
-                                    "address": "Guangzhou",
-                                    "_X_ROW_KEY": "row_4"
+                                    "address": "Guangzhou"
                                 },
                                 {
                                     "id": 20045,
                                     "name": "张芳",
                                     "gender": "Female",
-                                    "address": "Guangzhou",
-                                    "_X_ROW_KEY": "row_5"
+                                    "address": "Guangzhou"
                                 },
                                 {
                                     "id": 10053,
@@ -27211,28 +28003,23 @@
                                             "id": 24330,
                                             "name": "王阳",
                                             "gender": "Male",
-                                            "address": "Shenzhen",
-                                            "_X_ROW_KEY": "row_7"
+                                            "address": "Shenzhen"
                                         },
                                         {
                                             "id": 21011,
                                             "name": "文佳佳",
                                             "gender": "Female",
-                                            "address": "Shenzhen",
-                                            "_X_ROW_KEY": "row_8"
+                                            "address": "Shenzhen"
                                         },
                                         {
                                             "id": 22200,
                                             "name": "萧蔷",
                                             "gender": "Female",
-                                            "address": "Shenzhen",
-                                            "_X_ROW_KEY": "row_9"
+                                            "address": "Shenzhen"
                                         }
-                                    ],
-                                    "_X_ROW_KEY": "row_6"
+                                    ]
                                 }
-                            ],
-                            "_X_ROW_KEY": "row_3"
+                            ]
                         },
                         {
                             "id": 10003,
@@ -27241,8 +28028,7 @@
                             "role": "PM",
                             "gender": "Male",
                             "age": 100,
-                            "address": "Shanghai",
-                            "_X_ROW_KEY": "row_10"
+                            "address": "Shanghai"
                         },
                         {
                             "id": 10004,
@@ -27251,8 +28037,7 @@
                             "role": "Designer",
                             "gender": "Female",
                             "age": 70,
-                            "address": "Shenzhen",
-                            "_X_ROW_KEY": "row_11"
+                            "address": "Shenzhen"
                         },
                         {
                             "id": 10005,
@@ -27261,8 +28046,7 @@
                             "role": "Develop",
                             "gender": "Female",
                             "age": 10,
-                            "address": "Shanghai",
-                            "_X_ROW_KEY": "row_12"
+                            "address": "Shanghai"
                         },
                         {
                             "id": 10006,
@@ -27271,8 +28055,7 @@
                             "role": "Designer",
                             "gender": "Female",
                             "age": 90,
-                            "address": "Shenzhen",
-                            "_X_ROW_KEY": "row_13"
+                            "address": "Shenzhen"
                         },
                         {
                             "id": 10007,
@@ -27281,8 +28064,7 @@
                             "role": "Test",
                             "gender": "Male",
                             "age": 5,
-                            "address": "Shenzhen",
-                            "_X_ROW_KEY": "row_14"
+                            "address": "Shenzhen"
                         },
                         {
                             "id": 10008,
@@ -27291,8 +28073,7 @@
                             "role": "Develop",
                             "gender": "Male",
                             "age": 80,
-                            "address": "Shenzhen",
-                            "_X_ROW_KEY": "row_15"
+                            "address": "Shenzhen"
                         },
                         {
                             "id": 10008,
@@ -27301,8 +28082,7 @@
                             "role": "Develop",
                             "gender": "Male",
                             "age": 80,
-                            "address": "Shenzhen",
-                            "_X_ROW_KEY": "row_16"
+                            "address": "Shenzhen"
                         },
                         {
                             "id": 10009,
@@ -27311,8 +28091,7 @@
                             "role": "Develop",
                             "gender": "Male",
                             "age": 80,
-                            "address": "Shenzhen",
-                            "_X_ROW_KEY": "row_17"
+                            "address": "Shenzhen"
                         },
                         {
                             "id": 10018,

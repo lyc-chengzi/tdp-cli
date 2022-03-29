@@ -1,5 +1,5 @@
 import { INode } from "../../interface/index.js";
-import { $printLevelSpace, $getNodeByJson } from "../utils.js";
+import { $printLevelSpace, $getNodeByJson, $formatProps, $formatEvents } from "../utils.js";
 import NodeBase from "./nodeBase.js";
 import Page from './page.js';
 
@@ -27,21 +27,29 @@ export default class Grid extends NodeBase {
         // 组织grid组件结构
         result = 
  `
-${$printLevelSpace(level)}<v-container ref="${this.key}" class="tdp-generator-grid">
-${$printLevelSpace(level + 1)}<v-row no-gutters>${this.loopCol(level + 2)}
-${$printLevelSpace(level + 1)}</v-row>
-${$printLevelSpace(level)}</v-container>`;
+${$printLevelSpace(level)}<functional-grid
+${$printLevelSpace(level + 1)}ref="${this.key}"
+${$printLevelSpace(level + 1)}class="tdp-generator-grid"
+${$printLevelSpace(level + 1)}:record="${this.key}_record"
+${$printLevelSpace(level + 1)}:col="${this.key}_data"
+${$printLevelSpace(level + 1)}type="${this.json.type}"
+${$printLevelSpace(level + 1)}:edit="false"
+${$printLevelSpace(level + 1)}:model="{}"
+${$printLevelSpace(level + 1)}:options="[]"
+${$printLevelSpace(level + 1)}:apiBasic="{}"
+${$printLevelSpace(level)}>${this.loopCol(level + 1)}
+${$printLevelSpace(level)}</functional-grid>`;
         return result;
     }
 
     // 循环column
     loopCol(level: number) {
         let _result = '';
-        this.columns.forEach(c => {
+        this.columns.forEach((c, index) => {
             _result += 
 `
-${$printLevelSpace(level)}<v-col span="${c.span}">${this.loopNodes(c.nodes, level + 1)}
-${$printLevelSpace(level)}</v-col>`;
+${$printLevelSpace(level)}<div slot="grid${index}" key="grid${index}">${this.loopNodes(c.nodes, level + 1)}
+${$printLevelSpace(level)}</div>`;
         });
         return _result;
     };
@@ -59,6 +67,28 @@ ${$printLevelSpace(level)}</v-col>`;
     // 向page的data中添加代码
     toData(pageInstance: Page) {
         let result = '';
+        result += `
+            ${this.key}_data: {
+                type: '${this.json.type}',
+                apiItemize: undefined,
+                attrs: {
+                    type: '${this.json.type}',${$formatProps(this.json.col)}
+                },
+                formItem: {label: '${this.json.label}'},
+                on: ${JSON.stringify($formatEvents(this.json.col), null, 4)},
+                prop: '${this.key}',
+                ref: '${this.key}',
+            },`;
+
+        let copyRecord = JSON.parse(JSON.stringify(this.json));
+        copyRecord.columns = copyRecord.columns.map((c: any) => {
+            return {
+                ...c,
+                list: (c.list || []).map(() => ({})),
+            };
+        });
+        result += `
+            ${this.key}_record: ${JSON.stringify(copyRecord)},`;
         this.columns.forEach(col => {
             col.nodes.forEach(node => {
                 if (node.node && node.node.toData) {

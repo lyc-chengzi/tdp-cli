@@ -50,7 +50,8 @@ ${s2}:options="[]"`;
         // 如果有接口请求，拼写接口请求
         if (this.hasApi) {
             result += `
-${s2}:apiBasic="${this.key}_apiBasic"`;
+${s2}:apiBasic="${this.key}_apiBasic"
+${s2}:apiData="${this.key}_apiData"`;
         } else {
             result += `
 ${s2}:apiBasic="{}"`;
@@ -82,7 +83,9 @@ ${s1}</${itemTag}>`;
             },`;
         if (this.hasApi) {
             result += `
-            ${this.key}_apiBasic: ${JSON.stringify(this.json.col.apiBasic, null, 4)},`;
+            ${this.key}_apiBasic: ${JSON.stringify(this.json.col.apiBasic, null, 4)},
+            ${this.key}_apiData: {},
+            `;
         }
         return result;
     }

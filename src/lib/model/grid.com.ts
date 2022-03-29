@@ -27,7 +27,7 @@ export default class Grid extends NodeBase {
         // 组织grid组件结构
         result = 
  `
-${$printLevelSpace(level)}<functional-grid
+${$printLevelSpace(level)}<functional-item
 ${$printLevelSpace(level + 1)}ref="${this.key}"
 ${$printLevelSpace(level + 1)}class="tdp-generator-grid"
 ${$printLevelSpace(level + 1)}:record="${this.key}_record"
@@ -37,8 +37,12 @@ ${$printLevelSpace(level + 1)}:edit="false"
 ${$printLevelSpace(level + 1)}:model="{}"
 ${$printLevelSpace(level + 1)}:options="[]"
 ${$printLevelSpace(level + 1)}:apiBasic="{}"
-${$printLevelSpace(level)}>${this.loopCol(level + 1)}
-${$printLevelSpace(level)}</functional-grid>`;
+${$printLevelSpace(level + 1)}<template #default="{ sss }">
+${$printLevelSpace(level + 2)}<functional-grid v-bind="sss">
+${$printLevelSpace(level + 2)}${this.loopCol(level + 3)}
+${$printLevelSpace(level + 2)}</functional-grid>
+${$printLevelSpace(level + 1)}</template>
+${$printLevelSpace(level)}</functional-item>`;
         return result;
     }
 

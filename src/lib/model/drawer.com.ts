@@ -16,11 +16,28 @@ export default class Drawer extends NodeBase {
     }
     toString(level?: number) {
         let result = '';
-        // 组织grid组件结构
+        // 组织drawer组件结构
         result = 
  `
-${$printLevelSpace(level)}<div class="tdp-generator-drawer">${this.loopNodes(level + 1)}
-${$printLevelSpace(level)}</div>`;
+${$printLevelSpace(level)}<functional-item
+${$printLevelSpace(level + 1)}ref="${this.key}"
+${$printLevelSpace(level + 1)}class="tdp-generator-drawer"
+${$printLevelSpace(level + 1)}:record="${this.key}_record"
+${$printLevelSpace(level + 1)}:col="${this.key}_data"
+${$printLevelSpace(level + 1)}type="${this.json.type}"
+${$printLevelSpace(level + 1)}:edit="false"
+${$printLevelSpace(level + 1)}:model="{}"
+${$printLevelSpace(level + 1)}:apiBasic="{}"
+${$printLevelSpace(level + 1)}:options="[]"
+${$printLevelSpace(level)}>
+${$printLevelSpace(level + 1)}<template #default="{ props }">
+${$printLevelSpace(level + 2)}<functional-drawer v-bind="props">
+${$printLevelSpace(level + 3)}<div class="drawer-wrapper" key="drawer0">
+${$printLevelSpace(level + 3)}${this.loopNodes(level + 4)}
+${$printLevelSpace(level + 3)}</div>
+${$printLevelSpace(level + 2)}</functional-modals>
+${$printLevelSpace(level + 1)}</template>
+${$printLevelSpace(level)}</functional-item>`;
         return result;
     }
 
@@ -47,6 +64,14 @@ ${$printLevelSpace(level)}</div>`;
     // 向page的method中添加代码
     toMethods(pageInstance: Page) {
         let result = '';
+        result += `
+            ${this.key}Opened() {
+                
+            },
+            ${this.key}Closed() {
+                
+            },
+        `;
         this.nodes.forEach(node => {
             if (node.node && node.node.toMethods) {
                 result += node.node.toMethods(pageInstance);

@@ -38,8 +38,8 @@ ${$printLevelSpace(level + 1)}:model="{}"
 ${$printLevelSpace(level + 1)}:options="[]"
 ${$printLevelSpace(level + 1)}:apiBasic="{}"
 ${$printLevelSpace(level)}>
-${$printLevelSpace(level + 1)}<template #default="{ sss }">
-${$printLevelSpace(level + 2)}<functional-grid v-bind="sss">
+${$printLevelSpace(level + 1)}<template #default="{ props }">
+${$printLevelSpace(level + 2)}<functional-grid v-bind="props">
 ${$printLevelSpace(level + 2)}${this.loopCol(level + 3)}
 ${$printLevelSpace(level + 2)}</functional-grid>
 ${$printLevelSpace(level + 1)}</template>

@@ -35,7 +35,7 @@ ${$printLevelSpace(level + 2)}<functional-drawer v-bind="props">
 ${$printLevelSpace(level + 3)}<div class="drawer-wrapper" key="drawer0">
 ${$printLevelSpace(level + 3)}${this.loopNodes(level + 4)}
 ${$printLevelSpace(level + 3)}</div>
-${$printLevelSpace(level + 2)}</functional-modals>
+${$printLevelSpace(level + 2)}</functional-drawer>
 ${$printLevelSpace(level + 1)}</template>
 ${$printLevelSpace(level)}</functional-item>`;
         return result;

@@ -34,8 +34,8 @@ ${$printLevelSpace(level + 1)}:model="{}"
 ${$printLevelSpace(level + 1)}:apiBasic="{}"
 ${$printLevelSpace(level + 1)}:options="[]"
 ${$printLevelSpace(level)}>
-${$printLevelSpace(level + 1)}<template #default="{ sss }">
-${$printLevelSpace(level + 2)}<functional-tabs v-bind="sss">
+${$printLevelSpace(level + 1)}<template #default="{ props }">
+${$printLevelSpace(level + 2)}<functional-tabs v-bind="props">
 ${$printLevelSpace(level + 2)}${this.loopTabs(level + 3)}
 ${$printLevelSpace(level + 2)}</functional-tabs>
 ${$printLevelSpace(level + 1)}</template>
@@ -45,6 +45,7 @@ ${$printLevelSpace(level)}</functional-item>`;
 
     loopTabs(level: number) {
         let result = '';
+
         this.tabs.forEach((tab, index) => {
             result += `
 ${$printLevelSpace(level)}<div class="tab-wrapper" key="tabs_${index}" slot="${this.json.type}${index}">${this.loopNodes(tab.list, level + 1)}

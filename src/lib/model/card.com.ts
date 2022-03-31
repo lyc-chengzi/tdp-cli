@@ -30,8 +30,8 @@ ${$printLevelSpace(level + 1)}:model="{}"
 ${$printLevelSpace(level + 1)}:apiBasic="{}"
 ${$printLevelSpace(level + 1)}:options="[]"
 ${$printLevelSpace(level)}>
-${$printLevelSpace(level + 1)}<template #default="{ sss }">
-${$printLevelSpace(level + 2)}<functional-card v-bind="sss">
+${$printLevelSpace(level + 1)}<template #default="{ props }">
+${$printLevelSpace(level + 2)}<functional-card v-bind="props">
 ${$printLevelSpace(level + 3)}<div class="card-wrapper" key="card0">
 ${$printLevelSpace(level + 3)}${this.loopNodes(level + 4)}
 ${$printLevelSpace(level + 3)}</div>

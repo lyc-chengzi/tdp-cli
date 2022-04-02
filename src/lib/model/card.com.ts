@@ -32,9 +32,9 @@ ${$printLevelSpace(level + 1)}:options="[]"
 ${$printLevelSpace(level)}>
 ${$printLevelSpace(level + 1)}<template #default="{ props }">
 ${$printLevelSpace(level + 2)}<functional-card v-bind="props">
-${$printLevelSpace(level + 3)}<div class="card-wrapper" key="card0">
+${$printLevelSpace(level + 3)}<template #cardWrapper>
 ${$printLevelSpace(level + 3)}${this.loopNodes(level + 4)}
-${$printLevelSpace(level + 3)}</div>
+${$printLevelSpace(level + 3)}</template>
 ${$printLevelSpace(level + 2)}</functional-card>
 ${$printLevelSpace(level + 1)}</template>
 ${$printLevelSpace(level)}</functional-item>`;
@@ -75,6 +75,11 @@ ${$printLevelSpace(level)}</functional-item>`;
         });
         result += `
             ${this.key}_record: ${JSON.stringify(copyRecord)},`;
+        if (this.hasApi) {
+            result += `
+            ${this.key}_apiBasic: ${JSON.stringify(this.json.col.apiBasic, null, 4)},
+            ${this.key}_apiData: {},`;
+        }
         this.nodes.forEach(node => {
             if (node.node && node.node.toData) {
                 result += node.node.toData(pageInstance);

@@ -35,6 +35,7 @@ export default class NodeBase {
         // 拼写ref、class、组合属性
         let result = `
 ${s1}<${itemTag}
+${s2}key="${this.key}"
 ${s2}ref="${this.key}"
 ${s2}class="tdp-generator-${classNames(this.json.type)}"
 ${s2}:col="${this.key}_data"
